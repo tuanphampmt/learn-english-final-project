@@ -4,7 +4,7 @@ class HomeMaster extends Component {
     render() {
         return (
             <div>
-                <p>Hello</p>
+                <p>Hello111</p>
             </div>
         );
     }
