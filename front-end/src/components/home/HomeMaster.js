@@ -5,6 +5,12 @@ class HomeMaster extends Component {
     render() {
         return (
             <div className="home">
+                <div className="cloud">
+                    <img className="cloud1"  src="Images/Cloud.png" alt="" width="15%" ></img>
+                    <img className="cloud2" src="Images/Cloud.png" alt="" width="15%" ></img>
+                    <img className="cloud3" src="Images/Cloud.png" alt="" width="15%" ></img>
+                    <img className="cloud4" src="Images/Cloud.png" alt="" width="10%" ></img>
+                </div>
                 <div id="logo">
                     <img src="Images/Logo_KIDE.png" alt="" width="55%" height="15%" />
                     <Link to="/login">

@@ -25,3 +25,30 @@ body{
     margin-left: 65%;
     margin-top: -15%;
 } 
+.cloud{
+    position: relative;
+}
+.cloud1{
+    position: absolute;
+    z-index: 10;
+    margin-left: 2%;
+    margin-top: 5%;
+}
+.cloud2{
+    position: absolute;
+    z-index: 10;
+    margin-left: 40%;
+    margin-top: -5%;
+}
+.cloud3{
+    position: absolute;
+    z-index: 10;
+    margin-left: 10%;
+    margin-top: 20%;
+}
+.cloud4{
+    position: absolute;
+    z-index: 10;
+    margin-left: 18%;
+    margin-top: -5%;
+}
