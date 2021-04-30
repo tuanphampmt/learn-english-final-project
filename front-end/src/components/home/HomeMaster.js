@@ -16,7 +16,7 @@ class HomeMaster extends Component {
 
                 </div>
                 <div id="login-button">
-                    <Link to="#1">
+                    <Link to="login">
                         <img src="Images/Login_Button.png" alt="" className="heart"/>
                     </Link>
                 </div>
