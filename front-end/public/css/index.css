@@ -5,7 +5,7 @@
     src: url(../fonts/coiny/coiny-regular.ttf);
 }
 
-label, p, h1, h2, h3{
+label, p, h1, h2, h3 {
     font-family: myFirstFont, serif;
 }
 
@@ -30,6 +30,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .home #logo {
     margin-top: 150px;
 }
@@ -42,13 +43,13 @@ body {
     margin-left: 85px;
 }
 
-.home #login-button a img{
+.home #login-button a img {
     text-align: left;
     margin-left: 65%;
     margin-top: -15%;
 }
 
-.home .letgo-button{
+.home .letgo-button {
     margin-top: -50px;
 }
 
@@ -60,8 +61,8 @@ body {
     left: 100px;
     transform: rotate(-45deg);
     transform-origin: 0 100%;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-    0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .heart:after {
@@ -69,6 +70,7 @@ body {
     transform: rotate(45deg);
     transform-origin: 100% 100%;
 }
+
 
 @keyframes animate {
     0% {
@@ -85,7 +87,7 @@ body {
     }
 }
 
-.zoom img{
+.zoom img {
     transition: transform .2s;
 }
 
@@ -101,12 +103,16 @@ body {
     animation-name: cloud1;
     animation-duration: 20s;
     animation-delay: 0s;
-    animation-iteration-count:infinite;
+    animation-iteration-count: infinite;
 }
 
 @keyframes cloud1 {
-    from {left: 0;}
-    to {left: 120%  }
+    from {
+        left: 0;
+    }
+    to {
+        left: 120%
+    }
 }
 
 .cloud2 {
@@ -117,13 +123,18 @@ body {
     animation-name: cloud2;
     animation-duration: 22s;
     animation-delay: 0.1s;
-    animation-iteration-count:infinite;
+    animation-iteration-count: infinite;
 }
 
 @keyframes cloud2 {
-    from {left: 0;}
-    to {left: 120% }
+    from {
+        left: 0;
+    }
+    to {
+        left: 120%
+    }
 }
+
 .cloud3 {
     position: absolute;
     z-index: 10;
@@ -132,11 +143,16 @@ body {
     animation-name: cloud3;
     animation-duration: 24s;
     animation-delay: 0.2s;
-    animation-iteration-count:infinite;
+    animation-iteration-count: infinite;
 }
+
 @keyframes cloud3 {
-    from {left: 0;}
-    to {left: 120% }
+    from {
+        left: 0;
+    }
+    to {
+        left: 120%
+    }
 }
 
 .cloud4 {
@@ -147,10 +163,83 @@ body {
     animation-name: cloud4;
     animation-duration: 26s;
     animation-delay: 0.3s;
-    animation-iteration-count:infinite;
+    animation-iteration-count: infinite;
 }
 
 @keyframes cloud4 {
-    from {left: 0;}
-    to {left: 120% }
+    from {
+        left: 0;
+    }
+    to {
+        left: 120%
+    }
+}
+
+/* form styles */
+
+form .req {
+    color: #ca5354;
+}
+
+/* placeholder styles: */
+::-webkit-input-placeholder {
+    color: #aaafbd;
+    font-style: italic;
+}
+
+/* WebKit */
+:-moz-placeholder {
+    color: #aaafbd;
+    font-style: italic;
+}
+
+/* Mozilla Firefox 4 to 18 */
+::-moz-placeholder {
+    color: #aaafbd;
+    font-style: italic;
+}
+
+/* Mozilla Firefox 19+ */
+:-ms-input-placeholder {
+    color: #aaafbd;
+    font-style: italic;
+}
+
+/* Internet Explorer 10+ */
+
+label{
+    margin-bottom: 0 !important;
+}
+form .input {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #898989;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+    box-sizing: content-box;
+    transition: all 0.3s linear;
+}
+
+form .input:focus {
+    width: 260px;
+    color: #545454;
+    background-color: #fff;
+    background-position: 110% center;
+    background-repeat: no-repeat;
+    border-color: #059;
+    box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(70, 100, 200, 0.7);
+}
+
+form .input:valid {
+    background-color: #deecda;
+    background-position: 98% center;
+    background-repeat: no-repeat;
+    color: #7d996e;
+    border: 1px solid #95bc7d;
+}
+
+form .input:focus:valid {
+    box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(120, 200, 70, 0.7);
 }

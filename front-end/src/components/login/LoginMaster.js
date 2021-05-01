@@ -5,27 +5,35 @@ class LoginMaster extends Component {
     render() {
         return (
             <>
-                <div className="form-login center">
+                <form className="form-login center">
                     <div className="form-group row">
-                        <div className="col-md-6">
-                            <label htmlFor="username">Tên đăng nhập</label>
+                        <div className="col-md-6 d-flex align-items-center">
+                            <label htmlFor="username">Tên đăng nhập<span className="req">*</span></label>
                         </div>
                         <div className="col-md-6">
-                            <input type="username" name="username" className="text box"/>
+                            <input type="username"
+                                   name="username"
+                                   className="input box-shadow"
+                                   required
+                            />
                         </div>
                     </div>
                     <div className="form-group row">
-                        <div className="col-md-6">
-                            <label htmlFor="password">Mật khẩu</label>
+                        <div className="col-md-6 d-flex align-items-center">
+                            <label htmlFor="password">Mật khẩu<span className="req">*</span></label>
                         </div>
                         <div className="col-md-6">
-                            <input type="password" name="password" className="text box"/>
+                            <input type="password"
+                                   name="password"
+                                   className="input box-shadow"
+                                   required
+                            />
                         </div>
                     </div>
-                    <div className="form-group button-login zoom center">
+                    <div className="button-login zoom center img-login-button">
                         <img src="Images/Login_Button_Click.png"></img>
                     </div>
-                </div>
+                </form>
                 <div className="back-button zoom">
                     <Link to="/home">
                         <img src="Images/Back_Button.png" alt=""/>
