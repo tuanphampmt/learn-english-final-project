@@ -1,4 +1,14 @@
 /* Home */
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(../fonts/coiny/coiny-regular.ttf);
+}
+
+label, p, h1, h2, h3{
+    font-family: myFirstFont, serif;
+}
+
 body {
     background: url(../Images/Background_sky.png);
     background-repeat: no-repeat;

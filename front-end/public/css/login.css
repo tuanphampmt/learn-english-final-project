@@ -42,10 +42,10 @@
     cursor: pointer;
 }
 .form-group {
-    display: flex;
+    /*display: flex;*/
     width: 550px;
     margin-top: 25px;
-    justify-content: space-evenly;
+    /*justify-content: center;*/
 }
 
 input:focus {

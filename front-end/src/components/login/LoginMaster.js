@@ -6,16 +6,23 @@ class LoginMaster extends Component {
         return (
             <>
                 <div className="form-login center">
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="username" name="username" className="text box"/>
+                    <div className="form-group row">
+                        <div className="col-md-6">
+                            <label htmlFor="username">Tên đăng nhập</label>
+                        </div>
+                        <div className="col-md-6">
+                            <input type="username" name="username" className="text box"/>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" className="text box"/>
-
+                    <div className="form-group row">
+                        <div className="col-md-6">
+                            <label htmlFor="password">Mật khẩu</label>
+                        </div>
+                        <div className="col-md-6">
+                            <input type="password" name="password" className="text box"/>
+                        </div>
                     </div>
-                    <div className="form-group button-login zoom">
+                    <div className="form-group button-login zoom center">
                         <img src="Images/Login_Button_Click.png"></img>
                     </div>
                 </div>
