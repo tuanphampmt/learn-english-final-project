@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class RegisterMaster extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            password: "",
+            confpassword: ""
+        }
+    }
+
     render() {
         return (
             <>
@@ -15,6 +24,8 @@ class RegisterMaster extends Component {
                                    name="username"
                                    className="input box-shadow"
                                    required
+                                   onChange={this.handleChange}
+                                   id="username"
                             />
                         </div>
                     </div>
@@ -27,6 +38,8 @@ class RegisterMaster extends Component {
                                    name="password"
                                    className="input box-shadow"
                                    required
+                                   onChange={this.handleChange}
+                                   id="password"
                             />
                         </div>
                     </div>
@@ -39,6 +52,8 @@ class RegisterMaster extends Component {
                                    name="confpassword"
                                    className="input box-shadow"
                                    required
+                                   onChange={this.handleChange}
+                                   id="confpassword"
                             />
                         </div>
                     </div>
