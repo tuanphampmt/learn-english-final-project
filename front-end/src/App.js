@@ -1,7 +1,6 @@
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
-import HomeMaster from "./components/home/HomeMaster";
+import HomeMaster from "./components/start/StartMaster";
 import LoginMaster from "./components/login/LoginMaster";
-import RegisterMaster from "./components/register/RegisterMaster";
 
 function App() {
     return (
@@ -12,7 +11,6 @@ function App() {
                 </Route>
                 <Route component={HomeMaster} path="/home" exact/>
                 <Route component={LoginMaster} path="/login" exact/>
-                <Route component={RegisterMaster} path="/register" exact/>
             </Switch>
         </BrowserRouter>
     );
