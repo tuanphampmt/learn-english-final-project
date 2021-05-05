@@ -1,9 +1,10 @@
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
+
 import StartMaster from "./components/start/StartMaster";
-import LoginMaster from "./components/login/LoginMaster";
 import HomePage from "./components/home/HomePage";
 import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
-import RegisterMaster from "./components/Register/RegisterMaster";
+import LoginMaster from "./components/login/LoginMaster";
+import RegisterMaster from "./components/register/RegisterMaster";
 import UnitAphabet from "./components/UnitAphabet/UnitAphabet";
 
 function App() {
