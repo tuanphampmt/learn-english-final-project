@@ -1,0 +1,45 @@
+.unit-aphabet{
+    margin-top: 15px;
+}
+
+.unit-aphabet .img-cat img {
+    width: 50%;
+
+}
+
+.unit-aphabet .time-bar {
+    min-height: 90px;
+    max-height: 120px;
+    background-color: white;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    width: 730px;
+    margin-left: -160px;
+    box-shadow: 0px -1px 5px 3px #999 inset;
+}
+.unit-aphabet .time-bar .time {
+    padding-left: 35px;
+}
+
+.unit-aphabet .time-bar .time, .unit-aphabet .time-bar .point {
+    font-size: 22px;
+
+}
+
+.unit-aphabet .game-aphabet {
+    height: 500px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.unit-aphabet .game-aphabet .game-aphabet-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 43px;
+    flex-wrap: wrap;
+}
+
+.unit-aphabet .game-aphabet .game-aphabet-row img {
+    width: 11%;
+}

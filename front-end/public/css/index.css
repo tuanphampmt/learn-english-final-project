@@ -5,7 +5,7 @@
     src: url(../fonts/coiny/coiny-regular.ttf);
 }
 
-label, p, h1, h2, h3 {
+label, p, h1, h2, h3, div {
     font-family: myFirstFont, serif;
 }
 
