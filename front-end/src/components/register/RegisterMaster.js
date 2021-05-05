@@ -15,6 +15,7 @@ class RegisterMaster extends Component {
         return (
             <>
                 <form className="form-register center ">
+                    1
                     <div className="form-group row">
                         <div className="col-md-7 d-flex align-items-center">
                             <label htmlFor="username">Tên đăng nhập<span className="req">*</span></label>
