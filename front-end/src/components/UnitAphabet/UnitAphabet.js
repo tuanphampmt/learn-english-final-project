@@ -4,7 +4,6 @@ class UnitAphabet extends Component {
     render() {
         return (
             <div className="container unit-aphabet">
-                1
                 <div className="row center">
                     <div className="col-md-4 img-cat">
                         <img src="Images/Avatar/Cat/Cat_normal.png" alt=""/>

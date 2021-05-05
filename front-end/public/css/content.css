@@ -1,0 +1,49 @@
+.chude{
+    border-radius: 12px;
+    text-align: center;
+    width: 35%;
+    height: 400px;
+    background-color: #55c655;
+    overflow-y: scroll;
+    scrollbar-width: unset;
+    padding-top: 2%;
+    float: left;
+    margin-top: 3%;
+    margin-left: 9%;
+    color: #273f63;
+}
+
+.chude::-webkit-scrollbar {
+    width: 20px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 12px;
+}
+.noidung{
+    border-radius: 12px;
+    width: 40%;
+    height: 330px;
+    margin-top: 4%;
+    text-align: center;
+    margin-left: 51%;
+    background-color: #55c655;
+    color: #273f63;
+}
+
+.point{
+    font-size: 22px;
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.change{
+    border-radius: 12px;
+    width: 45%;
+    height: 450px;
+    margin-top: 2%;
+    background-color: #36becc;
+    color: #273f63;
+    font-size: 22px;
+}

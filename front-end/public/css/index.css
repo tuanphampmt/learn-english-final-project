@@ -10,7 +10,7 @@ label, p, h1, h2, h3, div {
 }
 
 body {
-    background: url(../Images/Background_sky.png);
+    background: url(../Images/StartPage/Background_sky.png);
     background-repeat: no-repeat;
     overflow: hidden;
     background-size: 105% 105%;

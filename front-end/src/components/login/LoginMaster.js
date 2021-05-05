@@ -6,7 +6,6 @@ class LoginMaster extends Component {
         return (
             <>
                 <form className="form-login center">
-                    1
                     <div className="form-group row">
                         <div className="col-md-6 d-flex align-items-center">
                             <label htmlFor="username">Tên đăng nhập<span className="req">*</span></label>
@@ -32,17 +31,17 @@ class LoginMaster extends Component {
                         </div>
                     </div>
                     <div className="button-login zoom center img-login-button">
-                        <img src="Images/Login_Button_Click.png"></img>
+                        <img src="Images/LoginPage/Login_Button_Click.png"></img>
                     </div>
                 </form>
                 <div className="back-button zoom">
                     <Link to="/home">
-                        <img src="Images/Back_Button.png" alt=""/>
+                        <img src="Images/LoginPage/Back_Button.png" alt=""/>
                     </Link>
                 </div>
                 <div className="signup-button">
                     <Link to="/register">
-                        <img src="Images/SignUp_Button.png" alt="" className="heart"/>
+                        <img src="Images/LoginPage/SignUp_Button.png" alt="" className="heart"/>
                     </Link>
                 </div>
             </>
