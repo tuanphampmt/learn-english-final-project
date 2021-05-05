@@ -32,6 +32,9 @@
     box-shadow: 5px 5px 5px grey
 }
 
+.background-color-white {
+    background-color: white;
+}
 .button-login {
     text-align: center;
 }
