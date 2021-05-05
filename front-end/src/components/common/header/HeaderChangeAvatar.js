@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Header extends Component {
+class HeaderChange extends Component {
     render() {
         return (
-            <div id="header" className="header box-shadow" style={{}}>
+            <div id="header" className="header box-shadow" style={{backgroundColor: '#36becc'}}>
                 <Link to="/changeAvatar" style={{width: '15%'}}>
                     <img src="Images\HomePage\Dinosaur_normal.png" style={{ width: '100%', borderRadius: '15px'}} ></img>
                 </Link>
@@ -24,4 +24,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default HeaderChange;

@@ -6,23 +6,23 @@ class HomeMaster extends Component {
         return (
             <div className="home">
                 <div className="cloud">
-                    <img className="cloud1"  src="Images/Cloud.png" alt="" width="12%" ></img>
-                    <img className="cloud2" src="Images/Cloud.png" alt="" width="15%" ></img>
-                    <img className="cloud3" src="Images/Cloud.png" alt="" width="15%" ></img>
-                    <img className="cloud4" src="Images/Cloud.png" alt="" width="10%" ></img>
+                    <img className="cloud1"  src="Images/Startpage/Cloud.png" alt="" width="12%" ></img>
+                    <img className="cloud2" src="Images/Startpage/Cloud.png" alt="" width="15%" ></img>
+                    <img className="cloud3" src="Images/Startpage/Cloud.png" alt="" width="15%" ></img>
+                    <img className="cloud4" src="Images/Startpage/Cloud.png" alt="" width="10%" ></img>
                 </div>
                 <div id="logo" className="center">
-                    <img src="Images/Logo_KIDE.png" alt="" />
+                    <img src="Images/StartPage/Logo_KIDE.png" alt="" />
 
                 </div>
                 <div id="login-button">
                     <Link to="/login">
-                        <img src="Images/Login_Button.png" alt="" className="heart"/>
+                        <img src="Images/StartPage/Login_Button.png" alt="" className="heart"/>
                     </Link>
                 </div>
                 <div className="letgo-button center zoom">
-                    <Link>
-                        <img src="Images/LetGo_Button.png" alt=""/>
+                    <Link to="/homePage">
+                        <img src="Images/StartPage/LetGo_Button.png" alt=""/>
                     </Link>
                 </div>
             </div>   
