@@ -38,8 +38,9 @@
     justify-content: space-around;
     margin: 0 43px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
-.unit-aphabet .game-aphabet .game-aphabet-row img {
-    width: 11%;
-}
+/*.unit-aphabet .game-aphabet .game-aphabet-row img {*/
+/*    width: 11%;*/
+/*}*/

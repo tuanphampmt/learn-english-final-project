@@ -39,7 +39,7 @@ class LoginMaster extends Component {
                         <img src="Images/LoginPage/Back_Button.png" alt=""/>
                     </Link>
                 </div>
-                <div className="signup-button">
+                <div className="signin-button">
                     <Link to="/register">
                         <img src="Images/LoginPage/SignUp_Button.png" alt="" className="heart"/>
                     </Link>
