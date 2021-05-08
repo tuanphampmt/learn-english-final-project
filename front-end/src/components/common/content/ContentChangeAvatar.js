@@ -11,7 +11,7 @@ class ContentChangeAvatar extends Component {
   renderAvatar1 = () => (
     <div>
       <img
-        src="Images\HomePage\Dinosaur_normal.png"
+        src="Images\HomePage\Cat_avatar.png"
         style={{
           marginTop: "10px",
           width: "30%",
@@ -41,7 +41,7 @@ class ContentChangeAvatar extends Component {
   renderAvatar2 = () => (
     <div>
       <img
-        src="Images\Avatar\Cat\Cat_normal.png"
+        src="Images\HomePage\Dinosaur_avatar.png"
         style={{
           marginTop: "10px",
           width: "30%",
@@ -71,7 +71,7 @@ class ContentChangeAvatar extends Component {
   renderAvatar3 = () => (
     <div>
       <img
-        src="Images\Avatar\Cat\Cat_no.png"
+        src="Images\HomePage\Dolphin_avatar.png"
         style={{
           marginTop: "10px",
           width: "30%",
@@ -99,7 +99,6 @@ class ContentChangeAvatar extends Component {
   );
 
   check = () => {
-    console.log(this.state.trangthai);
     if (this.state.trangthai === 1) {
       return this.renderAvatar1();
     } else if (this.state.trangthai === 2) {
@@ -122,16 +121,16 @@ class ContentChangeAvatar extends Component {
     return (
       <div className="change box-shadow">
         {this.check()}
-        <div className="chooseAvatar">
+        <div className="chooseAvatar box-shadow">
           <div>
             <a href="#" onClick={() => this.displayTheme(1)}>
-              <ImageAvatar image="Images\HomePage\Dinosaur_normal.png"></ImageAvatar>
+              <ImageAvatar image="Images\HomePage\Cat_avatar.png"></ImageAvatar>
             </a>
           </div>
           <div>
             <a href="#" onClick={() => this.displayTheme(2)}>
               <ImageAvatar
-                image="Images\Avatar\Cat\Cat_normal.png"
+                image="Images\HomePage\Dinosaur_avatar.png"
                 level="Mở khóa Lv5"
               ></ImageAvatar>
             </a>
@@ -139,7 +138,7 @@ class ContentChangeAvatar extends Component {
           <div>
             <a href="#" onClick={() => this.displayTheme(3)}>
               <ImageAvatar
-                image="Images\Avatar\Cat\Cat_no.png"
+                image="Images\HomePage\Dolphin_avatar.png"
                 level="Mở khóa Lv10"
               ></ImageAvatar>
             </a>

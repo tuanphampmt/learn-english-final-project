@@ -43,3 +43,12 @@
 .unit-aphabet .game-aphabet .game-aphabet-row img {
     width: 11%;
 }
+
+.detailAlphabet{
+    border-radius: 12px;
+    background-color: white;
+    width: 50%;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 25%;
+}
