@@ -13,9 +13,10 @@
     background-position: center center;
     display: flex;
     flex-direction: column;
+    margin-top: -60px;
 }
 .form-register{
-    background-size: 45% 75% !important;
+    background-size: 52% 75% !important;
 }
 .input {
     width: 250px;
@@ -25,7 +26,8 @@
     border: none;
     padding-left: 5px;
     border-radius: 12px;
-    margin-left: -15px;
+    margin-left: -25px;
+    padding-right: 5px;
 }
 
 .box-shadow {
@@ -37,21 +39,25 @@
 }
 .button-login {
     text-align: center;
+    border: none;
+    border-radius: 12px;
+    margin-left: 35%;
+    color : #273f63;
+    height: 50px;
+    width: 200px;
 }
-.button-login img {
-    width: 50%;
-    cursor: pointer;
-}
+
+
 .form-login .form-group {
 
     width: 550px;
-    margin-top: 25px;
+    margin-top: 50px;
 }
 
 .form-register .form-group {
     margin-right: 45px !important;
     width: 550px;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 input:focus {
@@ -71,14 +77,14 @@ input:focus {
     display: flex;
     width: 8%;
     float: right;
-    margin-right: 300px;
+    margin-right: 200px;
     margin-top: 100px;
     cursor: pointer;
 
 }
 
-
-.img-login-button{
-  width: 37%;
+.tbao{
+    width: 240px;
+    font-size: 16px;
 }
 

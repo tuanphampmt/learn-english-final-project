@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "https://backend-kide.herokuapp.com/api/";
 
 class Auth {
     login(username, password) {
@@ -22,10 +22,9 @@ class Auth {
         localStorage.removeItem("user");
     }
 
-    register(username, email, password) {
+    register(username, password) {
         return axios.post(API_URL + "signup", {
             username,
-            email,
             password
         });
     }
