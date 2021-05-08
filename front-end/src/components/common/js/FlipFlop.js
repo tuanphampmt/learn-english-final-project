@@ -44,21 +44,45 @@ export const FlipFlopDidMount = () => {
   var flipCounter,
     gameOn = false;
 
-  var overlays = Array.from(document.getElementsByClassName("overlay-text"));
-  overlays.forEach((overlay) => {
-    overlay.addEventListener("click", () => {
-      overlay.classList.remove("visible");
-      resetGame();
-      init();
-    });
-  });
+  //   count down
+  countdown();
 
-  function startCountdown() {
-    return setInterval(() => {
-      this.timeRemaining--;
-      this.timer.innerText = this.timeRemaining;
-      if (this.timeRemaining === 0) this.gameOver();
-    }, 1000);
+  //play-again
+  playAgain();
+
+  function playAgain() {
+    const playAgain = document.getElementById("play-again");
+    if (playAgain) {
+      playAgain.addEventListener("click", function () {
+        document.getElementsByClassName("demo")[0].style.display = "block";
+        document.getElementById("countdown").classList.add("overlay-text");
+        document.getElementById("countdown").classList.add("visible");
+        var wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+        Promise.resolve(3600)
+          .then(() => wait(3600))
+          .then(() => {
+            document
+              .getElementById("countdown")
+              .classList.remove("overlay-text");
+            document.getElementById("countdown").classList.remove("visible");
+            document.getElementsByClassName("demo")[0].style.display = "none";
+            resetGame();
+            init();
+          });
+      });
+    }
+  }
+  function countdown() {
+    var wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    Promise.resolve(3600)
+      .then(() => wait(3600))
+      .then(() => {
+        document.getElementById("countdown").classList.remove("overlay-text");
+        document.getElementById("countdown").classList.remove("visible");
+        document.getElementsByClassName("demo")[0].style.display = "none";
+        resetGame();
+        init();
+      });
   }
 
   function resetGame() {
@@ -70,7 +94,7 @@ export const FlipFlopDidMount = () => {
 
   function init() {
     gameOn = true;
-    memoryBlockArr = new Array(21);
+    memoryBlockArr = new Array(18);
     blockFrontImagesAll = [];
     shuffledBlocks = [];
     currentlyFlippedArr = [];
@@ -241,14 +265,11 @@ export const FlipFlopDidMount = () => {
     document
       .getElementById(blockToMatch2)
       .removeEventListener("click", flipBlock);
+      console.log(matchedCount);
+      console.log(memoryBlockArr.length);
+
     if (matchedCount === memoryBlockArr.length) {
-      // if (matchedCount === 2) {
-      var wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-      Promise.resolve(1000)
-        .then(() => wait(1000))
-        .then(() => {
-          showWin();
-        });
+        showWin();
     }
   }
 
@@ -262,13 +283,23 @@ export const FlipFlopDidMount = () => {
   function showWin() {
     hideElements();
     gameOn = false;
-    document.getElementById("winText").classList.add("visible");
+    console.log("win");
+    document.getElementsByClassName("is--open")[0].style.display = "block";
+    document.getElementsByClassName("panel")[0].style.display = "block";
+    document.getElementById("notify").innerHTML = "Chúc mừng";
+    document.getElementById("notify").style.color = "#28a745";
+    document.getElementById("description").innerHTML = "Bạn được nhận thêm điểm kinh nghiệm";
+    document.getElementById("point-game").innerHTML = `${flipCounter}`;
     clearInterval(countdown);
   }
 
   function gameOver() {
     gameOn = false;
-    document.getElementById("gameOverText").classList.add("visible");
+    document.getElementsByClassName("panel")[0].style.display = "block";
+    document.getElementById("notify").innerHTML = "Hết giờ";
+    document.getElementById("notify").style.color = "#dc3545";
+    document.getElementById("description").style.display = "none";
+    document.getElementById("point-game").innerHTML = `${flipCounter}`;
     clearInterval(countdown);
   }
 

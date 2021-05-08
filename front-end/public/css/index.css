@@ -5,6 +5,11 @@
     src: url(../fonts/coiny/coiny-regular.ttf);
 }
 
+@font-face {
+    font-family: myMonoFont;
+    src: url(../fonts/Mono/Mono\ Normal.ttf);
+}
+
 label, p, h1, h2, h3, div {
     font-family: myFirstFont, serif;
 }
@@ -249,23 +254,8 @@ form .input:focus:valid {
 GAME FLIPFLOP
  */
 
-.game-info {
-    color: darkblue;
-    font-size: 20px;
-    font-family: 'Archivo Narrow', sans-serif;
-    letter-spacing:2px;
-}
 
-.game-container {
-    margin: 50px auto;
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    grid-gap: 10px;
-    justify-content: center;
-    perspective: 500px;
-}
-
-.block {
+ .block {
     position: relative;
     cursor: auto;
     height: 125px;
@@ -273,8 +263,7 @@ GAME FLIPFLOP
 }
 
 .block-front {
-    /*background-color: black;*/
-    border-color: royalblue;
+    border-color: white;
     transform: rotateY(180deg);
 }
 
@@ -294,9 +283,9 @@ GAME FLIPFLOP
     align-items: center;
     width: 100%;
     height: 100%;
-    /*border-radius: 12px;*/
-    /*border-width: 1px;*/
-    /*border-style: solid;*/
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
     overflow: hidden;
     transition: transform 500ms ease-in-out;
     backface-visibility: hidden;
@@ -312,8 +301,7 @@ GAME FLIPFLOP
 
 
 .block-back {
-    /*background-color: black;*/
-    border-color: royalblue;
+    border-color: white;
     transform: rotateY(0);
 }
 
@@ -371,32 +359,3 @@ GAME FLIPFLOP
 }
 
 
-
-.blocks-sl {
-    position: relative;
-    cursor: auto;
-    height: 50px;
-    width: 50px;
-    border: 1px solid black;
-    font-family: Algerian;
-
-}
-.game-container-sl {
-    margin: 50px auto;
-    display: grid;
-    grid-template-columns: repeat(10, auto);
-    grid-gap: 1px;
-    justify-content: center;
-    perspective: 800px;
-    overflow:visible;
-}
-.image {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 505px;
-    height: 490px;
-    transition: transform 500ms ease-in-out;
-    z-index: 1;
-}
