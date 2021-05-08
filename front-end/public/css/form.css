@@ -66,7 +66,7 @@ input:focus {
     position: relative;
 }
 
-.signup-button {
+.signin-button, .signup-button {
     height: 100%;
     display: flex;
     width: 8%;
@@ -76,6 +76,7 @@ input:focus {
     cursor: pointer;
 
 }
+
 
 .img-login-button{
   width: 37%;

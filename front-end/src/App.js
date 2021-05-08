@@ -5,7 +5,7 @@ import HomePage from "./components/home/HomePage";
 import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
 import LoginMaster from "./components/login/LoginMaster";
 import RegisterMaster from "./components/register/RegisterMaster";
-import UnitAphabet from "./components/UnitAphabet/UnitAphabet";
+import UnitAphabet from "./components/unit-aphabet/UnitAphabet";
 import LearnAlphabet from "./components/UnitAphabet/LearnAlphabet";
 import LearnNumber from "./components/UnitNumber/LearnNumber";
 

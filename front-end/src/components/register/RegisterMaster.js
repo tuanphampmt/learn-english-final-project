@@ -58,17 +58,17 @@ class RegisterMaster extends Component {
                         </div>
                     </div>
                     <div className="button-login zoom center img-login-button">
-                        <img src="Images/Login_Button_Click.png"></img>
+                        <img src="Images/LoginPage/Login_Button_Click.png"></img>
                     </div>
                 </form>
                 <div className="back-button zoom">
                     <Link to="/home">
-                        <img src="Images/Back_Button.png" alt=""/>
+                        <img src="Images/LoginPage/Back_Button.png" alt=""/>
                     </Link>
                 </div>
                 <div className="signup-button">
                     <Link to="/login">
-                        <img src="Images/Login_Button.png" alt="" className="heart"/>
+                        <img src="Images/StartPage/Login_Button.png" alt="" className="heart"/>
                     </Link>
                 </div>
             </>
