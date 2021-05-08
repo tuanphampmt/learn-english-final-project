@@ -29,7 +29,7 @@
 }
 
 .box-shadow {
-    box-shadow: 5px 5px 5px grey
+    box-shadow: 5px 5px 10px rgb(78, 78, 78)
 }
 
 .background-color-white {
@@ -81,3 +81,4 @@ input:focus {
 .img-login-button{
   width: 37%;
 }
+

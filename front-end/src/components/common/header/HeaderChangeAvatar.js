@@ -6,7 +6,7 @@ class HeaderChange extends Component {
         return (
             <div id="header" className="header box-shadow" style={{backgroundColor: '#36becc'}}>
                 <Link to="/changeAvatar" style={{width: '15%'}}>
-                    <img src="Images\HomePage\Dinosaur_normal.png" style={{ width: '100%', borderRadius: '15px'}} ></img>
+                    <img className="box-shadow" src="Images\HomePage\Cat_avatar.png" style={{ width: '100%', borderRadius: '15px', backgroundColor: 'white'}} ></img>
                 </Link>
                 <label className="text-left">name</label>
                 <ul className="text-center w-100" style={{listStyle: 'none', fontWeight: 'bold', fontStyle: 'italic'}}>
@@ -16,7 +16,7 @@ class HeaderChange extends Component {
                     </div>
                     <li>50/100 exp</li>
                 </ul>
-                <Link to="/login" className="text-right" style={{width: '13%'}}>
+                <Link to="/login" className="text-right box-shadow" style={{width: '13%', borderRadius: '12px'}}>
                     <img src="Images/HomePage/Logout_Icon.png" className="logout" style={{ width: '100%', backgroundColor:'white', borderRadius: '8px'}}></img>
                 </Link>
         </div>

@@ -8,9 +8,20 @@ class Content extends Component {
     }
 
     rendernd1 = () => (
-        <div className="hienthi1" id="nd1">
+        <div>
             <img src="Images/HomePage/Aphabet_Image.png" width="90%"></img><br />
             <label className="point">Điểm cao nhất: 1000</label>
+            <div style={{display: 'flex', marginTop:'5%'}}>
+                <Link to="/learn-aphabet/0"><img src="Images/HomePage/Learn_Button.png" width="90%"></img></Link>
+                <Link to="/chude1"><img src="Images/HomePage/Play_Button.png" width="90%"></img></Link>
+            </div>
+        </div>
+    )
+
+    rendernd2 = () => (
+        <div>
+            <img src="Images/HomePage/Number_Image.png" width="90%"></img><br />
+            <label className="point">Điểm cao nhất: 500</label>
             <div style={{display: 'flex', marginTop:'5%'}}>
                 <Link to="/chude1"><img src="Images/HomePage/Learn_Button.png" width="90%"></img></Link>
                 <Link to="/chude1"><img src="Images/HomePage/Play_Button.png" width="90%"></img></Link>
@@ -22,11 +33,17 @@ class Content extends Component {
         if (this.state.trangthai === 1) {
             return this.rendernd1();
         }
+        else{
+            return this.rendernd2();
+        }
     }
 
     displayTheme = (id) => {
         if (id === 1) {
             this.setState({ trangthai: 1 });
+        }
+        else{
+            this.setState({ trangthai: 2 });
         }
     }
 
@@ -35,7 +52,12 @@ class Content extends Component {
             <section>
                 <div className="chude box-shadow">
                     <div className="chude1 hinh">
-                        <a href="#">
+                        <a href="#" onClick={() => this.displayTheme(1)}>
+                            <img src="Images/HomePage/Aphabet_Image2.png" width="90%"></img>
+                        </a>
+                    </div> 
+                    <div className="chude2 hinh">
+                        <a href="#" onClick={() => this.displayTheme(2)}>
                             <img src="Images/HomePage/Aphabet_Image2.png" width="90%"></img>
                         </a>
                     </div> 

@@ -1,7 +1,7 @@
 .chude{
     border-radius: 12px;
     text-align: center;
-    width: 35%;
+    width: 25%;
     height: 400px;
     background-color: #55c655;
     overflow-y: scroll;
@@ -9,7 +9,7 @@
     padding-top: 2%;
     float: left;
     margin-top: 3%;
-    margin-left: 9%;
+    margin-left: 15%;
     color: #273f63;
 }
 
@@ -24,7 +24,7 @@
     height: 330px;
     margin-top: 4%;
     text-align: center;
-    margin-left: 51%;
+    margin-left: 46%;
     background-color: #55c655;
     color: #273f63;
 }
@@ -40,10 +40,24 @@
 
 .change{
     border-radius: 12px;
-    width: 45%;
+    width: 40%;
     height: 450px;
     margin-top: 2%;
     background-color: #36becc;
     color: #273f63;
     font-size: 22px;
+    text-align: center;
 }
+
+.chooseAvatar{
+    display: flex !important;
+    height: 190px;
+    background-color: white;
+    border-radius: 12px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px 50px;
+    
+}
+
+

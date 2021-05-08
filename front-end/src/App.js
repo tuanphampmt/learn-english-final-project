@@ -6,6 +6,8 @@ import ChangeAvatar from "./components/changeAvatar/ChangeAvatar";
 import LoginMaster from "./components/login/LoginMaster";
 import RegisterMaster from "./components/register/RegisterMaster";
 import UnitAphabet from "./components/unit-aphabet/UnitAphabet";
+import LearnAlphabet from "./components/UnitAphabet/LearnAlphabet";
+import LearnNumber from "./components/UnitNumber/LearnNumber";
 
 function App() {
     return (
@@ -20,6 +22,8 @@ function App() {
                 <Route component={ChangeAvatar} path="/changeAvatar" exact/>
                 <Route component={RegisterMaster} path="/register" exact/>
                 <Route component={UnitAphabet} path="/unit-aphabet" exact/>
+                <Route component={LearnAlphabet} path="/learn-aphabet/:key" exact/>
+                <Route component={LearnNumber} path="/learn-number/:key" exact/>
             </Switch>
         </BrowserRouter>
     );

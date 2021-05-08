@@ -6,7 +6,7 @@ class Header extends Component {
         return (
             <div id="header" className="header box-shadow" style={{}}>
                 <Link to="/changeAvatar" style={{width: '15%'}}>
-                    <img src="Images\HomePage\Dinosaur_normal.png" style={{ width: '100%', borderRadius: '15px'}} ></img>
+                    <img src="Images\HomePage\Cat_avatar.png" style={{ width: '100%', borderRadius: '15px'}} ></img>
                 </Link>
                 <label className="text-left">name</label>
                 <ul className="text-center w-100" style={{listStyle: 'none', fontWeight: 'bold', fontStyle: 'italic'}}>
