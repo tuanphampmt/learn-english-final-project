@@ -13,7 +13,7 @@ class Content extends Component {
             <label className="point">Điểm cao nhất: 1000</label>
             <div style={{display: 'flex', marginTop:'5%'}}>
                 <Link to="/learn-aphabet/0"><img src="Images/HomePage/Learn_Button.png" width="90%"></img></Link>
-                <Link to="/chude1"><img src="Images/HomePage/Play_Button.png" width="90%"></img></Link>
+                <Link to="/unit-aphabet"><img src="Images/HomePage/Play_Button.png" width="90%"></img></Link>
             </div>
         </div>
     )
@@ -23,7 +23,7 @@ class Content extends Component {
             <img src="Images/HomePage/Number_Image.png" width="90%"></img><br />
             <label className="point">Điểm cao nhất: 500</label>
             <div style={{display: 'flex', marginTop:'5%'}}>
-                <Link to="/chude1"><img src="Images/HomePage/Learn_Button.png" width="90%"></img></Link>
+                <Link to="/learn-number/10"><img src="Images/HomePage/Learn_Button.png" width="90%"></img></Link>
                 <Link to="/chude1"><img src="Images/HomePage/Play_Button.png" width="90%"></img></Link>
             </div>
         </div>

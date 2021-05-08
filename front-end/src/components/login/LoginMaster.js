@@ -1,7 +1,70 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-
+import Auth from '../service/Auth'
 class LoginMaster extends Component {
+    constructor(props) {
+        super(props);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.onChangeUsername = this.onChangeUsername.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+
+        this.state = {
+            username: "",
+            password: "",
+            loading: false,
+            message: ""
+        };
+    }
+    onChangeUsername(e) {
+        this.setState({
+            username: e.target.value
+        });
+    }
+
+    onChangePassword(e) {
+        this.setState({
+            password: e.target.value
+        });
+    }
+
+    handleLogin(e) {
+        e.preventDefault();
+
+        this.setState({
+            message: "",
+            loading: true
+        });
+
+        this.form.validateAll();
+
+        if (this.checkBtn.context._errors.length === 0) {
+            Auth.login(this.state.username, this.state.password).then(
+                () => {
+                    this.props.history.push("/home-theme");
+                    window.location.reload();
+                },
+                error => {
+                    const resMessage =
+                        (error.response &&
+                            error.response.data &&
+                            error.response.data.message) ||
+                        error.message ||
+                        error.toString();
+                    if (resMessage === "Request failed with status code 401") {
+                        this.setState({
+                            loading: false,
+                            message: "Sai tên đăng nhập hoặc mật khẩu"
+                        });
+                    }
+
+                }
+            );
+        } else {
+            this.setState({
+                loading: false
+            });
+        }
+    }
     render() {
         return (
             <>
