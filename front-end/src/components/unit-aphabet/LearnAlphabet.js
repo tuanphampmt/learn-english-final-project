@@ -88,7 +88,7 @@ class LearnAlphabet extends Component {
                 <div className="container">
                     <div className="row" style={{marginTop: '20px', display: 'flex'}}>
                         <div className="col-sm-1">
-                            <Link to="/homePage">
+                            <Link to="/home-page">
                                 <img src="/Images/LoginPage/Back_Button.png" alt="" style={{width: '200%'}}/>
                             </Link>
                         </div>

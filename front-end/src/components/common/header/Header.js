@@ -31,10 +31,16 @@ class Header extends Component {
 
     render() {
         const {currentUser} = this.state;
-        const {showAdminBoard} = this.state;
         const avatar = localStorage.getItem("avatar");
         return (
             <>
+                {!currentUser && (
+                    <div className="back-button zoom" style={{marginLeft: '-1300px'}}>
+                    <Link to="/home">
+                      <img src="Images/LoginPage/Back_Button.png" alt="" />
+                    </Link>
+                  </div>
+                )}
                 {currentUser && (
                     <div id="header" className="header box-shadow" style={{}}>
                         <Link to="/change-avatar" style={{width: '15%', marginRight: "15px"}}>
@@ -65,16 +71,6 @@ class Header extends Component {
                             </div>
                             <li>50/100 exp</li>
                         </ul>
-                        {showAdminBoard && (
-                            <Link to={"/admin"}>
-                                <div
-                                    className="btn btn-info nut"
-                                    style={{width: 100, marginLeft: "30px", marginRight: "20px"}}
-                                >
-                                    Admin
-                                </div>
-                            </Link>
-                        )}
                         <Link
                             to="/login"
                             className="text-right"

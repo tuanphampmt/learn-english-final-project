@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import ImageAvatar from "./ImageAvatar";
 import {Link} from "react-router-dom";
 import axios from 'axios';
-import ModalChangeAvatar from "../modal/ModalChangeAvatar";
 import Auth from "../../service/Auth";
 
 class ContentChangeAvatar extends Component {
@@ -176,7 +175,7 @@ class ContentChangeAvatar extends Component {
                     <Link to="#save" onClick={() => this.changeAvatar()}>
                         <img src="Images/HomePage/Save_Button.png" width="55%"/>
                     </Link>
-                    <Link to="#close">
+                    <Link to="/home-page">
                         <img src="Images/HomePage/Close_Button.png" width="55%"/>
                     </Link>
                 </div>
