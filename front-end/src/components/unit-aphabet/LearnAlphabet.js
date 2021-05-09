@@ -3,32 +3,32 @@ import {Link} from "react-router-dom";
 
 var title1 = "/Images/Avatar/Cat/Cat_normal_noborder_1.png"
 var title2 = "/Images/Avatar/Cat/Cat_read_noborder_1.png"
-var Aa = "/Images/Characters_Alphabet/Aa.png"
-var Bb = "/Images/Characters_Alphabet/Bb.png"
-var Cc = "/Images/Characters_Alphabet/Cc.png"
-var Dd = "/Images/Characters_Alphabet/Dd.png"
-var Ee = "/Images/Characters_Alphabet/Ee.png"
-var Ff = "/Images/Characters_Alphabet/Ff.png"
-var Gg = "/Images/Characters_Alphabet/Gg.png"
-var Hh = "/Images/Characters_Alphabet/Hh.png"
-var Ii = "/Images/Characters_Alphabet/Ii.png"
-var Jj = "/Images/Characters_Alphabet/Jj.png"
-var Kk = "/Images/Characters_Alphabet/Kk.png"
-var Ll = "/Images/Characters_Alphabet/Ll.png"
-var Mm = "/Images/Characters_Alphabet/Mm.png"
-var Nn = "/Images/Characters_Alphabet/Nn.png"
-var Oo = "/Images/Characters_Alphabet/Oo.png"
-var Pp = "/Images/Characters_Alphabet/Pp.png"
-var Qq = "/Images/Characters_Alphabet/Qq.png"
-var Rr = "/Images/Characters_Alphabet/Rr.png"
-var Ss = "/Images/Characters_Alphabet/Ss.png"
-var Tt = "/Images/Characters_Alphabet/Tt.png"
-var Uu = "/Images/Characters_Alphabet/Uu.png"
-var Vv = "/Images/Characters_Alphabet/Vv.png"
-var Ww = "/Images/Characters_Alphabet/Ww.png"
-var Xx = "/Images/Characters_Alphabet/Xx.png"
-var Yy = "/Images/Characters_Alphabet/Yy.png"
-var Zz = "/Images/Characters_Alphabet/Zz.png"
+var Aa = "/Images/Unit_Aphabet/Characters/Aa.png"
+var Bb = "/Images/Unit_Aphabet/Characters/Bb.png"
+var Cc = "/Images/Unit_Aphabet/Characters/Cc.png"
+var Dd = "/Images/Unit_Aphabet/Characters/Dd.png"
+var Ee = "/Images/Unit_Aphabet/Characters/Ee.png"
+var Ff = "/Images/Unit_Aphabet/Characters/Ff.png"
+var Gg = "/Images/Unit_Aphabet/Characters/Gg.png"
+var Hh = "/Images/Unit_Aphabet/Characters/Hh.png"
+var Ii = "/Images/Unit_Aphabet/Characters/Ii.png"
+var Jj = "/Images/Unit_Aphabet/Characters/Jj.png"
+var Kk = "/Images/Unit_Aphabet/Characters/Kk.png"
+var Ll = "/Images/Unit_Aphabet/Characters/Ll.png"
+var Mm = "/Images/Unit_Aphabet/Characters/Mm.png"
+var Nn = "/Images/Unit_Aphabet/Characters/Nn.png"
+var Oo = "/Images/Unit_Aphabet/Characters/Oo.png"
+var Pp = "/Images/Unit_Aphabet/Characters/Pp.png"
+var Qq = "/Images/Unit_Aphabet/Characters/Qq.png"
+var Rr = "/Images/Unit_Aphabet/Characters/Rr.png"
+var Ss = "/Images/Unit_Aphabet/Characters/Ss.png"
+var Tt = "/Images/Unit_Aphabet/Characters/Tt.png"
+var Uu = "/Images/Unit_Aphabet/Characters/Uu.png"
+var Vv = "/Images/Unit_Aphabet/Characters/Vv.png"
+var Ww = "/Images/Unit_Aphabet/Characters/Ww.png"
+var Xx = "/Images/Unit_Aphabet/Characters/Xx.png"
+var Yy = "/Images/Unit_Aphabet/Characters/Yy.png"
+var Zz = "/Images/Unit_Aphabet/Characters/Zz.png"
 
 class LearnAlphabet extends Component {
     constructor(props, context) {
@@ -78,7 +78,6 @@ class LearnAlphabet extends Component {
             this.setState({title: img.title})
             this.setState({image: img.image})
             this.setState({code: img.code})
-            this.toSpeak(img.code)
         }
     }
 
@@ -95,107 +94,185 @@ class LearnAlphabet extends Component {
                         </div>
                         <div className="col-sm-11">
                             <div className="menu" style={{textAlign: 'center'}}>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("A")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("A")
+                                    this.onChangeImg("A");
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/A.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("B")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("B")
+                                    this.onChangeImg("B");
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/B.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("C")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("C")
+                                    this.onChangeImg("C");
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/C.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("D")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("D")
+                                    this.onChangeImg("D");
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/D.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("E")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("E")
+                                    this.onChangeImg("E");
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/E.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("F")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("F")
+                                    this.onChangeImg("F")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/F.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("G")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("G")
+                                    this.onChangeImg("G")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/G.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("H")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("H")
+                                    this.onChangeImg("H")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/H.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("I")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("I")
+                                    this.onChangeImg("I")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/I.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link><br/>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("J")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("J")
+                                    this.onChangeImg("J")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/J.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("K")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("K")
+                                    this.onChangeImg("K")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/K.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("L")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("L")
+                                    this.onChangeImg("L")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/L.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("M")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("M")
+                                    this.onChangeImg("M")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/M.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("N")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("N")
+                                    this.onChangeImg("N")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/N.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("O")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("O")
+                                    this.onChangeImg("O")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/O.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("P")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("P")
+                                    this.onChangeImg("P")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/P.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("Q")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("Q")
+                                    this.onChangeImg("Q")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/Q.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("R")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("R")
+                                    this.onChangeImg("R")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/R.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link><br/>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("S")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("S")
+                                    this.onChangeImg("S")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/S.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("T")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("T")
+                                    this.onChangeImg("T")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/T.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("U")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("U")
+                                    this.onChangeImg("U")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/U.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("V")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("V")
+                                    this.onChangeImg("V")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/V.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("W")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("W")
+                                    this.onChangeImg("W")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/W.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("X")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("X")
+                                    this.onChangeImg("X")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/X.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("Y")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("Y")
+                                    this.onChangeImg("Y")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/Y.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>
-                                <Link to="#learn-aphabet" onClick={() => this.onChangeImg("Z")}>
+                                <Link to="#learn-aphabet" onClick={() => {
+                                    this.toSpeak("Z")
+                                    this.onChangeImg("Z")
+                                }}>
                                     <img src="/Images/Unit_Aphabet/Normal Cards/Z.png" alt="" width="100px"
                                          height="100px"/>
                                 </Link>

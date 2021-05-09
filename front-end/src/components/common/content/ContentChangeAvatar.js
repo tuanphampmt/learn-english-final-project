@@ -3,6 +3,7 @@ import ImageAvatar from "./ImageAvatar";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import ModalChangeAvatar from "../modal/ModalChangeAvatar";
+import Auth from "../../service/Auth";
 
 class ContentChangeAvatar extends Component {
     constructor(props, context) {
@@ -10,10 +11,10 @@ class ContentChangeAvatar extends Component {
         this.state = {
             trangthai: 1,
             avatar: "cat",
-            isChanged: false
+            isChanged: false,
+            currentUser: Auth.getCurrentUser(),
         };
     }
-
     renderAvatar1 = () => (
         <div className="change-avatar">
             {
@@ -27,7 +28,7 @@ class ContentChangeAvatar extends Component {
             <input
                 className="box-shadow"
                 type="text"
-                value="name"
+                value={this.state.currentUser.username}
             />
         </div>
     );
@@ -44,8 +45,7 @@ class ContentChangeAvatar extends Component {
             <input
                 className="box-shadow"
                 type="text"
-                value="name2"
-
+                value={this.state.currentUser.username}
             />
         </div>
     );
@@ -62,7 +62,7 @@ class ContentChangeAvatar extends Component {
             <input
                 className="box-shadow"
                 type="text"
-                value="name3"
+                value={this.state.currentUser.username}
 
             />
         </div>
@@ -89,17 +89,14 @@ class ContentChangeAvatar extends Component {
     };
 
     changeAvatar = () => {
-        // this.setState({
-        //     isChanged: false
-        // })
         const myThis = this;
+        const {currentUser} = this.state;
         (async function () {
             try {
-                const id = "6093f7f30c52925dc831bfc7";
-                const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaW5obmhhdCIsImlhdCI6MTYyMDQ5NTExMCwiZXhwIjoxNjIwNTgxNTEwfQ.nwhaDNjdadjak7J-uIw2Iwdx-WUybqpYvn-azSR3PTI"
+                const {id, accessToken} = currentUser;
                 const res = await axios.put(`https://backend-kide.herokuapp.com/api/user/avatar/${id}/${myThis.state.avatar}`, {}, {
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${accessToken}`
                     }
                 });
                 const {data} = res;

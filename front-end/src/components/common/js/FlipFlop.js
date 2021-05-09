@@ -283,8 +283,6 @@ export const FlipFlopDidMount = () => {
   function showWin() {
     hideElements();
     gameOn = false;
-    console.log("win");
-    document.getElementsByClassName("is--open")[0].style.display = "block";
     document.getElementsByClassName("panel")[0].style.display = "block";
     document.getElementById("notify").innerHTML = "Chúc mừng";
     document.getElementById("notify").style.color = "#28a745";
