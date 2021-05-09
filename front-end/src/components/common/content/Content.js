@@ -23,8 +23,8 @@ class Content extends Component {
             <img src="Images/HomePage/Number_Image.png" width="90%"></img>
             <label className="point">Điểm cao nhất: 500</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
-                <Link to="/chude1"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
-                <Link to="/chude1"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
+                <Link to="/learn-number/10"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
+                <Link to="/unit-number"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
             </div>
         </div>
     )
@@ -54,12 +54,12 @@ class Content extends Component {
                 <div className="chude box-shadow">
                     <div className="chude1 hinh">
                         <a href="#" onClick={() => this.displayTheme(1)}>
-                            <img src="Images/HomePage/Aphabet_Image2.png" width="90%"></img>
+                            <img src="Images/HomePage/Alphabet_Image2.png" width="90%"></img>
                         </a>
                     </div>
                     <div className="chude2 hinh">
                         <a href="#" onClick={() => this.displayTheme(2)}>
-                            <img src="Images/HomePage/Aphabet_Image2.png" width="90%"></img>
+                            <img src="Images/HomePage/Number_Image2.png" width="90%"></img>
                         </a>
                     </div>
                 </div>

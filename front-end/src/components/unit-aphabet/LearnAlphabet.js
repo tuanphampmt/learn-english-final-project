@@ -3,32 +3,32 @@ import {Link} from "react-router-dom";
 
 var title1 = "/Images/Avatar/Cat/Cat_normal_noborder_1.png"
 var title2 = "/Images/Avatar/Cat/Cat_read_noborder_1.png"
-var Aa = "/Images/Characters_Alphabet/Aa.png"
-var Bb = "/Images/Characters_Alphabet/Bb.png"
-var Cc = "/Images/Characters_Alphabet/Cc.png"
-var Dd = "/Images/Characters_Alphabet/Dd.png"
-var Ee = "/Images/Characters_Alphabet/Ee.png"
-var Ff = "/Images/Characters_Alphabet/Ff.png"
-var Gg = "/Images/Characters_Alphabet/Gg.png"
-var Hh = "/Images/Characters_Alphabet/Hh.png"
-var Ii = "/Images/Characters_Alphabet/Ii.png"
-var Jj = "/Images/Characters_Alphabet/Jj.png"
-var Kk = "/Images/Characters_Alphabet/Kk.png"
-var Ll = "/Images/Characters_Alphabet/Ll.png"
-var Mm = "/Images/Characters_Alphabet/Mm.png"
-var Nn = "/Images/Characters_Alphabet/Nn.png"
-var Oo = "/Images/Characters_Alphabet/Oo.png"
-var Pp = "/Images/Characters_Alphabet/Pp.png"
-var Qq = "/Images/Characters_Alphabet/Qq.png"
-var Rr = "/Images/Characters_Alphabet/Rr.png"
-var Ss = "/Images/Characters_Alphabet/Ss.png"
-var Tt = "/Images/Characters_Alphabet/Tt.png"
-var Uu = "/Images/Characters_Alphabet/Uu.png"
-var Vv = "/Images/Characters_Alphabet/Vv.png"
-var Ww = "/Images/Characters_Alphabet/Ww.png"
-var Xx = "/Images/Characters_Alphabet/Xx.png"
-var Yy = "/Images/Characters_Alphabet/Yy.png"
-var Zz = "/Images/Characters_Alphabet/Zz.png"
+var Aa = "/Images/Unit_Aphabet/Characters/Aa.png"
+var Bb = "/Images/Unit_Aphabet/Characters/Bb.png"
+var Cc = "/Images/Unit_Aphabet/Characters/Cc.png"
+var Dd = "/Images/Unit_Aphabet/Characters/Dd.png"
+var Ee = "/Images/Unit_Aphabet/Characters/Ee.png"
+var Ff = "/Images/Unit_Aphabet/Characters/Ff.png"
+var Gg = "/Images/Unit_Aphabet/Characters/Gg.png"
+var Hh = "/Images/Unit_Aphabet/Characters/Hh.png"
+var Ii = "/Images/Unit_Aphabet/Characters/Ii.png"
+var Jj = "/Images/Unit_Aphabet/Characters/Jj.png"
+var Kk = "/Images/Unit_Aphabet/Characters/Kk.png"
+var Ll = "/Images/Unit_Aphabet/Characters/Ll.png"
+var Mm = "/Images/Unit_Aphabet/Characters/Mm.png"
+var Nn = "/Images/Unit_Aphabet/Characters/Nn.png"
+var Oo = "/Images/Unit_Aphabet/Characters/Oo.png"
+var Pp = "/Images/Unit_Aphabet/Characters/Pp.png"
+var Qq = "/Images/Unit_Aphabet/Characters/Qq.png"
+var Rr = "/Images/Unit_Aphabet/Characters/Rr.png"
+var Ss = "/Images/Unit_Aphabet/Characters/Ss.png"
+var Tt = "/Images/Unit_Aphabet/Characters/Tt.png"
+var Uu = "/Images/Unit_Aphabet/Characters/Uu.png"
+var Vv = "/Images/Unit_Aphabet/Characters/Vv.png"
+var Ww = "/Images/Unit_Aphabet/Characters/Ww.png"
+var Xx = "/Images/Unit_Aphabet/Characters/Xx.png"
+var Yy = "/Images/Unit_Aphabet/Characters/Yy.png"
+var Zz = "/Images/Unit_Aphabet/Characters/Zz.png"
 
 class LearnAlphabet extends Component {
     constructor(props, context) {
@@ -89,7 +89,7 @@ class LearnAlphabet extends Component {
                 <div className="container">
                     <div className="row" style={{marginTop: '20px', display: 'flex'}}>
                         <div className="col-sm-1">
-                            <Link to="/homePage">
+                            <Link to="/home-page">
                                 <img src="/Images/LoginPage/Back_Button.png" alt="" style={{width: '200%'}}/>
                             </Link>
                         </div>

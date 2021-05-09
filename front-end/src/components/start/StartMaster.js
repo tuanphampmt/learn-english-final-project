@@ -21,7 +21,7 @@ class HomeMaster extends Component {
                     </Link>
                 </div>
                 <div className="letgo-button center zoom">
-                    <Link to="/homePage">
+                    <Link to="/home-page">
                         <img src="Images/StartPage/LetGo_Button.png" alt=""/>
                     </Link>
                 </div>

@@ -3,6 +3,7 @@ import ImageAvatar from "./ImageAvatar";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import ModalChangeAvatar from "../modal/ModalChangeAvatar";
+import Auth from "../../service/Auth";
 
 class ContentChangeAvatar extends Component {
     constructor(props, context) {
@@ -10,10 +11,11 @@ class ContentChangeAvatar extends Component {
         this.state = {
             trangthai: 1,
             avatar: "cat",
-            isChanged: false
+            isChanged: false,
+            currentUser: Auth.getCurrentUser().currentUser,
+
         };
     }
-
     renderAvatar1 = () => (
         <div className="change-avatar">
             {
@@ -27,7 +29,7 @@ class ContentChangeAvatar extends Component {
             <input
                 className="box-shadow"
                 type="text"
-                value="name"
+                value="name1"
             />
         </div>
     );
@@ -179,7 +181,7 @@ class ContentChangeAvatar extends Component {
                     <Link to="#save" onClick={() => this.changeAvatar()}>
                         <img src="Images/HomePage/Save_Button.png" width="55%"/>
                     </Link>
-                    <Link to="#close">
+                    <Link to="/home-page">
                         <img src="Images/HomePage/Close_Button.png" width="55%"/>
                     </Link>
                 </div>
