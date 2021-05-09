@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Auth from "../../service/Auth";
 
 class HeaderChange extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentUser: Auth.getCurrentUser(),
+        };
+    }
+
     render() {
         const avatar = localStorage.getItem("avatar");
+        const {currentUser} = this.state;
         return (
             <div id="header" className="header" style={{backgroundColor: '#36becc'}}>
                 <Link to="/change-avatar" style={{width: '15%', marginRight: "15px"}}>
@@ -11,7 +21,7 @@ class HeaderChange extends Component {
                         src={avatar === "cat" || !avatar ? "Images/HomePage/Cat_avatar.png" : avatar === "dinosaur" ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
                         style={{width: '100%', borderRadius: '15px', backgroundColor: 'white'}} id="avatar"/>
                 </Link>
-                <label className="text-left">name</label>
+                <label className="text-left">{currentUser.username}</label>
                 <ul className="text-center w-100" style={{listStyle: 'none', fontWeight: 'bold', fontStyle: 'italic'}}>
                     <li>Lv 1</li>
                     <div className="progress ml-5 " style={{width: '80%'}}>

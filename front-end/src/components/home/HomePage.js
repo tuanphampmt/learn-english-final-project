@@ -6,8 +6,8 @@ class HomePage extends Component {
     render() {
         return (
             <div className="center w-100" style={{flexDirection: 'column'}}>
-                <Header></Header>
-                <Content></Content>
+                <Header/>
+                <Content/>
             </div>
         );
     }
