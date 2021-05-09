@@ -27,18 +27,29 @@ class Header extends Component {
   }
   render() {
     const { currentUser } = this.state;
-    const { showAdminBoard } = this.state;
     return (
       <div className="center">
+        {!currentUser && (
+          <div style={{ marginLeft: "-1000px" }}>
+            <Link to="/home">
+              <img src="Images/LoginPage/Back_Button.png" alt="" />
+            </Link>
+          </div>
+        )}
         {currentUser && (
-          <div id="header" className="header box-shadow" style={{}}>
+          <div id="header" className="header box-shadow">
             <Link to="/changeAvatar" style={{ width: "15%" }}>
               <img
+                className="box-shadow"
                 src="Images\HomePage\Cat_avatar.png"
-                style={{ width: "100%", borderRadius: "15px" }}
+                style={{
+                  width: "100%",
+                  borderRadius: "15px",
+                  backgroundColor: "white",
+                }}
               ></img>
             </Link>
-            <label className="text-left">{currentUser.username}</label>
+            <label style={{marginLeft: '5px'}} className="text-left">{currentUser.username}</label>
             <ul
               className="text-center w-100"
               style={{
@@ -53,26 +64,16 @@ class Header extends Component {
                   className="progress-bar bg-info"
                   role="progressbar"
                   style={{ width: "50%" }}
-                  aria-valuenow="50"
+                  aria-valuenow="20"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 ></div>
               </div>
               <li>50/100 exp</li>
             </ul>
-            {showAdminBoard && (
-              <Link to={"/admin"}>
-                <div
-                  className="btn btn-info nut"
-                  style={{ width: 100, marginLeft: "30px", marginRight: "20px" }}
-                >
-                  Admin
-                </div>
-              </Link>
-            )}
             <Link
               to="/login"
-              className="text-right"
+              className="text-right box-shadow"
               style={{ width: "13%" }}
               onClick={this.logOut}
             >

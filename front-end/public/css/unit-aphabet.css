@@ -62,7 +62,7 @@
     position: absolute;
     left: 50%;
     top: 0;
-    width: 500px;
+    /* width: 500px; */
     height: 100%;
     margin-left: -250px;
     padding: 10px;
