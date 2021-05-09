@@ -8,23 +8,23 @@ class Content extends Component {
     }
 
     rendernd1 = () => (
-        <div>
-            <img src="Images/HomePage/Aphabet_Image.png" width="90%"></img><br />
+        <div className="aphabet-image">
+            <img src="Images/HomePage/Aphabet_Image.png" width="90%"/>
             <label className="point">Điểm cao nhất: 1000</label>
             <div style={{display: 'flex', marginTop:'5%'}}>
-                <Link to="/learn-aphabet/0"><img src="Images/HomePage/Learn_Button.png" width="90%"></img></Link>
-                <Link to="/chude1"><img src="Images/HomePage/Play_Button.png" width="90%"></img></Link>
+                <Link to="/learn-aphabet"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
+                <Link to="/unit-aphabet"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
             </div>
         </div>
     )
 
     rendernd2 = () => (
-        <div>
-            <img src="Images/HomePage/Number_Image.png" width="90%"></img><br />
+        <div className="aphabet-image">
+            <img src="Images/HomePage/Number_Image.png" width="90%"></img>
             <label className="point">Điểm cao nhất: 500</label>
             <div style={{display: 'flex', marginTop:'5%'}}>
-                <Link to="/chude1"><img src="Images/HomePage/Learn_Button.png" width="90%"></img></Link>
-                <Link to="/chude1"><img src="Images/HomePage/Play_Button.png" width="90%"></img></Link>
+                <Link to="/chude1"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
+                <Link to="/chude1"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
             </div>
         </div>
     )
@@ -49,7 +49,10 @@ class Content extends Component {
 
     render() {
         return (
-            <section>
+            <section className="home-page">
+                <div></div>
+                <div></div>
+                <div></div>
                 <div className="chude box-shadow">
                     <div className="chude1 hinh">
                         <a href="#" onClick={() => this.displayTheme(1)}>
@@ -65,6 +68,10 @@ class Content extends Component {
                 <div className="noidung box-shadow" style={{ textAlign: 'center' }}>
                     {this.check()}
                 </div>
+                <div></div>
+                <div></div>
+                <div></div>
+
             </section>
         );
     }

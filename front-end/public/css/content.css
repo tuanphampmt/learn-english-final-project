@@ -1,4 +1,4 @@
-.chude{
+.chude {
     border-radius: 12px;
     text-align: center;
     width: 25%;
@@ -9,7 +9,7 @@
     padding-top: 2%;
     float: left;
     margin-top: 3%;
-    margin-left: 15%;
+    /*margin-left: 15%;*/
     color: #273f63;
 }
 
@@ -18,18 +18,19 @@
     background-color: rgb(235, 235, 235);
     border-radius: 12px;
 }
-.noidung{
+
+.noidung {
     border-radius: 12px;
     width: 40%;
-    height: 330px;
-    margin-top: 4%;
+    height: 400px;
+    margin-top: 3%;
     text-align: center;
-    margin-left: 46%;
+    /*margin-left: 46%;*/
     background-color: #55c655;
     color: #273f63;
 }
 
-.point{
+.point {
     font-size: 22px;
     width: 300px;
     height: 40px;
@@ -38,10 +39,10 @@
     border-radius: 12px;
 }
 
-.change{
+.change {
     border-radius: 12px;
-    width: 40%;
-    height: 450px;
+    width: 50%;
+    height: 580px;
     margin-top: 2%;
     background-color: #36becc;
     color: #273f63;
@@ -49,15 +50,58 @@
     text-align: center;
 }
 
-.chooseAvatar{
+.chooseAvatar {
     display: flex !important;
-    height: 190px;
+    height: 245px;
     background-color: white;
     border-radius: 12px;
     text-align: center;
     display: inline-block;
-    margin: 10px 50px;
-    
+    margin: 30px 50px;
+    align-items: center;
+
 }
 
+.home-page {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
+.aphabet-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.aphabet-image img {
+    margin-top: -10px;
+    width: 87%;
+}
+
+.change-avatar img {
+    margin-top: 10px;
+    width: 25%;
+    border-radius: 12px;
+    box-shadow: 5px 5px 5px grey;
+    background-color: white;
+
+}
+
+.change-avatar input {
+    width: 40%;
+    font-style: italic;
+    font-weight: bold;
+    border-radius: 12px;
+    border: none;
+    margin-left: 40px;
+    padding: 10px 20px;
+    color: #273f63;
+}
+
+.change .alert-success, .change .alert-danger {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
