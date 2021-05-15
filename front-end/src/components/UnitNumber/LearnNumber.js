@@ -48,6 +48,7 @@ class LearnNumber extends Component {
         }
     }
     render() {
+        const avatar = localStorage.getItem("avatar");
         return (
             <div>
                 <div className="container">
@@ -95,7 +96,12 @@ class LearnNumber extends Component {
                     </div>
                     <div>
                         <div className="detailNumber" onClick={() => this.toSpeak(this.state.code)}>
-                            <img src={this.state.title} style={{width: '45%'}} ></img>
+                            <img src={avatar === "cat" ? this.state.title : avatar === "dinosaur"
+                                ? "/Images/HomePage/Dinosaur_avatar.png" : avatar === "dolphin"
+                                    ? "/Images/HomePage/Dolphin_avatar.png" : this.state.title
+                            }
+                                 style={{width: "45%"}}
+                            />
                             <img src={this.state.image} style={{width: '40%'}}></img>
                         </div>
                     </div>

@@ -20,6 +20,7 @@ class Auth {
 
     logout() {
         localStorage.removeItem("user");
+        localStorage.removeItem("avatar");
     }
 
     register(username, password) {
