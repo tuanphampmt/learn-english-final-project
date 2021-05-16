@@ -14,13 +14,13 @@ class ContentChangeAvatar extends Component {
             currentUser: Auth.getCurrentUser(),
         };
     }
+
     renderAvatar1 = () => (
         <div className="change-avatar">
             {
                 this.state.isChanged ? <img src="Images/HomePage/Cat_avatar.png"/> : <img
-                    src={localStorage.getItem("avatar") === "cat" || !localStorage.getItem("avatar")
-                        ? "Images/HomePage/Cat_avatar.png" : localStorage.getItem("avatar") === "dinosaur"
-                            ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
+                    src={this.state.currentUser.avatar === "AVATAR_CAT" ? "Images/HomePage/Cat_avatar.png" : this.state.currentUser.avatar === "AVATAR_DINOSAUR"
+                        ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
                 />
             }
 
@@ -36,9 +36,8 @@ class ContentChangeAvatar extends Component {
         <div className="change-avatar">
             {
                 this.state.isChanged ? <img src="Images/HomePage/Dinosaur_avatar.png"/> : <img
-                    src={localStorage.getItem("avatar") === "cat" || !localStorage.getItem("avatar")
-                        ? "Images/HomePage/Cat_avatar.png" : localStorage.getItem("avatar") === "dinosaur"
-                            ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
+                    src={this.state.currentUser.avatar === "AVATAR_CAT" ? "Images/HomePage/Cat_avatar.png" : this.state.currentUser.avatar === "AVATAR_DINOSAUR"
+                        ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
                 />
             }
             <input
@@ -53,9 +52,8 @@ class ContentChangeAvatar extends Component {
         <div className="change-avatar">
             {
                 this.state.isChanged ? <img src="Images/HomePage/Dolphin_avatar.png"/> : <img
-                    src={localStorage.getItem("avatar") === "cat" || !localStorage.getItem("avatar")
-                        ? "Images/HomePage/Cat_avatar.png" : localStorage.getItem("avatar") === "dinosaur"
-                            ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
+                    src={this.state.currentUser.avatar === "AVATAR_CAT" ? "Images/HomePage/Cat_avatar.png" : this.state.currentUser.avatar === "AVATAR_DINOSAUR"
+                        ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
                 />
             }
             <input
@@ -88,12 +86,11 @@ class ContentChangeAvatar extends Component {
     };
 
     changeAvatar = () => {
-        const myThis = this;
         const {currentUser} = this.state;
-        (async function () {
+        (async () => {
             try {
                 const {id, accessToken} = currentUser;
-                const res = await axios.put(`https://backend-kide.herokuapp.com/api/user/avatar/${id}/${myThis.state.avatar}`, {}, {
+                const res = await axios.put(`https://backend-kide.herokuapp.com/api/user/avatar/${id}/${this.state.avatar}`, {}, {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`
                     }
@@ -101,21 +98,36 @@ class ContentChangeAvatar extends Component {
                 const {data} = res;
                 if (data) {
                     if (data.status) {
-                        //save localStorage
-                        localStorage.setItem("avatar", myThis.state.avatar);
-
                         //display alert
                         document.getElementById("alert-change-avatar-success").style.display = "block";
                         document.getElementById("alert-change-avatar-success").innerHTML = `${data.message}`;
 
                         // change avatar
-                        if (myThis.state.avatar === "cat") {
-                            document.getElementById("avatar").src = "Images/HomePage/Cat_avatar.png";
-                        } else if (myThis.state.avatar === "dinosaur") {
-                            document.getElementById("avatar").src = "Images/HomePage/Dinosaur_avatar.png";
-                        } else {
-                            document.getElementById("avatar").src = "Images/HomePage/Dolphin_avatar.png";
+                        switch (this.state.avatar) {
+                            case "cat" :
+                                document.getElementById("avatar").src = "Images/HomePage/Cat_avatar.png";
+                                //change localStorage
+                                currentUser.avatar = "AVATAR_CAT"
+                                localStorage.setItem("user", JSON.stringify({
+                                    ...currentUser
+                                }));
+                                break;
+                            case "dinosaur":
+                                document.getElementById("avatar").src = "Images/HomePage/Dinosaur_avatar.png";
+                                currentUser.avatar = "AVATAR_DINOSAUR"
+                                localStorage.setItem("user", JSON.stringify({
+                                    ...currentUser
+                                }));
+                                break;
+                            default:
+                                document.getElementById("avatar").src = "Images/HomePage/Dolphin_avatar.png";
+                                currentUser.avatar = "AVATAR_DOLPHIN"
+                                localStorage.setItem("user", JSON.stringify({
+                                    ...currentUser
+                                }));
+                                break;
                         }
+
                     } else {
                         document.getElementById("alert-change-avatar-failed").style.display = "block";
                         document.getElementById("alert-change-avatar-failed").innerHTML = `${data.message}`;
@@ -131,6 +143,7 @@ class ContentChangeAvatar extends Component {
                 }
                 console.log(data);
             } catch (e) {
+                console.log(e);
             }
         })()
     }

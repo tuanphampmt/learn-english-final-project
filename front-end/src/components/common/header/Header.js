@@ -32,6 +32,7 @@ class Header extends Component {
     render() {
         const {currentUser} = this.state;
         const avatar = localStorage.getItem("avatar");
+        console.log(currentUser)
         return (
             <>
                 {!currentUser && (
@@ -44,7 +45,7 @@ class Header extends Component {
                 {currentUser && (
                     <div id="header" className="header box-shadow" style={{}}>
                         <Link to="/change-avatar" style={{width: '15%', marginRight: "15px"}}>
-                            <img src={avatar === "cat" || !avatar ? "Images/HomePage/Cat_avatar.png" : avatar === "dinosaur"
+                            <img src={currentUser.avatar === "AVATAR_CAT" ? "Images/HomePage/Cat_avatar.png" : currentUser.avatar === "AVATAR_DINOSAUR"
                                 ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
                                  style={{width: '100%', borderRadius: '15px', backgroundColor: 'white'}}
                                  id="avatar"/>
@@ -67,7 +68,7 @@ class Header extends Component {
                                     aria-valuenow="50"
                                     aria-valuemin="0"
                                     aria-valuemax="100"
-                                ></div>
+                                />
                             </div>
                             <li>50/100 exp</li>
                         </ul>

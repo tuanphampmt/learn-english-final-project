@@ -12,13 +12,13 @@ class HeaderChange extends Component {
     }
 
     render() {
-        const avatar = localStorage.getItem("avatar");
         const {currentUser} = this.state;
         return (
             <div id="header" className="header" style={{backgroundColor: '#36becc'}}>
                 <Link to="/change-avatar" style={{width: '15%', marginRight: "15px"}}>
                     <img
-                        src={avatar === "cat" || !avatar ? "Images/HomePage/Cat_avatar.png" : avatar === "dinosaur" ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
+                        src={currentUser.avatar === "AVATAR_CAT" ? "Images/HomePage/Cat_avatar.png" : currentUser.avatar === "AVATAR_DINOSAUR"
+                            ? "Images/HomePage/Dinosaur_avatar.png" : "Images/HomePage/Dolphin_avatar.png"}
                         style={{width: '100%', borderRadius: '15px', backgroundColor: 'white'}} id="avatar"/>
                 </Link>
                 <label className="text-left">{currentUser.username}</label>
@@ -26,7 +26,7 @@ class HeaderChange extends Component {
                     <li>Lv 1</li>
                     <div className="progress ml-5 " style={{width: '80%'}}>
                         <div className="progress-bar bg-info" role="progressbar" style={{width: '50%'}}
-                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
                     </div>
                     <li>50/100 exp</li>
                 </ul>
