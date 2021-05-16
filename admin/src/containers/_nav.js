@@ -18,15 +18,9 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Table',
-    to: '/theme/colors',
-    icon: 'cil-drop',
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Table',
-    to: '/theme/typography',
-    icon: 'cil-pencil',
+    name: 'Users',
+    to: '/users',
+    icon: 'cil-bell',
   }
 ]
 
