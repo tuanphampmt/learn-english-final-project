@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 var title1 = "/Images/Avatar/Cat/Cat_normal_noborder_1.png"
-var title2 = "/Images/Avatar/Cat/Cat_read_noborder_1.png"
+var title2 = "/Images/Avatar/Cat/Cat_read_noborder.png"
 var Aa = "/Images/Unit_Aphabet/Characters/Aa.png"
 var Bb = "/Images/Unit_Aphabet/Characters/Bb.png"
 var Cc = "/Images/Unit_Aphabet/Characters/Cc.png"

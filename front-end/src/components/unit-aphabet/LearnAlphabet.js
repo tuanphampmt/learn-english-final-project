@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import Auth from "../service/Auth";
 
 var title1 = "/Images/Avatar/Cat/Cat_normal_noborder_1.png"
-var title2 = "/Images/Avatar/Cat/Cat_read_noborder_1.png"
+var title2 = "/Images/Avatar/Cat/Cat_read_noborder.png"
 var Aa = "/Images/Unit_Aphabet/Characters/Aa.png"
 var Bb = "/Images/Unit_Aphabet/Characters/Bb.png"
 var Cc = "/Images/Unit_Aphabet/Characters/Cc.png"
@@ -61,7 +62,9 @@ class LearnAlphabet extends Component {
                 {key: "24", title: title2, image: Xx, code: "X"},
                 {key: "25", title: title2, image: Yy, code: "Y"},
                 {key: "26", title: title2, image: Zz, code: "Z"}],
-            title: title1, image: "", code: ""
+            title: title1, image: "", code: "",
+            currentUser: Auth.getCurrentUser(),
+            isChanged: false
         }
     }
 
@@ -78,11 +81,33 @@ class LearnAlphabet extends Component {
             this.setState({title: img.title})
             this.setState({image: img.image})
             this.setState({code: img.code})
+            this.setState({isChanged: true})
+        }
+    }
+
+    onChangeImgNoBorder = () => {
+        const {currentUser} = this.state;
+        if (!this.state.isChanged) {
+            if (currentUser.avatar === "AVATAR_CAT") {
+                return "Images/Avatar/Cat/Cat_normal_noborder_1.png";
+            }
+            if (currentUser.avatar === "AVATAR_DINOSAUR") {
+                return "Images/Avatar/Dinosaur/Dinosaur_normal_noborder.png";
+            }
+            return "Images/Avatar/Dolphin/Dolphin_normal_noborder.png"
+        } else {
+            if (currentUser.avatar === "AVATAR_CAT") {
+                return "Images/Avatar/Cat/Cat_read_noborder.png";
+            }
+            if (currentUser.avatar === "AVATAR_DINOSAUR") {
+                return "Images/Avatar/Dinosaur/Dinosaur_read_noborder.png"
+            }
+            return "Images/Avatar/Dolphin/Dolphin_read_noborder.png";
         }
     }
 
     render() {
-        const avatar = localStorage.getItem("avatar");
+        const {currentUser} = this.state;
         return (
             <div>
                 <div className="container">
@@ -282,10 +307,7 @@ class LearnAlphabet extends Component {
                     <div>
                         <div className="detailAlphabet" onClick={() => this.toSpeak(this.state.code)}>
                             <img
-                                src={avatar === "cat" ? this.state.title : avatar === "dinosaur"
-                                    ? "Images/HomePage/Dinosaur_avatar.png" : avatar === "dolphin"
-                                        ? "Images/HomePage/Dolphin_avatar.png" : this.state.title
-                                }
+                                src={this.onChangeImgNoBorder()}
                                 style={{width: '40%'}} id="avatar"
                             />
                             <img src={this.state.image} style={{width: '40%'}}/>

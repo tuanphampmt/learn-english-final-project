@@ -23,7 +23,7 @@ function App() {
                 <Route component={RegisterMaster} path="/register" exact/>
                 <Route component={UnitAphabet} path="/unit-aphabet" exact/>
                 <Route component={LearnAlphabet} path="/learn-aphabet" exact/>
-                <Route component={LearnNumber} path="/learn-number/:key" exact/>
+                <Route component={LearnNumber} path="/learn-number" exact/>
             </Switch>
         </BrowserRouter>
     );

@@ -10,8 +10,8 @@
     src: url(../fonts/Mono/Mono\ Normal.ttf);
 }
 
-label, p, h1, h2, h3, div {
-    font-family: myFirstFont, serif;
+label, p, h1, h2, h3, div, input {
+    font-family: myFirstFont, serif !important;
 }
 
 body {
@@ -234,8 +234,8 @@ form .input:focus {
     background-color: #fff;
     background-position: 110% center;
     background-repeat: no-repeat;
-    border-color: #059;
-    box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(70, 100, 200, 0.7);
+    border-color: #059 !important;
+    box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(70, 100, 200, 0.7) !important;
 }
 
 form .input:valid {
