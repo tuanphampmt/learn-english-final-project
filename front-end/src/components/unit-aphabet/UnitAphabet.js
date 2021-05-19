@@ -2,24 +2,22 @@ import React, { Component } from "react";
 import { FlipFlopDidMount } from "../common/js/FlipFlop";
 import { DialogDidMount } from "../common/js/Dialog";
 import {Link} from "react-router-dom"
+import Auth from "../service/Auth";
 class UnitAphabet extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: Auth.getCurrentUser(),
+    };
+  }
   componentDidMount() {
-    FlipFlopDidMount();
+    FlipFlopDidMount(this.state.currentUser);
     DialogDidMount();
   }
 
   render() {
     return (
       <div className="container unit-aphabet">
-        {/* <div id="gameOverText" className="overlay-text">
-          GAME OVER!
-          <span className="overlay-text-small">Click to Restart</span>
-        </div>
-        <div id="winText" className="overlay-text">
-          YOU WIN!
-          <span className="overlay-text-small">Click to Restart</span>
-        </div> */}
-        {/* <div className="overlay-text"> */}
           <div id="js-panel" className="panel">
             <div className="panel__content">
               <h4 id="notify"></h4>
