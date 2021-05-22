@@ -9,9 +9,6 @@ const required = (value) => {
   if (!value) {
     return (
       <span className="notify-validate">Bắt buộc</span>
-      // <div className="alert alert-danger notify-validate" role="alert">
-      //   Bắt buộc
-      // </div>
     );
   }
 };
@@ -70,7 +67,6 @@ class Login extends Component {
           if (resMessage === "Request failed with status code 401") {
             this.setState({
               loading: false,
-              // message: "Sai tên đăng nhập hoặc mật khẩu",
             });
             swal({
               title: "Sai tên đăng nhập hoặc mật khẩu",
@@ -95,7 +91,6 @@ class Login extends Component {
         </header>
         <div
           id="form"
-          
         >
           <div className="fish" id="fish" />
           <div className="fish" id="fish2" />

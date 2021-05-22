@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
+import swal from "sweetalert";
+import Input from "react-validation/build/input";
+import Form from "react-validation/build/form";
 import Auth from "../pages/service/Auth";
+import CheckButton from "react-validation/build/button";
 import {
   CBadge,
   CCard,
@@ -12,6 +16,7 @@ import {
   CRow,
   CPagination,
 } from "@coreui/react";
+import CIcon from "@coreui/icons-react";
 
 const Users = () => {
   const history = useHistory();
@@ -20,6 +25,59 @@ const Users = () => {
   const [page, setPage] = useState(currentPage);
   const [dataUsers, setdataUsers] = useState([]);
   const [currentUser] = useState(Auth.getCurrentUser());
+  const vusername = (value) => {
+    if (value.length < 3 || value.length > 20) {
+      swal({
+        title: "User name with 3 -> 20 character",
+        icon: "error",
+      });
+      return;
+    }
+  };
+
+  const vpassword = (value) => {};
+
+  const vspace = (value) => {};
+
+  const vspecial = (value) => {};
+
+  const validation = (value) => {
+    if (value.username.length < 3 || value.username.length > 20) {
+      swal({
+        title: "User name with 3 -> 20 character",
+        icon: "error",
+      });
+      return false;
+    }
+
+    if (value.password.length < 6 || value.password.length > 10) {
+      swal({
+        title: "Password with 6 -> 10 character",
+        icon: "error",
+      });
+      return false;
+    }
+
+    if (value.username.includes(" ")) {
+      swal({
+        title: "User name has not space",
+        icon: "error",
+      });
+      return false;
+    }
+
+    var specials = /[^A-Za-z 0-9]/g;
+
+    if (specials.test(value.username)) {
+      swal({
+        title: "User name has not special character",
+        icon: "error",
+      });
+      return false;
+    }
+
+    return true;
+  };
 
   const pageChange = (newPage) => {
     if (newPage === 0) newPage = 1;
@@ -31,7 +89,7 @@ const Users = () => {
   }, [currentPage, page]);
 
   useEffect(() => {
-    (async function () {
+    async function fetchMyAPI() {
       try {
         const res = await axios.get(
           `https://backend-kide.herokuapp.com/api/admin/users`,
@@ -43,11 +101,119 @@ const Users = () => {
         );
         const { data } = res;
         if (data) {
-          setdataUsers(data);
+          const arr = [];
+          for (let i = 0; i < data.length; i++) {
+            arr.push({ ...data[i], index: i + 1 });
+          }
+          setdataUsers([...dataUsers, ...arr]);
         }
       } catch (e) {}
-    })();
+    }
+    fetchMyAPI();
   }, []);
+  // Add user
+  const [inputValues, setInputValues] = useState({
+    username: "",
+    password: "",
+  });
+  const [checked, setChecked] = useState(false);
+
+  const convertRole = (role) => {
+    if (role === true) return ["admin", "user"];
+    else return ["user"];
+  };
+
+  const convertRolePushDataUsers = (role) => {
+    if (role === true) return ["ROLE_ADMIN", "ROLE_USER"];
+    return ["ROLE_USER"];
+  };
+
+  const handleOnChange = (event) => {
+    const { name, value } = event.target;
+    setInputValues({ ...inputValues, [name]: value });
+  };
+
+  const loadModal = () => {};
+
+  const submit = async (e) => {
+    e.preventDefault();
+    console.log(
+      validation({
+        username: inputValues.username,
+        password: inputValues.password,
+      })
+    );
+
+    if (
+      validation({
+        username: inputValues.username,
+        password: inputValues.password,
+      })
+    ) {
+      return;
+    } else {
+      var dateObj = new Date();
+      var month = dateObj.getUTCMonth() + 1; //months from 1-12
+      var day = dateObj.getUTCDate();
+      var year = dateObj.getUTCFullYear();
+      var newdate = day + "/" + month + "/" + year;
+      try {
+        const res = await axios.post(
+          `https://backend-kide.herokuapp.com/api/signup`,
+          {
+            username: inputValues.username,
+            password: inputValues.password,
+            roles: convertRole(checked),
+          }
+        ); //"Error: Username is already taken!"
+        const { data } = res;
+
+        if (data) {
+          if (data.message === "User registered successfully!") {
+            setdataUsers([
+              ...dataUsers,
+              {
+                index: dataUsers.length + 1,
+                username: inputValues.username,
+                password: inputValues.password,
+                roles: convertRolePushDataUsers(checked),
+                createdAt: newdate,
+              },
+            ]);
+            swal({
+              title: "User registered successfully!",
+              icon: "success",
+            }).then((value) => {
+              setInputValues({
+                username: "",
+                password: "",
+              });
+              setChecked(false);
+              document.getElementsByClassName(
+                "modal-backdrop"
+              )[0].style.display = "none";
+              document.getElementById("exampleModal").style.display = "none";
+            });
+          }
+
+          console.log(inputValues.username);
+        }
+      } catch (e) {}
+    }
+  };
+  // end add user
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+  };
+
+  const checkPage = (result) => {
+    if (result % 5 === 0) {
+      return parseInt(result / 5);
+    } else return parseInt(result / 5 + 1);
+  };
   return (
     <CRow>
       <CCol xl={6}>
@@ -57,9 +223,9 @@ const Users = () => {
             <CDataTable
               items={dataUsers}
               fields={[
-                { key: "id", _classes: "font-weight-bold" },
+                { key: "index", _classes: "font-weight-bold" },
                 "username",
-                "roles",
+                { key: "roles", label: "Role admin" },
                 "createdAt",
               ]}
               striped
@@ -86,55 +252,107 @@ const Users = () => {
             <CPagination
               activePage={page}
               onActivePageChange={pageChange}
-              pages={dataUsers.length / 5}
+              pages={checkPage(dataUsers.length)}
               doubleArrows={false}
               align="center"
             />
           </CCardBody>
         </CCard>
       </CCol>
-      <CCol xl={4}>
-        <form>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Username</label>
-            <input
-              type="username"
-              className="form-control inputText"
-              placeholder="Enter user name"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="passwork">Password</label>
-            <input
-              type="password"
-              className="form-control inputText"
-              placeholder="Password"
-            />
-          </div>
-          <div class="form-check" style={{display: 'flex'}}>
-            <label class="form-check-label" for="exampleCheck1">
-              Role Admin
-            </label>
-            <input type="checkbox" class="form-check-input"></input>
-          </div>
-          <button
-            style={{ marginTop: "30px", marginLeft: "120px" }}
-            type="submit"
-            className="btn btn-primary"
-          >
-            Save
-          </button>
-        </form>
-      </CCol>
       <CCol xl={2}>
         <button
-          type="submit"
+          type="button"
           className="btn btn-primary"
-          style={{ marginLeft: "80px" }}
+          style={{ marginLeft: "40px" }}
+          onClick={() => {
+            handleShow();
+          }}
+          data-toggle="modal"
+          data-target="#exampleModal"
+          data-whatever="@mdo"
         >
           Add User
         </button>
       </CCol>
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex={-1}
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Add New User
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <Form className="form-add" onSubmit={submit}>
+                <div className="form-group" style={{ display: "flex" }}>
+                  <label htmlFor="exampleInputEmail1">Username</label>
+                  <Input
+                    type="username"
+                    className="form-control inputText"
+                    placeholder="Enter user name"
+                    onChange={handleOnChange}
+                    required
+                    name="username"
+                    value={inputValues.username}
+                  />
+                </div>
+                <div className="form-group" style={{ display: "flex" }}>
+                  <label htmlFor="passwork">Password</label>
+                  <input
+                    type="password"
+                    className="form-control inputText"
+                    placeholder="Password"
+                    onChange={handleOnChange}
+                    required
+                    name="password"
+                    value={inputValues.password}
+                  />
+                </div>
+                <div
+                  className="form-check"
+                  style={{ display: "flex", marginLeft: "-20px" }}
+                >
+                  <label htmlFor="roleAdmin"> Role Admin</label>
+                  <Input
+                    type="checkbox"
+                    onChange={() => setChecked(!checked)}
+                    name="roleAmin"
+                    checked={checked}
+                    value={checked}
+                  />
+                </div>
+                <div className="modal-footer">
+                  <button type="submit" className="btn btn-primary">
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </Form>
+            </div>
+          </div>
+        </div>
+      </div>
     </CRow>
   );
 };

@@ -82,7 +82,6 @@ h1{
   background-color: #98d4f3;
   overflow: hidden;
   position: relative;
-  
 }
 Form{
   margin: 0 auto;
@@ -90,17 +89,20 @@ Form{
   padding-top: 20px;
   color: white;
   position: relative;
-  padding-left: 20%;
+  padding-left: 50%;
 }
 
 #waterform{
-  margin-left: 20%;
+  margin-left: 38%;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 400px;
 }
 label, input{
   display: block; 
 }
 .input{
-  width: 500px; 
+  width: 350px; 
   border: none;
   border-radius: 20px;
   outline: none;
@@ -142,7 +144,6 @@ input[type="submit"]:hover{
 label{
   font-size: 1.5em;
   margin-top: 20px;
-  padding-left: 20px;
 }
 .formgroup, .formgroup-active, .formgroup-error{
   background-repeat: no-repeat;
@@ -170,11 +171,46 @@ label{
 form{
   background-color: white;
   color: black;
-  width: 400px;
-  padding-left: 50px;
+  width: 350px;
+  padding-left: 0px;
   height: 350px;
   margin-left: 30px;
 }
 .inputText{
   width: 250px;
+}
+
+input[type=checkbox]{
+  margin-top: 30px;
+}
+
+.form-add{
+  height: auto;
+  text-align: left;
+}
+.form-add input{
+  margin-left: 30px;
+  margin-top: 20px;
+}
+.form-update{
+  height: auto;
+}
+.form-update input{
+  margin-top: 20px;
+}
+
+.myinput.large {
+  height: 22px;
+  width: 22px;
+}
+
+.myinput.large[type="checkbox"]:before {
+  width: 20px;
+  height: 20px;
+}
+
+.myinput.large[type="checkbox"]:after {
+  top: -20px;
+  width: 16px;
+  height: 16px;
 }
