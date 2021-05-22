@@ -145,7 +145,7 @@ const Users = () => {
     );
 
     if (
-      validation({
+      !validation({
         username: inputValues.username,
         password: inputValues.password,
       })

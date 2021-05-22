@@ -41,7 +41,7 @@ class Login extends Component {
 
   handleLogin(e) {
     console.log("hihi");
-    
+
     e.preventDefault();
 
     this.setState({
@@ -103,7 +103,7 @@ class Login extends Component {
             <div className="formgroup" id="name-form">
               <div className="col-md-6 d-flex align-items-center">
                 <label htmlFor="username">
-                  Tên đăng nhập<span className="req">*</span>
+                  Username<span className="req">*</span>
                 </label>
               </div>
               <div className="col-md-6 container-box">
@@ -120,7 +120,7 @@ class Login extends Component {
             <div className="formgroup" id="email-form">
               <div className="col-md-6 d-flex align-items-center">
                 <label htmlFor="password">
-                  Mật khẩu<span className="req">*</span>
+                  Password<span className="req">*</span>
                 </label>
               </div>
               <div className="col-md-6 container-box">
@@ -135,7 +135,7 @@ class Login extends Component {
               </div>
             </div>
             <div className="form-group">
-              <input className="input" style={{marginLeft: '14px'}} type="submit" defaultValue="Log in" />
+              <input className="input" style={{marginLeft: '14px'}} type="submit" value="Login" />
             </div>
             <CheckButton
               style={{ display: "none" }}

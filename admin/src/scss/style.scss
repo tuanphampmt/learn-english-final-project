@@ -52,7 +52,7 @@ h1{
   width: 235px;
   height: 104px;
   margin-left: -235px;
-  position: absolute; 
+  position: absolute;
   animation: myfirst 24s;
   -webkit-animation: myfirst 24s;
   animation-iteration-count: infinite;
@@ -78,7 +78,7 @@ h1{
 }
 
 #form{
-  height: 100%; 
+  height: 100%;
   background-color: #98d4f3;
   overflow: hidden;
   position: relative;
@@ -99,10 +99,10 @@ Form{
   width: 400px;
 }
 label, input{
-  display: block; 
+  display: block;
 }
 .input{
-  width: 350px; 
+  width: 350px;
   border: none;
   border-radius: 20px;
   outline: none;
@@ -114,14 +114,14 @@ label, input{
   -webkit-transition: border 0.5s;
   -moz-transition: border 0.5s;
   -o-transition: border 0.5s;
-  border: solid 3px #98d4f3;  
+  border: solid 3px #98d4f3;
   -webkit-box-sizing:border-box;
   -moz-box-sizing:border-box;
   box-sizing:border-box;
-  
+
 }
 input:focus{
-  border: solid 3px #77bde0;  
+  border: solid 3px #77bde0;
 }
 
 input[type="submit"]{
@@ -139,7 +139,7 @@ input[type="submit"]{
 }
 input[type="submit"]:hover{
   background-color: #e58f0e;
-  
+
 }
 label{
   font-size: 1.5em;
@@ -158,7 +158,7 @@ label{
 }
 
 .formgroup{
-  background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif'); 
+  background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif');
 }
 .formgroup-active{
   background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo.png');
@@ -213,4 +213,12 @@ input[type=checkbox]{
   top: -20px;
   width: 16px;
   height: 16px;
+}
+
+form .req {
+  color: #ca5354;
+}
+
+label, p, h1, h2, h3, div, input {
+  font-family: "Coiny", serif !important;
 }

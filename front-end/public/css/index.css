@@ -5,10 +5,7 @@
     src: url(../fonts/coiny/coiny-regular.ttf);
 }
 
-@font-face {
-    font-family: myMonoFont;
-    src: url(../fonts/Mono/Mono\ Normal.ttf);
-}
+
 
 label, p, h1, h2, h3, div, input {
     font-family: myFirstFont, serif !important;
