@@ -2,24 +2,22 @@ import React, { Component } from "react";
 import { FlipFlopDidMount } from "../common/js/FlipFlop";
 import { DialogDidMount } from "../common/js/Dialog";
 import {Link} from "react-router-dom"
+import Auth from "../service/Auth";
 class UnitAphabet extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: Auth.getCurrentUser(),
+    };
+  }
   componentDidMount() {
-    FlipFlopDidMount();
+    FlipFlopDidMount(this.state.currentUser);
     DialogDidMount();
   }
 
   render() {
     return (
       <div className="container unit-aphabet">
-        {/* <div id="gameOverText" className="overlay-text">
-          GAME OVER!
-          <span className="overlay-text-small">Click to Restart</span>
-        </div>
-        <div id="winText" className="overlay-text">
-          YOU WIN!
-          <span className="overlay-text-small">Click to Restart</span>
-        </div> */}
-        {/* <div className="overlay-text"> */}
           <div id="js-panel" className="panel">
             <div className="panel__content">
               <h4 id="notify"></h4>
@@ -81,11 +79,16 @@ class UnitAphabet extends Component {
           </div>
         </div>
 
-        <div className="row center">
-          <div className="col-md-4 img-cat">
-            <img src="Images/Avatar/Cat/Cat_normal.png" alt="" id="img-cat" className="img-thumbnail"/>
+        <div className="row center" style={{display: "flex", justifyContent: "space-between"}}>
+          <div className="col-sm-1">
+            <Link to="/home-page">
+              <img src="/Images/LoginPage/Back_Button.png" alt="" style={{width: '200%', marginLeft: "-190px"}}/>
+            </Link>
           </div>
-          <div className="col-md-8">
+          <div className="col-md-3 img-cat">
+            <img src="Images/Avatar/Cat/Cat_talk.png" alt="" id="img-cat" className="img-thumbnail"/>
+          </div>
+          <div className="col-md-7">
             <div className="time-bar row" id="gameInfoBlock">
               <div className="time col-md-8">
                 <span id="Timer">Thời gian: 2:00</span>

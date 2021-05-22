@@ -3,8 +3,11 @@
 }
 
 .unit-aphabet .img-cat img {
-    width: 50%;
-    border: 5px solid #329e37;
+    width: 70%;
+    box-shadow: 0 -10px 20px -5px rgba(115,115,115,0.75),
+    0 10px 20px -5px rgba(115,115,115,0.75),
+    10px 0 20px -5px rgba(115,115,115,0.75);
+    margin-left: -156px;
     
 
 }
@@ -17,8 +20,10 @@
     display: flex;
     align-items: center;
     width: 730px;
-    margin-left: -160px;
-    border: 5px solid #329e37;
+    margin-left: -245px;
+    box-shadow: 0 -10px 20px -5px rgba(115,115,115,0.75),
+    0 10px 20px -5px rgba(115,115,115,0.75),
+    10px 0 20px -5px rgba(115,115,115,0.75);
 
 }
 .unit-aphabet .time-bar .time {
@@ -34,7 +39,9 @@
     height: 500px;
     width: 100%;
     border-radius: 20px;
-    border: 5px solid #329e37;
+    box-shadow: 0 -10px 20px -5px rgba(115,115,115,0.75),
+    0 10px 20px -5px rgba(115,115,115,0.75),
+    10px 0 20px -5px rgba(115,115,115,0.75);
 }
 
 .unit-aphabet .game-aphabet .game-aphabet-row {

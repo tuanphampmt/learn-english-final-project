@@ -130,22 +130,21 @@ class LoginMaster extends Component {
             </div>
           </div>
           <div className="form-group">
-            <button 
-              className="button-login zoom center img-login-button box-shadow"
-              disabled={this.state.loading}
-              type="submit"
-            >
-              {this.state.loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              Đăng nhập
-            </button>
+            <div
+                 className="button-login zoom center img-login-button center"
+                 disabled={this.state.loading}
+                 type="submit">
+              <input type="submit" id="submitbtn" name="" tabIndex="5" value="Đăng nhập"/>
+            </div>
+            {/*<button */}
+            {/*  */}
+            {/*>*/}
+            {/*  {this.state.loading && (*/}
+            {/*    <span className="spinner-border spinner-border-sm"></span>*/}
+            {/*  )}*/}
+            {/*  Đăng nhập*/}
+            {/*</button>*/}
           </div>
-          {/*{this.state.message && (*/}
-          {/*    <div className="alert alert-danger notify" role="alert">*/}
-          {/*      {this.state.message}*/}
-          {/*    </div>*/}
-          {/*)}*/}
           <CheckButton
             style={{ display: "none" }}
             ref={(c) => {
