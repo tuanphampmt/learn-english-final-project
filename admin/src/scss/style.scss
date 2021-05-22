@@ -219,6 +219,11 @@ form .req {
   color: #ca5354;
 }
 
+@font-face {
+  font-family: myFirstFont;
+  src: url(./coiny-regular.ttf);
+}
+
 label, p, h1, h2, h3, div, input {
-  font-family: "Coiny", serif !important;
+  font-family: myFirstFont, serif !important;
 }
