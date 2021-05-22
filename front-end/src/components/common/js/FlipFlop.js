@@ -285,6 +285,7 @@ export const FlipFlopDidMount = (currentUser) => {
     }
 
     function showWin() {
+        console.log("hehe")
         hideElements();
         gameOn = false;
         document.getElementsByClassName("panel")[0].style.display = "block";

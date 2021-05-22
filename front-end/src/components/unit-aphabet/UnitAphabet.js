@@ -79,11 +79,16 @@ class UnitAphabet extends Component {
           </div>
         </div>
 
-        <div className="row center">
-          <div className="col-md-4 img-cat">
-            <img src="Images/Avatar/Cat/Cat_normal.png" alt="" id="img-cat" className="img-thumbnail"/>
+        <div className="row center" style={{display: "flex", justifyContent: "space-between"}}>
+          <div className="col-sm-1">
+            <Link to="/home-page">
+              <img src="/Images/LoginPage/Back_Button.png" alt="" style={{width: '200%', marginLeft: "-190px"}}/>
+            </Link>
           </div>
-          <div className="col-md-8">
+          <div className="col-md-3 img-cat">
+            <img src="Images/Avatar/Cat/Cat_talk.png" alt="" id="img-cat" className="img-thumbnail"/>
+          </div>
+          <div className="col-md-7">
             <div className="time-bar row" id="gameInfoBlock">
               <div className="time col-md-8">
                 <span id="Timer">Thời gian: 2:00</span>
