@@ -52,16 +52,17 @@ class Header extends Component {
     }
 
     getWidthExp() {
-        const {exp} = this.state.currentUser;
-        const progressbar = document.getElementById("progressbar");
-        const e = exp % 100;
-        if (e !== 0) {
-            progressbar.style.width = `${exp % 100}%`;
-        } else {
-            progressbar.style.width = `${0}%`;
+        if(this.state.currentUser) {
+            const {exp} = this.state.currentUser;
+            const progressbar = document.getElementById("progressbar");
+            const e = exp % 100;
+            if (e !== 0) {
+                progressbar.style.width = `${exp % 100}%`;
+            } else {
+                progressbar.style.width = `${0}%`;
+            }
         }
     }
-
     render() {
         const {currentUser} = this.state;
         return (

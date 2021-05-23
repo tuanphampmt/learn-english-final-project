@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { CCard, CCardBody, CCardHeader, CCol, CRow } from "@coreui/react";
-import { useHistory} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {CCard, CCardBody, CCardHeader, CCol, CRow} from "@coreui/react";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 import Auth from "../pages/service/Auth";
-import { logo } from "src/assets/icons/logo";
+import {Doughnut} from 'react-chartjs-2';
 
-const User = ({ match }) => {
+
+const User = ({match}) => {
   const history = useHistory();
   const [currentUser] = useState(Auth.getCurrentUser());
   const [userDetails, setuserDetails] = useState({});
   const [show, setShow] = useState(false);
-  const [inputValues, setInputValues] = useState({
-    exp: "",
-    avatar: "",
-  });
+  const [inputValues, setInputValues] = useState({exp: "", avatar: ""});
   const [checked, setChecked] = useState(null);
+  const [dataChart, setDataChart] = useState({})
+
   const handleOnChange = (event) => {
-    const { name, value } = event.target;
-    setInputValues({ ...inputValues, [name]: value });
+    const {name, value} = event.target;
+    setInputValues({...inputValues, [name]: value});
   };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,8 +33,9 @@ const User = ({ match }) => {
             },
           }
         );
-        const { data } = res;
+        const {data} = res;
         if (data) {
+          console.log(data)
           setuserDetails(data);
           setInputValues({
             exp: data.exp,
@@ -42,12 +43,47 @@ const User = ({ match }) => {
           });
           setChecked(
             data.roles[0] === "ROLE_ADMIN" || data.roles[1] === "ROLE_ADMIN"
-              ? true
-              : false
           );
+
+          //chart
+          setDataChart({
+            labels: [
+              'Unit animal',
+              'Unit color',
+              'Unit alphabet',
+              'Unit number'
+            ],
+            datasets: [{
+              data: [
+                // parseInt(data.listScore[1].score),
+                // parseInt(data.listScore[2].score),
+                // parseInt(data.listScore[3].score),
+                // parseInt(data.listScore[4].score)
+                20,
+                20,
+                30,
+                40
+
+              ],
+              backgroundColor: [
+                '#FF6384',
+                '#36A2EB',
+                '#FFCE56',
+                '#23F464'
+              ],
+              hoverBackgroundColor: [
+                '#FF6384',
+                '#36A2EB',
+                '#FFCE56',
+                '#23F464'
+              ]
+            }]
+          })
         }
-      } catch (e) {}
+      } catch (e) {
+      }
     }
+
     fetchMyAPI();
   }, []);
 
@@ -74,11 +110,12 @@ const User = ({ match }) => {
           },
         }
       );
-      const { data } = res;
+      const {data} = res;
       if (data) {
         console.log(data);
       }
-    } catch (e) {}
+    } catch (e) {
+    }
   };
 
   const deleted = () => {
@@ -112,29 +149,50 @@ const User = ({ match }) => {
               },
             }
           );
-          const { data } = res;
+          const {data} = res;
           if (data) {
-            if(data.message === "Account has been deleted!"){
+            if (data.message === "Account has been deleted!") {
               swal({
                 title: "Account has been deleted",
                 icon: "success",
-              }).then (() => {
+              }).then(() => {
                 history.push(`/users`);
               })
             }
             console.log(data);
           }
-          
-        } catch (e) {}
+
+        } catch (e) {
+        }
       }
     });
   };
 
   return (
     <CRow>
-      <CCol lg={6}>
+      <CCol lg={7}>
         <CCard>
-          <CCardHeader>User id: {match.params.id}</CCardHeader>
+          <CCardHeader>User id: {match.params.id}
+            <button
+              type="button"
+              className="btn btn-primary"
+              style={{marginLeft: "235px"}}
+              onClick={handleShow}
+              data-toggle="modal"
+              data-target="#exampleModal"
+              data-whatever="@mdo"
+            >
+              Edit User
+            </button>
+            <button
+              type="button"
+              className="btn btn-danger"
+              style={{marginLeft: "23px"}}
+              onClick={deleted}
+            >
+              Delete User
+            </button>
+          </CCardHeader>
           <CCardBody>
             <table className="table table-striped table-hover">
               <td>
@@ -162,52 +220,34 @@ const User = ({ match }) => {
                 </tr>
                 <tr>
                   {Object.keys(userDetails).length > 0 &&
-                    userDetails?.createdAt}
+                  userDetails?.createdAt}
                 </tr>
                 <tr>
                   {Object.keys(userDetails).length > 0 && userDetails?.roles}
                 </tr>
                 <tr>
                   {Object.keys(userDetails).length > 0 &&
-                    userDetails?.listScore[0].score}
+                  userDetails?.listScore[0].score}
                 </tr>
                 <tr>
                   {Object.keys(userDetails).length > 0 &&
-                    userDetails?.listScore[1].score}
+                  userDetails?.listScore[1].score}
                 </tr>
                 <tr>
                   {Object.keys(userDetails).length > 0 &&
-                    userDetails?.listScore[2].score}
+                  userDetails?.listScore[2].score}
                 </tr>
                 <tr>
                   {Object.keys(userDetails).length > 0 &&
-                    userDetails?.listScore[3].score}
+                  userDetails?.listScore[3].score}
                 </tr>
               </td>
             </table>
           </CCardBody>
         </CCard>
       </CCol>
-      <CCol xl={2}>
-        <button
-          type="button"
-          className="btn btn-primary"
-          style={{ marginLeft: "40px" }}
-          onClick={handleShow}
-          data-toggle="modal"
-          data-target="#exampleModal"
-          data-whatever="@mdo"
-        >
-          Edit User
-        </button>
-        <button
-          type="button"
-          className="btn btn-danger"
-          style={{ marginLeft: "40px", marginTop: "10px" }}
-          onClick={deleted}
-        >
-          Delete User
-        </button>
+      <CCol xl={5}>
+        <Doughnut data={dataChart}/>
       </CCol>
       <div
         className="modal fade"
@@ -234,7 +274,7 @@ const User = ({ match }) => {
             </div>
             <div className="modal-body">
               <form className="form-update">
-                <div className="form-group" style={{ display: "flex" }}>
+                <div className="form-group" style={{display: "flex"}}>
                   <CCol xl={5}>
                     <label htmlFor="exampleInputEmail1">Username</label>
                   </CCol>
@@ -251,7 +291,7 @@ const User = ({ match }) => {
                     />
                   </CCol>
                 </div>
-                <div className="form-group" style={{ display: "flex" }}>
+                <div className="form-group" style={{display: "flex"}}>
                   <CCol xl={5}>
                     <label htmlFor="exp">EXP</label>
                   </CCol>
@@ -266,7 +306,7 @@ const User = ({ match }) => {
                     />
                   </CCol>
                 </div>
-                <div className="form-group" style={{ display: "flex" }}>
+                <div className="form-group" style={{display: "flex"}}>
                   <CCol xl={5}>
                     <label htmlFor="passwork">Avatar</label>
                   </CCol>
@@ -285,7 +325,7 @@ const User = ({ match }) => {
                 </div>
                 <div
                   className="form-check"
-                  style={{ display: "flex", marginLeft: "-20px" }}
+                  style={{display: "flex", marginLeft: "-20px"}}
                 >
                   <CCol xl={5}>
                     <label htmlFor="roleAdmin"> Role Admin</label>
@@ -297,7 +337,7 @@ const User = ({ match }) => {
                       name="roleAdmin"
                       onChange={() => setChecked(!checked)}
                       defaultChecked={checked}
-                    ></input>
+                    />
                   </CCol>
                 </div>
               </form>

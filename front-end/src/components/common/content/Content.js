@@ -23,7 +23,7 @@ class Content extends Component {
             <img src="Images/HomePage/Number_Image.png" width="90%"></img>
             <label className="point">Điểm cao nhất: 500</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
-                <Link to="/learn-number/10"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
+                <Link to="/learn-number"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-number"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
             </div>
         </div>
