@@ -137,56 +137,67 @@ const Users = () => {
     ) {
       return;
     } else {
-      var dateObj = new Date();
-      var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      var day = dateObj.getUTCDate();
-      var year = dateObj.getUTCFullYear();
-      var newdate = day + "/" + month + "/" + year;
-      try {
-        const res = await axios.post(
-          `https://backend-kide.herokuapp.com/api/signup`,
-          {
-            username: inputValues.username,
-            password: inputValues.password,
-            roles: convertRole(checked),
-          }
-        ); //"Error: Username is already taken!"
-        const { data } = res;
-
-        if (data) {
-          if (data.message === "User registered successfully!") {
-            setdataUsers([
-              ...dataUsers,
+      swal({
+        title: "Add new user?",
+        text: "You definitely want to add new this user?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then(async (willSave) => {
+        if (willSave) {
+          var dateObj = new Date();
+          var month = dateObj.getUTCMonth() + 1; //months from 1-12
+          var day = dateObj.getUTCDate();
+          var year = dateObj.getUTCFullYear();
+          var newdate = day + "/" + month + "/" + year;
+          try {
+            const res = await axios.post(
+              `https://backend-kide.herokuapp.com/api/signup`,
               {
-                index: dataUsers.length + 1,
                 username: inputValues.username,
                 password: inputValues.password,
-                roles: convertRolePushDataUsers(checked),
-                createdAt: newdate,
-              },
-            ]);
-            swal({
-              title: "User registered successfully!",
-              icon: "success",
-            }).then((value) => {
-              setInputValues({
-                username: "",
-                password: "",
-              });
-              setChecked(false);
-              document.getElementsByClassName(
-                "modal-backdrop"
-              )[0].style.display = "none";
-              document.getElementById("exampleModal").style.display = "none";
+                roles: convertRole(checked),
+              }
+            ); //"Error: Username is already taken!"
+            const { data } = res;
+
+            if (data) {
+              if (data.message === "User registered successfully!") {
+                setdataUsers([
+                  ...dataUsers,
+                  {
+                    index: dataUsers.length + 1,
+                    username: inputValues.username,
+                    password: inputValues.password,
+                    roles: convertRolePushDataUsers(checked),
+                    createdAt: newdate,
+                  },
+                ]);
+                swal({
+                  title: "User registered successfully!",
+                  icon: "success",
+                }).then((value) => {
+                  setInputValues({
+                    username: "",
+                    password: "",
+                  });
+                  setChecked(false);
+                  document.getElementsByClassName(
+                    "modal-backdrop"
+                  )[0].style.display = "none";
+                  document.getElementById("exampleModal").style.display =
+                    "none";
+                });
+              }
+            }
+          } catch (e) {
+            return swal({
+              title: "Username is duplicated!",
+              icon: "warning",
             });
           }
         }
-      } catch (e) {
-        return swal({
-          title: "Username is duplicated!",
-          icon: "warning",
-        });
-      }
+      });
     }
   };
   // end add user
