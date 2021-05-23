@@ -87,27 +87,29 @@ class LearnAlphabet extends Component {
 
     onChangeImgNoBorder = () => {
         const {currentUser} = this.state;
-        if (!this.state.isChanged) {
-            if (currentUser.avatar === "AVATAR_CAT") {
-                return "Images/Avatar/Cat/Cat_normal_noborder_1.png";
+        if (currentUser) {
+            if (!this.state.isChanged) {
+                if (currentUser.avatar === "AVATAR_CAT") {
+                    return "Images/Avatar/Cat/Cat_normal_noborder_1.png";
+                }
+                if (currentUser.avatar === "AVATAR_DINOSAUR") {
+                    return "Images/Avatar/Dinosaur/Dinosaur_normal_noborder.png";
+                }
+                return "Images/Avatar/Dolphin/Dolphin_normal_noborder.png"
+            } else {
+                if (currentUser.avatar === "AVATAR_CAT") {
+                    return "Images/Avatar/Cat/Cat_read_noborder.png";
+                }
+                if (currentUser.avatar === "AVATAR_DINOSAUR") {
+                    return "Images/Avatar/Dinosaur/Dinosaur_read_noborder.png"
+                }
+                return "Images/Avatar/Dolphin/Dolphin_read_noborder.png";
             }
-            if (currentUser.avatar === "AVATAR_DINOSAUR") {
-                return "Images/Avatar/Dinosaur/Dinosaur_normal_noborder.png";
-            }
-            return "Images/Avatar/Dolphin/Dolphin_normal_noborder.png"
-        } else {
-            if (currentUser.avatar === "AVATAR_CAT") {
-                return "Images/Avatar/Cat/Cat_read_noborder.png";
-            }
-            if (currentUser.avatar === "AVATAR_DINOSAUR") {
-                return "Images/Avatar/Dinosaur/Dinosaur_read_noborder.png"
-            }
-            return "Images/Avatar/Dolphin/Dolphin_read_noborder.png";
         }
+
     }
 
     render() {
-        const {currentUser} = this.state;
         return (
             <div>
                 <div className="container">

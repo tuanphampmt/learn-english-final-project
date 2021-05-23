@@ -27,7 +27,7 @@ class UnitAphabet extends Component {
             <div className="panel__flaps">
               <div className="flap outer flap--left" />
               <Link className="flap flap__btn" id="play-again">Chơi lại</Link>
-              <Link  to="/homePage" className="flap flap__btn" id="exit">Thoát</Link>
+              <Link  to="/home-page" className="flap flap__btn" id="exit">Thoát</Link>
               <div className="flap outer flap--right" />
             </div>
           </div>
