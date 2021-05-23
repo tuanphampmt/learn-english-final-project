@@ -17,6 +17,7 @@ const required = (value) => {
 };
 
 const vusername = (value) => {
+    var specials = /[^A-Za-z 0-9]/g;
     if (value.length < 3 || value.length > 20) {
         return (
             <span className="notify-validate-vusername">
@@ -24,6 +25,21 @@ const vusername = (value) => {
             </span>
         );
     }
+    if(value.includes(" ")){
+        return (
+            <span className="notify-validate-vusername">
+                Không chứa ký tự trống
+            </span>
+        );
+    }
+    if(specials.test(value)){
+        return (
+            <span className="notify-validate-vusername">
+                Không chứa ký tự đặc biệt
+            </span>
+        );
+    }
+
 };
 
 const vpassword = (value) => {

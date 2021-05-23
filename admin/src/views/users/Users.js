@@ -35,12 +35,6 @@ const Users = () => {
     }
   };
 
-  const vpassword = (value) => {};
-
-  const vspace = (value) => {};
-
-  const vspecial = (value) => {};
-
   const validation = (value) => {
     if (value.username.length < 3 || value.username.length > 20) {
       swal({
@@ -116,7 +110,7 @@ const Users = () => {
     username: "",
     password: "",
   });
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(null);
 
   const convertRole = (role) => {
     if (role === true) return ["admin", "user"];
@@ -133,17 +127,8 @@ const Users = () => {
     setInputValues({ ...inputValues, [name]: value });
   };
 
-  const loadModal = () => {};
-
   const submit = async (e) => {
     e.preventDefault();
-    console.log(
-      validation({
-        username: inputValues.username,
-        password: inputValues.password,
-      })
-    );
-
     if (
       !validation({
         username: inputValues.username,
@@ -195,10 +180,13 @@ const Users = () => {
               document.getElementById("exampleModal").style.display = "none";
             });
           }
-
-          console.log(inputValues.username);
         }
-      } catch (e) {}
+      } catch (e) {
+        return swal({
+          title: "Username is duplicated!",
+          icon: "warning",
+        });
+      }
     }
   };
   // end add user
@@ -213,6 +201,39 @@ const Users = () => {
     if (result % 5 === 0) {
       return parseInt(result / 5);
     } else return parseInt(result / 5 + 1);
+  };
+
+  const checkDisable = (inputValues) => {
+    if (inputValues.username != "" || inputValues.password != "" || checked) {
+      return false;
+    } else return true;
+  };
+
+  const closeMoadl = () => {
+    if (checkDisable(inputValues) === false) {
+      swal({
+        title: "Close modal?",
+        text: "You want clode modal?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then(async (willClose) => {
+        if (willClose) {
+          setInputValues({
+            username: "",
+            password: "",
+          });
+          setChecked(false);
+          document.getElementsByClassName("modal-backdrop")[0].style.display =
+            "none";
+          document.getElementById("exampleModal").style.display = "none";
+        }
+      });
+    } else {
+      document.getElementsByClassName("modal-backdrop")[0].style.display =
+        "none";
+      document.getElementById("exampleModal").style.display = "none";
+    }
   };
   return (
     <CRow>
@@ -291,8 +312,9 @@ const Users = () => {
               <button
                 type="button"
                 className="close"
-                data-dismiss="modal"
+                //data-dismiss="modal"
                 aria-label="Close"
+                onClick={closeMoadl}
               >
                 <span aria-hidden="true">×</span>
               </button>
@@ -337,13 +359,18 @@ const Users = () => {
                   />
                 </div>
                 <div className="modal-footer">
-                  <button type="submit" className="btn btn-primary">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={checkDisable(inputValues)}
+                  >
                     Save
                   </button>
                   <button
                     type="button"
                     className="btn btn-secondary"
-                    data-dismiss="modal"
+                    //data-dismiss="modal"
+                    onClick={closeMoadl}
                   >
                     Close
                   </button>

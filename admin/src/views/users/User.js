@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from "@coreui/react";
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 import Auth from "../pages/service/Auth";
@@ -9,7 +9,7 @@ import { logo } from "src/assets/icons/logo";
 const User = ({ match }) => {
   const history = useHistory();
   const [currentUser] = useState(Auth.getCurrentUser());
-  const [userDetails, setuserDetails] = useState({});
+  const [userDetails, setuserDetails] = useState(null);
   const [show, setShow] = useState(false);
   const [inputValues, setInputValues] = useState({
     exp: "",
@@ -57,28 +57,86 @@ const User = ({ match }) => {
     else return "dolphin";
   };
 
+  const convertCheck = (data) => {
+    return data[0] === "ROLE_ADMIN" || data[1] === "ROLE_ADMIN" ? true : false;
+  };
+
+  const validation = (value) => {
+    var number = /^[0-9]*$/;
+    if (!number.test(value.exp)) {
+      swal({
+        title: "EXP is a number",
+        icon: "error",
+      });
+      return false;
+    }
+    if(value.exp.length === 0){
+      swal({
+        title: "EXP is required",
+        icon: "error",
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const convertAvatar2 = (avatar) => {
+    if (avatar === "cat") return "AVATAR_CAT";
+    if (avatar === "dino") return "AVATAR_DINO";
+    else return "AVATAR_DOLPHIN";
+  };
+
+  const convertRole = (role) => {
+    if (role) return ["ROLE_USER", "ROLE_ADMIN"];
+    else return ["ROLE_USER"];
+  };
+
+
   const submit = async () => {
     console.log(inputValues.exp, inputValues.avatar, checked);
-
-    try {
-      const res = await axios.put(
-        `https://backend-kide.herokuapp.com/api/user/${match.params.id}`,
-        {
-          exp: inputValues.exp,
-          avatar: inputValues.avatar,
-          admin: checked,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${currentUser.accessToken}`,
+    if (
+      !validation({
+        exp: inputValues.exp,
+      })
+    ) {
+      return;
+    } else {
+      try {
+        const res = await axios.put(
+          `https://backend-kide.herokuapp.com/api/user/${match.params.id}`,
+          {
+            exp: inputValues.exp,
+            avatar: inputValues.avatar,
+            admin: checked,
           },
+          {
+            headers: {
+              Authorization: `Bearer ${currentUser.accessToken}`,
+            },
+          }
+        );
+        const { data } = res;
+        if (data) {
+          if (data.message === "User data has been changed!") {
+            return swal({
+              title: "User data has been changed!",
+              icon: "success",
+            }).then(async () => {
+              setuserDetails({
+                ...userDetails,
+                exp: inputValues.exp,
+                avatar: convertAvatar2(inputValues.avatar),
+                roles: convertRole(checked),
+              });
+              document.getElementsByClassName(
+                "modal-backdrop"
+              )[0].style.display = "none";
+              document.getElementById("exampleModal").style.display = "none";
+            });
+          }
         }
-      );
-      const { data } = res;
-      if (data) {
-        console.log(data);
-      }
-    } catch (e) {}
+      } catch (e) {}
+    }
   };
 
   const deleted = () => {
@@ -114,22 +172,61 @@ const User = ({ match }) => {
           );
           const { data } = res;
           if (data) {
-            if(data.message === "Account has been deleted!"){
+            if (data.message === "Account has been deleted!") {
               swal({
                 title: "Account has been deleted",
                 icon: "success",
-              }).then (() => {
+              }).then(() => {
                 history.push(`/users`);
-              })
+              });
             }
-            console.log(data);
           }
-          
-        } catch (e) {}
+        } catch (e) {
+          swal({
+            title: "User name has not special character",
+            icon: "error",
+          });
+        }
       }
     });
   };
 
+  const checkDisable = (inputValues) => {
+    if (userDetails) {
+      console.log(userDetails.exp != inputValues.exp);
+      console.log(userDetails.avatar != convertAvatar2(inputValues.avatar));
+      console.log(convertCheck(userDetails.roles) != checked);
+      if (
+        userDetails.exp != inputValues.exp ||
+        userDetails.avatar != convertAvatar2(inputValues.avatar) ||
+        convertCheck(userDetails.roles) != checked
+      ) {
+        return false;
+      } else return true;
+    }
+  };
+
+  const closeMoadl = () => {
+    if (checkDisable(inputValues) === false) {
+      swal({
+        title: "Close modal?",
+        text: "You want clode modal?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then(async (willClose) => {
+        if (willClose) {
+          document.getElementsByClassName("modal-backdrop")[0].style.display =
+            "none";
+          document.getElementById("exampleModal").style.display = "none";
+        }
+      });
+    } else {
+      document.getElementsByClassName("modal-backdrop")[0].style.display =
+        "none";
+      document.getElementById("exampleModal").style.display = "none";
+    }
+  };
   return (
     <CRow>
       <CCol lg={6}>
@@ -150,39 +247,16 @@ const User = ({ match }) => {
                 <tr>Unit alphabet</tr>
               </td>
               <td>
-                <tr>{Object.keys(userDetails).length > 0 && userDetails.id}</tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 && userDetails?.username}
-                </tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 && userDetails?.exp}
-                </tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 && userDetails?.avatar}
-                </tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 &&
-                    userDetails?.createdAt}
-                </tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 && userDetails?.roles}
-                </tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 &&
-                    userDetails?.listScore[0].score}
-                </tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 &&
-                    userDetails?.listScore[1].score}
-                </tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 &&
-                    userDetails?.listScore[2].score}
-                </tr>
-                <tr>
-                  {Object.keys(userDetails).length > 0 &&
-                    userDetails?.listScore[3].score}
-                </tr>
+                <tr>{userDetails && userDetails.id}</tr>
+                <tr>{userDetails && userDetails.username}</tr>
+                <tr>{userDetails && userDetails.exp}</tr>
+                <tr>{userDetails && userDetails.avatar}</tr>
+                <tr>{userDetails && userDetails.createdAt}</tr>
+                <tr>{userDetails && userDetails.roles}</tr>
+                <tr>{userDetails && userDetails.listScore[0].score}</tr>
+                <tr>{userDetails && userDetails.listScore[1].score}</tr>
+                <tr>{userDetails && userDetails.listScore[2].score}</tr>
+                <tr>{userDetails && userDetails.listScore[3].score}</tr>
               </td>
             </table>
           </CCardBody>
@@ -226,7 +300,7 @@ const User = ({ match }) => {
               <button
                 type="button"
                 className="close"
-                data-dismiss="modal"
+                onClick={closeMoadl}
                 aria-label="Close"
               >
                 <span aria-hidden="true">×</span>
@@ -244,10 +318,7 @@ const User = ({ match }) => {
                       type="username"
                       className="form-control inputText"
                       placeholder="Enter user name"
-                      value={
-                        Object.keys(userDetails).length > 0 &&
-                        userDetails.username
-                      }
+                      value={userDetails && userDetails.username}
                     />
                   </CCol>
                 </div>
@@ -296,7 +367,7 @@ const User = ({ match }) => {
                       type="checkbox"
                       name="roleAdmin"
                       onChange={() => setChecked(!checked)}
-                      defaultChecked={checked}
+                      checked={checked}
                     ></input>
                   </CCol>
                 </div>
@@ -307,13 +378,14 @@ const User = ({ match }) => {
                 type="submit"
                 onClick={submit}
                 className="btn btn-primary"
+                disabled={checkDisable(inputValues)}
               >
                 Save
               </button>
               <button
                 type="button"
                 className="btn btn-secondary"
-                data-dismiss="modal"
+                onClick={closeMoadl}
               >
                 Close
               </button>
