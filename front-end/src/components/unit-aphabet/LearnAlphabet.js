@@ -106,6 +106,14 @@ class LearnAlphabet extends Component {
                 return "Images/Avatar/Dolphin/Dolphin_read_noborder.png";
             }
         }
+        else{
+            if (!this.state.isChanged) {
+                    return "Images/Avatar/Cat/Cat_normal_noborder_1.png";
+            } else {
+               
+                    return "Images/Avatar/Cat/Cat_read_noborder.png";
+            }
+        }
 
     }
 
@@ -120,7 +128,7 @@ class LearnAlphabet extends Component {
                             </Link>
                         </div>
                         <div className="col-sm-11">
-                            <div className="menu" style={{textAlign: 'center'}}>
+                            <div className="menu" style={{textAlign: 'center', backgroundColor: 'white', marginLeft: '50px', borderRadius: '12px'}}>
                                 <Link to="#learn-aphabet" onClick={() => {
                                     this.toSpeak("A")
                                     this.onChangeImg("A");

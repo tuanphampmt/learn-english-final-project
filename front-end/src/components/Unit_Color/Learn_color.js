@@ -4,32 +4,33 @@ import Auth from "../service/Auth";
 
 var title1 = "/Images/Avatar/Cat/Cat_normal_noborder_1.png"
 var title2 = "/Images/Avatar/Cat/Cat_read_noborder.png"
-var N0 = "/Images/Unit_Number/Character/N0.png"
-var N1 = "/Images/Unit_Number/Character/N1.png"
-var N2 = "/Images/Unit_Number/Character/N2.png"
-var N3 = "/Images/Unit_Number/Character/N3.png"
-var N4 = "/Images/Unit_Number/Character/N4.png"
-var N5 = "/Images/Unit_Number/Character/N5.png"
-var N6 = "/Images/Unit_Number/Character/N6.png"
-var N7 = "/Images/Unit_Number/Character/N7.png"
-var N8 = "/Images/Unit_Number/Character/N8.png"
-var N9 = "/Images/Unit_Number/Character/N9.png"
+var N0 = "/Images/Unit Color/Character/C_Black.png"
+var N1 = "/Images/Unit Color/Character/C_Blue.png"
+var N2 = "/Images/Unit Color/Character/C_Brow.png"
+var N3 = "/Images/Unit Color/Character/C_Green.png"
+var N4 = "/Images/Unit Color/Character/C_Orange.png"
+var N5 = "/Images/Unit Color/Character/C_Pink.png"
+var N6 = "/Images/Unit Color/Character/C_Purple.png"
+var N7 = "/Images/Unit Color/Character/C_Red.png"
+var N8 = "/Images/Unit Color/Character/C_White.png"
+var N9 = "/Images/Unit Color/Character/C_Yellow.png"
 
-class LearnNumber extends Component {
+
+class Learn_color extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
             images: [
-                {key: "0", title: title2, image: N0, code: "0"},
-                {key: "1", title: title2, image: N1, code: "1"},
-                {key: "2", title: title2, image: N2, code: "2"},
-                {key: "3", title: title2, image: N3, code: "3"},
-                {key: "4", title: title2, image: N4, code: "4"},
-                {key: "5", title: title2, image: N5, code: "5"},
-                {key: "6", title: title2, image: N6, code: "6"},
-                {key: "7", title: title2, image: N7, code: "7"},
-                {key: "8", title: title2, image: N8, code: "8"},
-                {key: "9", title: title2, image: N9, code: "9"}],
+                {key: "black", title: title2, image: N0, code: "0"},
+                {key: "blue", title: title2, image: N1, code: "1"},
+                {key: "brow", title: title2, image: N2, code: "2"},
+                {key: "green", title: title2, image: N3, code: "3"},
+                {key: "orange", title: title2, image: N4, code: "4"},
+                {key: "pink", title: title2, image: N5, code: "5"},
+                {key: "purple", title: title2, image: N6, code: "6"},
+                {key: "red", title: title2, image: N7, code: "7"},
+                {key: "white", title: title2, image: N8, code: "8"},
+                {key: "yellow", title: title2, image: N9, code: "9"}],
             title: title1, image: "", code: "",
             isChanged: false,
             currentUser: Auth.getCurrentUser(),
@@ -49,7 +50,7 @@ class LearnNumber extends Component {
             this.setState({title: img.title})
             this.setState({image: img.image})
             this.setState({code: img.code})
-            this.toSpeak(img.code)
+            this.toSpeak(img.key)
             this.setState({isChanged: true})
         }
     }
@@ -85,9 +86,7 @@ class LearnNumber extends Component {
         }
 
     }
-
     render() {
-
         return (
             <div>
                 <div className="container">
@@ -99,36 +98,36 @@ class LearnNumber extends Component {
                         </div>
                         <div className="col-sm-11">
                             <div className="menu" style={{textAlign: 'center', backgroundColor: 'white', marginLeft: '50px', borderRadius: '12px'}}>
-                                <Link to="#0" onClick={() => this.onChangeImg("0")}>
-                                    <img src="/Images/Unit_Number/Learn/1.png" alt="" width="150px" height="150px"/>
+                                <Link to="#1" onClick={() => this.onChangeImg("0")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Black.png" alt="" width="110px" height="180px"/>
                                 </Link>
-                                <Link to="#1" onClick={() => this.onChangeImg("1")}>
-                                    <img src="/Images/Unit_Number/Learn/0.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                <Link to="#2" onClick={() => this.onChangeImg("1")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Blue.png" alt="" width="110px" height="180px" style={{marginLeft: '50px'}}/>
                                 </Link>
-                                <Link to="#2" onClick={() => this.onChangeImg("2")}>
-                                    <img src="/Images/Unit_Number/Learn/2.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                <Link to="#3" onClick={() => this.onChangeImg("2")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Brow.png" alt="" width="110px" height="180px" style={{marginLeft: '50px'}}/>
                                 </Link>
-                                <Link to="#3" onClick={() => this.onChangeImg("3")}>
-                                    <img src="/Images/Unit_Number/Learn/3.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                <Link to="#4" onClick={() => this.onChangeImg("3")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Green.png" alt="" width="110px" height="180px" style={{marginLeft: '50px'}}/>
                                 </Link>
-                                <Link to="#4" onClick={() => this.onChangeImg("4")}>
-                                    <img src="/Images/Unit_Number/Learn/4.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                <Link to="#5" onClick={() => this.onChangeImg("4")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Orange.png" alt="" width="110px" height="180px" style={{marginLeft: '50px'}}/>
                                 </Link>
                                 <br/>
-                                <Link to="#5" onClick={() => this.onChangeImg("5")}>
-                                    <img src="/Images/Unit_Number/Learn/5.png" alt="" width="150px" height="150px"/>
+                                <Link to="#6" onClick={() => this.onChangeImg("5")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Pink.png" alt="" width="110px" height="180px"/>
                                 </Link>
-                                <Link to="#6" onClick={() => this.onChangeImg("6")}>
-                                    <img src="/Images/Unit_Number/Learn/6.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                <Link to="#7" onClick={() => this.onChangeImg("6")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Purple.png" alt="" width="110px" height="180px" style={{marginLeft: '50px'}}/>
                                 </Link>
-                                <Link to="#7" onClick={() => this.onChangeImg("7")}>
-                                    <img src="/Images/Unit_Number/Learn/7.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                <Link to="#8" onClick={() => this.onChangeImg("7")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Red.png" alt="" width="110px" height="180px" style={{marginLeft: '50px'}}/>
                                 </Link>
-                                <Link to="#8" onClick={() => this.onChangeImg("8")}>
-                                    <img src="/Images/Unit_Number/Learn/8.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                <Link to="#9" onClick={() => this.onChangeImg("8")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_White.png" alt="" width="110px" height="180px" style={{marginLeft: '50px'}}/>
                                 </Link>
-                                <Link to="#9" onClick={() => this.onChangeImg("9")}>
-                                    <img src="/Images/Unit_Number/Learn/9.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                <Link to="#0" onClick={() => this.onChangeImg("9")}>
+                                    <img src="/Images/Unit Color/Learn_Card/Bot_Yellow.png" alt="" width="110px" height="180px" style={{marginLeft: '50px'}}/>
                                 </Link>
                             </div>
                         </div>
@@ -148,4 +147,4 @@ class LearnNumber extends Component {
     }
 }
 
-export default LearnNumber;
+export default Learn_color;

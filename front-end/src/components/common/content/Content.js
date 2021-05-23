@@ -29,19 +29,38 @@ class Content extends Component {
         </div>
     )
 
+    rendernd3 = () => (
+        <div className="aphabet-image">
+            <img src="Images/HomePage/Number_Image.png" width="90%"></img>
+            <label className="point">Điểm cao nhất: 200</label>
+            <div style={{display: 'flex', marginTop: '5%'}}>
+                <Link to="/learn-color"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
+                <Link to="/unit-color"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
+            </div>
+        </div>
+    )
+
     check = () => {
         if (this.state.trangthai === 1) {
             return this.rendernd1();
-        } else {
+        } 
+        if (this.state.trangthai === 2) {
             return this.rendernd2();
+        } 
+        if (this.state.trangthai === 3) {
+            return this.rendernd3();
         }
     }
 
     displayTheme = (id) => {
         if (id === 1) {
             this.setState({trangthai: 1});
-        } else {
+        } 
+        if (id === 2 ){
             this.setState({trangthai: 2});
+        }   
+        if (id === 3 ) {  
+            this.setState({trangthai: 3});
         }
     }
 
@@ -59,6 +78,11 @@ class Content extends Component {
                     </div>
                     <div className="chude2 hinh">
                         <a href="#" onClick={() => this.displayTheme(2)}>
+                            <img src="Images/HomePage/Number_Image2.png" width="90%"></img>
+                        </a>
+                    </div>
+                    <div className="chude2 hinh">
+                        <a href="#" onClick={() => this.displayTheme(3)}>
                             <img src="Images/HomePage/Number_Image2.png" width="90%"></img>
                         </a>
                     </div>

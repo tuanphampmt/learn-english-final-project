@@ -8,6 +8,8 @@ import RegisterMaster from "./components/register/RegisterMaster";
 import UnitAphabet from "./components/unit-aphabet/UnitAphabet";
 import LearnAlphabet from "./components/unit-aphabet/LearnAlphabet";
 import LearnNumber from "./components/UnitNumber/LearnNumber";
+import UnitNumber from "./components/UnitNumber/UnitNumber";
+import Learn_color from "./components/Unit_Color/Learn_color";
 
 function App() {
     return (
@@ -24,6 +26,8 @@ function App() {
                 <Route component={UnitAphabet} path="/unit-aphabet" exact/>
                 <Route component={LearnAlphabet} path="/learn-aphabet" exact/>
                 <Route component={LearnNumber} path="/learn-number" exact/>
+                <Route component={UnitNumber} path="/unit-number" exact/>
+                <Route component={Learn_color} path="/learn-color" exact/>
             </Switch>
         </BrowserRouter>
     );
