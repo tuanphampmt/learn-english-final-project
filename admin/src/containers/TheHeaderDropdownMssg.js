@@ -33,7 +33,7 @@ const TheHeaderDropdownMssg = () => {
             <div className="pt-3 mr-3 float-left">
               <div className="c-avatar">
                 <CImg
-                  src={'avatars/7.jpg'}
+                  src={require("../Admin.png")}
                   className="c-avatar-img"
                   alt="admin@bootstrapmaster.com"
                 />
@@ -58,7 +58,7 @@ const TheHeaderDropdownMssg = () => {
             <div className="pt-3 mr-3 float-left">
               <div className="c-avatar">
                 <CImg
-                  src={'avatars/6.jpg'}
+                  src={require("../Admin.png")}
                   className="c-avatar-img"
                   alt="admin@bootstrapmaster.com"
                 />
@@ -80,7 +80,7 @@ const TheHeaderDropdownMssg = () => {
             <div className="pt-3 mr-3 float-left">
               <div className="c-avatar">
                 <CImg
-                  src={'avatars/5.jpg'}
+                  src={require("../Admin.png")}
                   className="c-avatar-img"
                   alt="admin@bootstrapmaster.com"
                 />
@@ -102,7 +102,7 @@ const TheHeaderDropdownMssg = () => {
             <div className="pt-3 mr-3 float-left">
               <div className="c-avatar">
                 <CImg
-                  src={'avatars/4.jpg'}
+                  src={require("../Admin.png")}
                   className="c-avatar-img"
                   alt="admin@bootstrapmaster.com"
                 />
