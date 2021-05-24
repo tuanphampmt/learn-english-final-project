@@ -271,7 +271,7 @@ const User = ({ match }) => {
             <button
               type="button"
               className="btn btn-primary"
-              style={{ marginLeft: "235px" }}
+              style={{ marginLeft: "200px" }}
               onClick={handleShow}
               data-toggle="modal"
               data-target="#exampleModal"

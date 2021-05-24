@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {useHistory, useLocation} from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 import Input from "react-validation/build/input";
@@ -16,7 +16,8 @@ import {
   CRow,
   CPagination,
 } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
+
+const API_GET_USER = "https://backend-kide.herokuapp.com/api/admin/users";
 
 const Users = () => {
   const history = useHistory();
@@ -25,15 +26,7 @@ const Users = () => {
   const [page, setPage] = useState(currentPage);
   const [dataUsers, setdataUsers] = useState([]);
   const [currentUser] = useState(Auth.getCurrentUser());
-  const vusername = (value) => {
-    if (value.length < 3 || value.length > 20) {
-      swal({
-        title: "User name with 3 -> 20 character",
-        icon: "error",
-      });
-      return;
-    }
-  };
+
 
   const validation = (value) => {
     if (value.username.length < 3 || value.username.length > 20) {
@@ -86,23 +79,27 @@ const Users = () => {
     async function fetchMyAPI() {
       try {
         const res = await axios.get(
-          `https://backend-kide.herokuapp.com/api/admin/users`,
+          API_GET_USER,
           {
             headers: {
               Authorization: `Bearer ${currentUser.accessToken}`,
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
             },
           }
         );
-        const { data } = res;
+        const {data} = res;
         if (data) {
           const arr = [];
           for (let i = 0; i < data.length; i++) {
-            arr.push({ ...data[i], index: i + 1 });
+            arr.push({...data[i], index: i + 1});
           }
           setdataUsers([...dataUsers, ...arr]);
         }
-      } catch (e) {}
+      } catch (e) {
+      }
     }
+
     fetchMyAPI();
   }, []);
   // Add user
@@ -123,8 +120,8 @@ const Users = () => {
   };
 
   const handleOnChange = (event) => {
-    const { name, value } = event.target;
-    setInputValues({ ...inputValues, [name]: value });
+    const {name, value} = event.target;
+    setInputValues({...inputValues, [name]: value});
   };
 
   const submit = async (e) => {
@@ -159,7 +156,7 @@ const Users = () => {
                 roles: convertRole(checked),
               }
             ); //"Error: Username is already taken!"
-            const { data } = res;
+            const {data} = res;
 
             if (data) {
               if (data.message === "User registered successfully!") {
@@ -255,9 +252,9 @@ const Users = () => {
             <CDataTable
               items={dataUsers}
               fields={[
-                { key: "index", _classes: "font-weight-bold" },
+                {key: "index", _classes: "font-weight-bold"},
                 "username",
-                { key: "roles", label: "Role admin" },
+                {key: "roles", label: "Role admin"},
                 "createdAt",
               ]}
               striped
@@ -295,7 +292,7 @@ const Users = () => {
         <button
           type="button"
           className="btn btn-primary"
-          style={{ marginLeft: "40px" }}
+          style={{marginLeft: "40px"}}
           onClick={() => {
             handleShow();
           }}
@@ -332,7 +329,7 @@ const Users = () => {
             </div>
             <div className="modal-body">
               <Form className="form-add" onSubmit={submit}>
-                <div className="form-group" style={{ display: "flex" }}>
+                <div className="form-group" style={{display: "flex"}}>
                   <label htmlFor="exampleInputEmail1">Username</label>
                   <Input
                     type="username"
@@ -344,7 +341,7 @@ const Users = () => {
                     value={inputValues.username}
                   />
                 </div>
-                <div className="form-group" style={{ display: "flex" }}>
+                <div className="form-group" style={{display: "flex"}}>
                   <label htmlFor="passwork">Password</label>
                   <input
                     type="password"
@@ -358,7 +355,7 @@ const Users = () => {
                 </div>
                 <div
                   className="form-check"
-                  style={{ display: "flex", marginLeft: "-20px" }}
+                  style={{display: "flex", marginLeft: "-20px"}}
                 >
                   <label htmlFor="roleAdmin"> Role Admin</label>
                   <Input
