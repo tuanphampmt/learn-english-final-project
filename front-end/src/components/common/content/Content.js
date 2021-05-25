@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-
+import Auth from "../../service/Auth";
 class Content extends Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {trangthai: 1}
+        this.state = {trangthai: 1,
+            currentUser: Auth.getCurrentUser()}
+
     }
 
     rendernd1 = () => (
         <div className="aphabet-image">
             <img src="Images/HomePage/Aphabet_Image.png" width="90%"/>
-            <label className="point">Điểm cao nhất: 1000</label>
+            <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[2].score}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-aphabet"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-aphabet"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
@@ -21,7 +23,7 @@ class Content extends Component {
     rendernd2 = () => (
         <div className="aphabet-image">
             <img src="Images/HomePage/Number_Image.png" width="90%"></img>
-            <label className="point">Điểm cao nhất: 500</label>
+            <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[3].score}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-number"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-number"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
@@ -32,10 +34,21 @@ class Content extends Component {
     rendernd3 = () => (
         <div className="aphabet-image">
             <img src="Images/HomePage/Number_Image.png" width="90%"></img>
-            <label className="point">Điểm cao nhất: 200</label>
+            <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[0].score}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-color"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-color"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
+            </div>
+        </div>
+    )
+
+    rendernd4 = () => (
+        <div className="aphabet-image">
+            <img src="Images/HomePage/Aphabet_Image.png" width="90%"></img>
+            <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[1].score}</label>
+            <div style={{display: 'flex', marginTop: '5%'}}>
+                <Link to="/learn-animal"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
+                <Link to="/unit-animal"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
             </div>
         </div>
     )
@@ -50,6 +63,9 @@ class Content extends Component {
         if (this.state.trangthai === 3) {
             return this.rendernd3();
         }
+        if (this.state.trangthai === 4) {
+            return this.rendernd4();
+        }
     }
 
     displayTheme = (id) => {
@@ -61,6 +77,9 @@ class Content extends Component {
         }   
         if (id === 3 ) {  
             this.setState({trangthai: 3});
+        }
+        if (id === 4 ) {
+            this.setState({trangthai: 4});
         }
     }
 
@@ -84,6 +103,11 @@ class Content extends Component {
                     <div className="chude2 hinh">
                         <a href="#" onClick={() => this.displayTheme(3)}>
                             <img src="Images/HomePage/Number_Image2.png" width="90%"></img>
+                        </a>
+                    </div>
+                    <div className="chude2 hinh">
+                        <a href="#" onClick={() => this.displayTheme(4)}>
+                            <img src="Images/HomePage/Alphabet_Image2.png" width="90%"></img>
                         </a>
                     </div>
                 </div>
