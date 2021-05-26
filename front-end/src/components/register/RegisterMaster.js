@@ -92,6 +92,7 @@ class RegisterMaster extends Component {
                 title: "Mật khẩu xác nhận không khớp",
                 icon: "error",
             })
+            return;
         }
         this.setState({
             message: "",

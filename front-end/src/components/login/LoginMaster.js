@@ -70,7 +70,6 @@ class LoginMaster extends Component {
           if (resMessage === "Request failed with status code 401") {
             this.setState({
               loading: false,
-              // message: "Sai tên đăng nhập hoặc mật khẩu",
             });
             swal({
               title: "Sai tên đăng nhập hoặc mật khẩu",

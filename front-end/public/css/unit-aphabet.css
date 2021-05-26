@@ -239,7 +239,7 @@
 	 box-shadow: 0 0 30px 10px rgba(0, 0, 0, .3);
 	 border-radius: 25px;
 	 transition: 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-	 transform: rotateX(-90deg);
+	/* transform: rotateX(-90deg); */
      width: 36.8%;
      display: none;
      position: fixed;
