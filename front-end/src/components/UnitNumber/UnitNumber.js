@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { NumberDidMount } from "../common/js/Number";
-import { DialogDidMount } from "../common/js/Dialog";
 import { Link } from "react-router-dom";
 import Auth from "../service/Auth";
 import QuestionNumber from "./QuestionNumber";

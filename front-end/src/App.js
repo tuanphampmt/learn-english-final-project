@@ -10,6 +10,7 @@ import LearnAlphabet from "./components/unit-aphabet/LearnAlphabet";
 import LearnNumber from "./components/UnitNumber/LearnNumber";
 import UnitNumber from "./components/UnitNumber/UnitNumber";
 import Learn_color from "./components/Unit_Color/Learn_color";
+import UnitColor from "./components/Unit_Color/UnitColor";
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                 <Route component={LearnNumber} path="/learn-number" exact/>
                 <Route component={UnitNumber} path="/unit-number/:number" exact/>
                 <Route component={Learn_color} path="/learn-color" exact/>
+                <Route component={UnitColor} path="/unit-color" exact/>
             </Switch>
         </BrowserRouter>
     );
