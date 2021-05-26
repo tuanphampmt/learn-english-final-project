@@ -26,7 +26,7 @@ class Content extends Component {
             <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[3].score}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-number"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
-                <Link to="/unit-number/one"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
+                <Link to="/unit-number"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
             </div>
         </div>
     )
