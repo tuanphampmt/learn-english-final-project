@@ -267,27 +267,33 @@ class UnitNumber extends Component {
     }
 
     redirectNoAnswer = () => {
-        if (this.state.answers.length === 0) {
-            this.setState({score: this.state.score, isWin: true})
-            clearInterval(this.state.countdown);
-        } else {
-            this.setState({
-                isCorrectAnswer: false
-            })
-            const presentNumber = this.random(this.state.numbers, 1)[0];
-            this.toSpeak(presentNumber)
-            const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
-            this.setState({number: presentNumber, numbers: arrNumber})
-            const checkAnswer = this.state.answers.find(a => a.code === presentNumber);
-            const arrAnswers = this.state.answers.filter(b => b.code !== checkAnswer.code);
+        var wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-            if (checkAnswer) {
-                this.setState({
-                    answer: checkAnswer,
-                    answers: arrAnswers
-                });
-            }
-        }
+        Promise.resolve(2000)
+            .then(() => wait(2000))
+            .then(() => {
+                if (this.state.answers.length === 0) {
+                    this.setState({score: this.state.score, isWin: true})
+                    clearInterval(this.state.countdown);
+                } else {
+                    this.setState({
+                        isCorrectAnswer: false
+                    })
+                    const presentNumber = this.random(this.state.numbers, 1)[0];
+                    this.toSpeak(presentNumber)
+                    const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
+                    this.setState({number: presentNumber, numbers: arrNumber})
+                    const checkAnswer = this.state.answers.find(a => a.code === presentNumber);
+                    const arrAnswers = this.state.answers.filter(b => b.code !== checkAnswer.code);
+
+                    if (checkAnswer) {
+                        this.setState({
+                            answer: checkAnswer,
+                            answers: arrAnswers
+                        });
+                    }
+                }
+            });
     }
 
     gameOverCountdown = () => {
