@@ -11,6 +11,7 @@ import LearnNumber from "./components/UnitNumber/LearnNumber";
 import UnitNumber from "./components/UnitNumber/UnitNumber";
 import Learn_color from "./components/Unit_Color/Learn_color";
 import UnitColor from "./components/Unit_Color/UnitColor";
+import Learn_animal from "./components/Unit_Animal/Learn_animal";
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                 <Route component={UnitNumber} path="/unit-number" exact/>
                 <Route component={Learn_color} path="/learn-color" exact/>
                 <Route component={UnitColor} path="/unit-color" exact/>
+                <Route component={Learn_animal} path="/learn-animal" exact/>
             </Switch>
         </BrowserRouter>
     );
