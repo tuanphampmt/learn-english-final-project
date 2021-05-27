@@ -18,7 +18,9 @@ class UnitAphabet extends Component {
   render() {
     return (
       <div className="container unit-aphabet">
-        {/* <div id="js-panel1" className="panel" style={{ display: "block" }}>
+
+
+        <div id="js-panel" className="panel-hd" style={{ display: "block" }}>
           <div className="panel__content">
             <h4>Hướng dẫn</h4>
             <p style={{ fontSize: "1.5em" }}>
@@ -30,8 +32,7 @@ class UnitAphabet extends Component {
             <div className="flap outer flap--left" />
             <Link
               className="flap flap__btn"
-              id="play-again"
-              onClick={() => FlipFlopDidMount(this.state.currentUser)}
+              id="start-game"
             >
               Bắt đầu
             </Link>
@@ -40,8 +41,10 @@ class UnitAphabet extends Component {
             </Link>
             <div className="flap outer flap--right" />
           </div>
-        </div> */}
-        <div id="js-panel" className="panel">
+        </div>
+
+        
+        <div id="js-panel" className="panel" style={{display: "none"}}>
           <div className="panel__content">
             <h4 id="notify"></h4>
             <h2>
@@ -63,8 +66,8 @@ class UnitAphabet extends Component {
         {/* </div> */}
 
         {/* countdown */}
-        <div className="overlay-text visible" id="countdown">
-          <div className="demo">
+        <div  id="countdown">
+          <div className="demo" style={{display: "none"}}>
             <div className="demo__colored-blocks">
               <div className="demo__colored-blocks-rotater">
                 <div className="demo__colored-block" />

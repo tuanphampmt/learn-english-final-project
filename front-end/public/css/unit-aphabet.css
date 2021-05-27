@@ -234,7 +234,7 @@
 
 /* game over */
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
- .panel {
+ .panel, .panel-hd {
 	 background: rgba(0, 0, 0, .3);
 	 box-shadow: 0 0 30px 10px rgba(0, 0, 0, .3);
 	 border-radius: 25px;
@@ -247,7 +247,7 @@
      left: 512px;
      top: 265px;
 }
- .panel.is--open {
+ .panel.is--open, .panel-hd.is--open {
 	 transform: rotateX(0deg);
 }
  .panel__content {
