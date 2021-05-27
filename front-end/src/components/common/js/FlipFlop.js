@@ -57,6 +57,7 @@ export const FlipFlopDidMount = (currentUser) => {
         const playAgain = document.getElementById("play-again");
         if (playAgain) {
             playAgain.addEventListener("click", function () {
+                document.getElementsByClassName("panel")[0].style.display = "none";
                 document.getElementsByClassName("demo")[0].style.display = "block";
                 document.getElementById("countdown").classList.add("overlay-text");
                 document.getElementById("countdown").classList.add("visible");
