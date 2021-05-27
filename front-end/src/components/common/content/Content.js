@@ -9,10 +9,20 @@ class Content extends Component {
 
     }
 
+    handleScore = (unit) => {
+        if(this.state.currentUser){
+            var scores = this.state.currentUser.listScore.find(item => item.unit.name === unit)
+            console.log(scores);
+            if(scores){
+                return scores.score;
+            }
+        }
+    }
+
     rendernd1 = () => (
         <div className="aphabet-image">
             <img src="Images/HomePage/Aphabet_Image.png" width="90%"/>
-            <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[2].score}</label>
+            <label className="point">Điểm cao nhất: {this.handleScore("UNIT_APHABET")}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-aphabet"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-aphabet"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
@@ -23,7 +33,7 @@ class Content extends Component {
     rendernd2 = () => (
         <div className="aphabet-image">
             <img src="Images/HomePage/Number_Image.png" width="90%"></img>
-            <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[3].score}</label>
+            <label className="point">Điểm cao nhất: {this.handleScore("UNIT_NUMBER")}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-number"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-number"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
@@ -34,7 +44,7 @@ class Content extends Component {
     rendernd3 = () => (
         <div className="aphabet-image">
             <img src="Images/HomePage/Number_Image.png" width="90%"></img>
-            <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[0].score}</label>
+            <label className="point">Điểm cao nhất: {this.handleScore("UNIT_COLOR")}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-color"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-color"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
@@ -45,7 +55,7 @@ class Content extends Component {
     rendernd4 = () => (
         <div className="aphabet-image">
             <img src="Images/HomePage/Aphabet_Image.png" width="90%"></img>
-            <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[1].score}</label>
+            <label className="point">Điểm cao nhất: {this.handleScore("UNIT_ANIMAL")}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-animal"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-animal"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>
