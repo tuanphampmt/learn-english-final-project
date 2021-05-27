@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 
 class QuestionNumber extends Component {
-  toSpeak = (message) => {
-    var speechSynthesisUtterance = new SpeechSynthesisUtterance(message);
-    speechSynthesisUtterance.lang = "en-UK";
-    window.speechSynthesis.speak(speechSynthesisUtterance);
-  };
+
   displayElement = () => {
     switch (this.props.code) {
       case "one":
