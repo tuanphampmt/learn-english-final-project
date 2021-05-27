@@ -379,7 +379,7 @@ class UnitNumber extends Component {
                 {!this.state.start && (
                     <div id="js-panel" className="panel" style={{display: "block"}}>
                         <div className="panel__content">
-                            <h4>Bắt đầu</h4>
+                            <h4>Hướng dẫn</h4>
                             <p style={{fontSize: "1.5em"}}> Bạn hãy nghe và chọn câu trả lời đúng nhất.</p>
                         </div>
                         <div className="panel__flaps">
