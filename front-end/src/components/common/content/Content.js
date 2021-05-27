@@ -33,7 +33,7 @@ class Content extends Component {
 
     rendernd3 = () => (
         <div className="aphabet-image">
-            <img src="Images/HomePage/Number_Image.png" width="90%"></img>
+            <img src="Images/HomePage/Color_Image.png" width="90%"></img>
             <label className="point">Điểm cao nhất: {this.state.currentUser.listScore[0].score}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-color"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
