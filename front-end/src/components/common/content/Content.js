@@ -45,6 +45,7 @@ class Content extends Component {
         <div className="aphabet-image">
             <img src="Images/HomePage/Number_Image.png" width="90%"></img>
             <label className="point">Điểm cao nhất: {this.handleScore("UNIT_COLOR")}</label>
+
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-color"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
                 <Link to="/unit-color"><img src="Images/HomePage/Play_Button.png" width="90%"/></Link>

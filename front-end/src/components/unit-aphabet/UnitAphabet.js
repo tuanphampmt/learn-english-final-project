@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FlipFlopDidMount } from "../common/js/FlipFlop";
 import { DialogDidMount } from "../common/js/Dialog";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import Auth from "../service/Auth";
 class UnitAphabet extends Component {
   constructor(props) {
@@ -18,24 +18,56 @@ class UnitAphabet extends Component {
   render() {
     return (
       <div className="container unit-aphabet">
-          <div id="js-panel" className="panel">
-            <div className="panel__content">
-              <h4 id="notify"></h4>
-              <h2>Bạn đạt <span id="point-game">0</span> điểm</h2>
-              <p id="description"></p>
-            </div>
-            <div className="panel__flaps">
-              <div className="flap outer flap--left" />
-              <Link className="flap flap__btn" id="play-again">Chơi lại</Link>
-              <Link  to="/home-page" className="flap flap__btn" id="exit">Thoát</Link>
-              <div className="flap outer flap--right" />
-            </div>
+
+
+        <div id="js-panel" className="panel-hd" style={{ display: "block" }}>
+          <div className="panel__content">
+            <h4>Hướng dẫn</h4>
+            <p style={{ fontSize: "1.5em" }}>
+              {" "}
+              Bạn hãy tìm và chọn cặp chữ cái giống nhau.
+            </p>
           </div>
+          <div className="panel__flaps">
+            <div className="flap outer flap--left" />
+            <Link
+              className="flap flap__btn"
+              id="start-game"
+            >
+              Bắt đầu
+            </Link>
+            <Link to="/home-page" className="flap flap__btn" id="exit">
+              Thoát
+            </Link>
+            <div className="flap outer flap--right" />
+          </div>
+        </div>
+
+        
+        <div id="js-panel" className="panel" style={{display: "none"}}>
+          <div className="panel__content">
+            <h4 id="notify"></h4>
+            <h2>
+              Bạn đạt <span id="point-game">0</span> điểm
+            </h2>
+            <p id="description"></p>
+          </div>
+          <div className="panel__flaps">
+            <div className="flap outer flap--left" />
+            <Link className="flap flap__btn" id="play-again">
+              Chơi lại
+            </Link>
+            <Link to="/home-page" className="flap flap__btn" id="exit">
+              Thoát
+            </Link>
+            <div className="flap outer flap--right" />
+          </div>
+        </div>
         {/* </div> */}
 
         {/* countdown */}
-        <div className="overlay-text visible" id="countdown">
-          <div className="demo">
+        <div  id="countdown">
+          <div className="demo" style={{display: "none"}}>
             <div className="demo__colored-blocks">
               <div className="demo__colored-blocks-rotater">
                 <div className="demo__colored-block" />
@@ -79,14 +111,26 @@ class UnitAphabet extends Component {
           </div>
         </div>
 
-        <div className="row center" style={{display: "flex", justifyContent: "space-between"}}>
+        <div
+          className="row center"
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
           <div className="col-sm-1">
             <Link to="/home-page">
-              <img src="/Images/LoginPage/Back_Button.png" alt="" style={{width: '200%', marginLeft: "-190px"}}/>
+              <img
+                src="/Images/LoginPage/Back_Button.png"
+                alt=""
+                style={{ width: "200%", marginLeft: "-190px" }}
+              />
             </Link>
           </div>
           <div className="col-md-3 img-cat">
-            <img src="Images/Avatar/Cat/Cat_talk.png" alt="" id="img-cat" className="img-thumbnail"/>
+            <img
+              src="Images/Avatar/Cat/Cat_talk.png"
+              alt=""
+              id="img-cat"
+              className="img-thumbnail"
+            />
           </div>
           <div className="col-md-7">
             <div className="time-bar row" id="gameInfoBlock">
