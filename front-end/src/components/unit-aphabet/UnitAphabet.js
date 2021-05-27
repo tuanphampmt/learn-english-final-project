@@ -18,6 +18,29 @@ class UnitAphabet extends Component {
   render() {
     return (
       <div className="container unit-aphabet">
+        {/* <div id="js-panel1" className="panel" style={{ display: "block" }}>
+          <div className="panel__content">
+            <h4>Hướng dẫn</h4>
+            <p style={{ fontSize: "1.5em" }}>
+              {" "}
+              Bạn hãy tìm và chọn cặp chữ cái giống nhau.
+            </p>
+          </div>
+          <div className="panel__flaps">
+            <div className="flap outer flap--left" />
+            <Link
+              className="flap flap__btn"
+              id="play-again"
+              onClick={() => FlipFlopDidMount(this.state.currentUser)}
+            >
+              Bắt đầu
+            </Link>
+            <Link to="/home-page" className="flap flap__btn" id="exit">
+              Thoát
+            </Link>
+            <div className="flap outer flap--right" />
+          </div>
+        </div> */}
         <div id="js-panel" className="panel">
           <div className="panel__content">
             <h4 id="notify"></h4>
@@ -38,31 +61,6 @@ class UnitAphabet extends Component {
           </div>
         </div>
         {/* </div> */}
-        {!this.state.start && (
-          <div id="js-panel" className="panel" style={{ display: "block" }}>
-            <div className="panel__content">
-              <h4>Hướng dẫn</h4>
-              <p style={{ fontSize: "1.5em" }}>
-                {" "}
-                Bạn hãy tìm và chọn cặp chữ cái giống nhau.
-              </p>
-            </div>
-            <div className="panel__flaps">
-              <div className="flap outer flap--left" />
-              <Link
-                className="flap flap__btn"
-                id="play-again"
-                onClick={() => FlipFlopDidMount(this.state.currentUser)}
-              >
-                Bắt đầu
-              </Link>
-              <Link to="/home-page" className="flap flap__btn" id="exit">
-                Thoát
-              </Link>
-              <div className="flap outer flap--right" />
-            </div>
-          </div>
-        )}
 
         {/* countdown */}
         <div className="overlay-text visible" id="countdown">
