@@ -91,53 +91,53 @@ class LearnNumber extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="row" style={{marginTop: '20px', display: 'flex'}}>
-                        <div className="col-sm-1">
+                    <div className="row" style={{ marginTop: "20px", display: "flex", position: "relative"}}>
+                        <div>
                             <Link to="/home-page">
-                                <img src="/Images/LoginPage/Back_Button.png" alt="" style={{width: '200%'}}/>
+                                <img src="/Images/LoginPage/Back_Button.png" alt="" style={{ width: "10%", position: "absolute" }}/>
                             </Link>
                         </div>
-                        <div className="col-sm-11">
-                            <div className="menu" style={{textAlign: 'center', backgroundColor: 'white', marginLeft: '50px', borderRadius: '12px'}}>
+                        <div>
+                            <div className="menu" style={{textAlign: 'center', backgroundColor: 'white',  marginLeft: "9%", borderRadius: '12px', position: "absolute"}}>
                                 <Link to="#0" onClick={() => this.onChangeImg("0")}>
                                     <img src="/Images/Unit_Number/Learn/1.png" alt="" width="150px" height="150px"/>
                                 </Link>
                                 <Link to="#1" onClick={() => this.onChangeImg("1")}>
-                                    <img src="/Images/Unit_Number/Learn/0.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                    <img src="/Images/Unit_Number/Learn/0.png" alt="" width="150px" height="150px" style={{marginLeft: '45px'}}/>
                                 </Link>
                                 <Link to="#2" onClick={() => this.onChangeImg("2")}>
-                                    <img src="/Images/Unit_Number/Learn/2.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                    <img src="/Images/Unit_Number/Learn/2.png" alt="" width="150px" height="150px" style={{marginLeft: '45px'}}/>
                                 </Link>
                                 <Link to="#3" onClick={() => this.onChangeImg("3")}>
-                                    <img src="/Images/Unit_Number/Learn/3.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                    <img src="/Images/Unit_Number/Learn/3.png" alt="" width="150px" height="150px" style={{marginLeft: '45px'}}/>
                                 </Link>
                                 <Link to="#4" onClick={() => this.onChangeImg("4")}>
-                                    <img src="/Images/Unit_Number/Learn/4.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                    <img src="/Images/Unit_Number/Learn/4.png" alt="" width="150px" height="150px" style={{marginLeft: '45px'}}/>
                                 </Link>
                                 <br/>
                                 <Link to="#5" onClick={() => this.onChangeImg("5")}>
                                     <img src="/Images/Unit_Number/Learn/5.png" alt="" width="150px" height="150px"/>
                                 </Link>
                                 <Link to="#6" onClick={() => this.onChangeImg("6")}>
-                                    <img src="/Images/Unit_Number/Learn/6.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                    <img src="/Images/Unit_Number/Learn/6.png" alt="" width="150px" height="150px" style={{marginLeft: '45px'}}/>
                                 </Link>
                                 <Link to="#7" onClick={() => this.onChangeImg("7")}>
-                                    <img src="/Images/Unit_Number/Learn/7.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                    <img src="/Images/Unit_Number/Learn/7.png" alt="" width="150px" height="150px" style={{marginLeft: '45px'}}/>
                                 </Link>
                                 <Link to="#8" onClick={() => this.onChangeImg("8")}>
-                                    <img src="/Images/Unit_Number/Learn/8.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                    <img src="/Images/Unit_Number/Learn/8.png" alt="" width="150px" height="150px" style={{marginLeft: '45px'}}/>
                                 </Link>
                                 <Link to="#9" onClick={() => this.onChangeImg("9")}>
-                                    <img src="/Images/Unit_Number/Learn/9.png" alt="" width="150px" height="150px" style={{marginLeft: '50px'}}/>
+                                    <img src="/Images/Unit_Number/Learn/9.png" alt="" width="150px" height="150px" style={{marginLeft: '45px'}}/>
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div style={{marginTop: "30%", marginLeft: "-11%"}}>
                         <div className="detailNumber" onClick={() => this.toSpeak(this.state.code)}>
-                            <img
+                            <img 
                                 src={this.onChangeImgNoBorder()}
-                                style={{width: "45%"}}
+                                style={{width: "40%"}}
                             />
                             <img src={this.state.image} style={{width: '55%'}}></img>
                         </div>
