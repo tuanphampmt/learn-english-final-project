@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import axios from "axios";
+import Auth from "../service/Auth";
 
 class UnitColor extends Component {
     constructor(props) {
@@ -73,7 +75,8 @@ class UnitColor extends Component {
             minutes: 0,
             seconds: "00",
             number: "",
-            gameOver: false
+            gameOver: false,
+            currentUser: Auth.getCurrentUser(),
         };
     }
 
@@ -145,7 +148,7 @@ class UnitColor extends Component {
                             });
                     } else {
                         this.toSpeak("No");
-                        var urls = this.state.urls.filter((item) => item.code !== color);
+                        let urls = this.state.urls.filter((item) => item.code !== color);
                         this.setState({urls});
 
                         for (let i = 0; i < this.state.ids.length; i++) {
@@ -191,7 +194,7 @@ class UnitColor extends Component {
                 .then(() => {
                     this.setState({isWin: true});
                 });
-
+            this.apiScore();
             clearInterval(this.state.countdown);
         }
     };
@@ -312,6 +315,43 @@ class UnitColor extends Component {
                 this.init();
             });
     }
+
+    apiScore = () => {
+        (async () => {
+            try {
+                if(this.state.currentUser) {
+                    const {id, accessToken} = this.state.currentUser;
+                    const res = await axios.put(
+                        `https://backend-kide.herokuapp.com/api/user/score/${id}`,
+                        {
+                            name: "color",
+                            score: this.state.score,
+                        },
+                        {
+                            headers: {
+                                Authorization: `Bearer ${accessToken}`,
+                            },
+                        }
+                    );
+                    const {data} = res;
+                    if (data) {
+                        if (data.exp) {
+                            this.state.currentUser.exp = data.exp;
+                            localStorage.setItem(
+                                "user",
+                                JSON.stringify({
+                                    ...this.state.currentUser,
+                                })
+                            );
+                        }
+                    }
+                }
+
+            } catch (e) {
+                console.log(e);
+            }
+        })();
+    };
 
     render() {
         return (
