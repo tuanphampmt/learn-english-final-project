@@ -50,7 +50,7 @@ class UnitAphabet extends Component {
             <h2>
               Bạn đạt <span id="point-game">0</span> điểm
             </h2>
-            <p id="description"></p>
+            {this.state.currentUser ? <p id="description"></p> : <p>Hãy đăng ký để lưu điểm của bạn</p>}
           </div>
           <div className="panel__flaps">
             <div className="flap outer flap--left" />

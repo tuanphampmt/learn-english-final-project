@@ -148,6 +148,7 @@ class UnitColor extends Component {
                             });
                     } else {
                         this.toSpeak("No");
+                        this.setState({color : "No"})
                         let urls = this.state.urls.filter((item) => item.code !== color);
                         this.setState({urls});
 
@@ -218,7 +219,7 @@ class UnitColor extends Component {
             Promise.resolve(3600)
                 .then(() => wait(3600))
                 .then(() => {
-                    this.setState({isHidden: false, isCorrectAnswer: false});
+                    this.setState({isHidden: false, isCorrectAnswer: false, url: "/Images/Unit Color/Game_Card/Pig/NoColor_Pig.png"});
                     document.getElementById("countdown").classList.remove("overlay-text");
                     document.getElementById("countdown").classList.remove("visible");
                     document.getElementsByClassName("demo")[0].style.display = "none";
@@ -294,11 +295,12 @@ class UnitColor extends Component {
         document.getElementsByClassName("demo")[0].style.display = "block";
         document.getElementById("countdown").classList.add("overlay-text");
         document.getElementById("countdown").classList.add("visible");
+        this.setState({colors, urls});
         let wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         Promise.resolve(3600)
             .then(() => wait(3600))
             .then(() => {
-                this.setState({isHidden: false})
+                this.setState({isHidden: false,url: "/Images/Unit Color/Game_Card/Pig/NoColor_Pig.png"})
                 let color = this.random(this.state.colors, 1)[0];
                 let colors = this.state.colors.filter(i => i !== color)
                 this.setState({color, colors});
@@ -365,7 +367,7 @@ class UnitColor extends Component {
                             <h2>
                                 Bạn đạt <span id="score-game">{this.state.score}</span> điểm
                             </h2>
-                            <p id="description">Bạn được nhận thêm điểm kinh nghiệm</p>
+                            {this.state.currentUser ? <p id="description">Bạn được nhận thêm điểm kinh nghiệm</p> : <p id="description">Hãy đăng ký để lưu điểm của bạn</p>}
                         </div>
                         <div className="panel__flaps">
                             <div className="flap outer flap--left"/>
@@ -518,7 +520,7 @@ class UnitColor extends Component {
                 </div>
                 <div className="row center background-color-white game-aphabet mt-4">
                     <div className="col-sm-8">
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Red_Pen.png"
                                 alt=""
@@ -529,7 +531,7 @@ class UnitColor extends Component {
                                 onClick={() => this.playAudio("Red")}
                             />
                         </a>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Yellow_Pen.png"
                                 alt=""
@@ -541,7 +543,7 @@ class UnitColor extends Component {
                                 onClick={() => this.playAudio("Yellow")}
                             />
                         </a>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Brown_Pen.png"
                                 alt=""
@@ -554,18 +556,19 @@ class UnitColor extends Component {
                             />
                         </a>
                         <br/>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Green_Pen.png"
                                 alt=""
                                 width="100px"
                                 id="Green"
-                                style={{cursor: "pointer"}}
+            
+                        style={{cursor: "pointer"}}
                                 height="150px"
                                 onClick={() => this.playAudio("Green")}
                             />
                         </a>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Pink_Pen.png"
                                 alt=""
@@ -577,43 +580,46 @@ class UnitColor extends Component {
                                 onClick={() => this.playAudio("Pink")}
                             />
                         </a>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/White_Pen.png"
                                 alt=""
                                 id="White"
                                 width="100px"
                                 height="150px"
+                        
                                 style={{cursor: "pointer"}}
                                 style={{marginLeft: "50px"}}
                                 onClick={() => this.playAudio("White")}
                             />
                         </a>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Orange_Pen.png"
                                 alt=""
                                 width="100px"
                                 id="Orange"
                                 height="150px"
+                        
                                 style={{cursor: "pointer"}}
                                 style={{marginLeft: "50px"}}
                                 onClick={() => this.playAudio("Orange")}
                             />
                         </a>
                         <br/>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Blue_Pen.png"
                                 alt=""
                                 width="100px"
                                 id="Blue"
-                                style={{cursor: "pointer"}}
+            
+                        style={{cursor: "pointer"}}
                                 height="150px"
                                 onClick={() => this.playAudio("Blue")}
                             />
                         </a>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Purple_Pen.png"
                                 alt=""
@@ -625,7 +631,7 @@ class UnitColor extends Component {
                                 onClick={() => this.playAudio("Purple")}
                             />
                         </a>
-                        <a>
+                        <a className="zoom">
                             <img
                                 src="/Images/Unit Color/Game_Card/Pen/Black_Pen.png"
                                 alt=""

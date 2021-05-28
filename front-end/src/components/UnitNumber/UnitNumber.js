@@ -409,7 +409,7 @@ class UnitNumber extends Component {
                             <h2>
                                 Bạn đạt <span id="score-game">{this.state.score}</span> điểm
                             </h2>
-                            <p id="description">Bạn được nhận thêm điểm kinh nghiệm</p>
+                            {this.state.currentUser ? <p id="description">Bạn được nhận thêm điểm kinh nghiệm</p> : <p id="description">Hãy đăng ký để lưu điểm của bạn</p>}
                         </div>
                         <div className="panel__flaps">
                             <div className="flap outer flap--left"/>
@@ -428,7 +428,7 @@ class UnitNumber extends Component {
                     this.state.gameOver && (
                         <div id="js-panel" className="panel" style={{display: "block"}}>
                             <div className="panel__content">
-                                <h4 id="notify" style={{color: "#dc3545"}}>Hết giờ"</h4>
+                                <h4 id="notify" style={{color: "#dc3545"}}>Hết giờ</h4>
                                 <h2>
                                     Bạn đạt <span id="score-game">{this.state.score}</span> điểm
                                 </h2>

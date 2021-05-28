@@ -66,7 +66,7 @@ class AnswerNumber extends Component {
                 return (
                     <>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans1}
                                     width="70%"
@@ -80,7 +80,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans2}
                                     width="70%"
@@ -94,7 +94,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans3}
                                     width="70%"
@@ -108,7 +108,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans4}
                                     width="70%"
@@ -127,7 +127,7 @@ class AnswerNumber extends Component {
                 return (
                     <>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans1}
                                     width="70%"
@@ -141,7 +141,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans2}
                                     width="70%"
@@ -155,7 +155,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans3}
                                     width="70%"
@@ -169,7 +169,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans4}
                                     width="70%"
@@ -188,7 +188,7 @@ class AnswerNumber extends Component {
                 return (
                     <>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans1}
                                     width="70%"
@@ -202,7 +202,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans2}
                                     width="70%"
@@ -216,7 +216,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans3}
                                     width="70%"
@@ -230,7 +230,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans4}
                                     width="70%"
@@ -249,7 +249,7 @@ class AnswerNumber extends Component {
                 return (
                     <>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans1}
                                     width="70%"
@@ -263,7 +263,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans2}
                                     width="70%"
@@ -277,7 +277,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans3}
                                     width="70%"
@@ -291,7 +291,7 @@ class AnswerNumber extends Component {
                             </a>
                         </div>
                         <div className="col-sm-3">
-                            <a>
+                            <a className="zoom">
                                 <img
                                     src={this.props.answer.ans4}
                                     width="70%"

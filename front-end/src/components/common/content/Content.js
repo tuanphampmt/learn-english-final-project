@@ -103,22 +103,22 @@ class Content extends Component {
                 <div className="chude box-shadow">
                     <div className="chude1 hinh">
                         <a href="#" onClick={() => this.displayTheme(1)}>
-                            <img src="Images/HomePage/Alphabet_Image2.png" width="90%"></img>
+                            <img src="Images/HomePage/Alphabet_Image2.png" width="90%" style={{marginTop: "-14px"}}></img>
                         </a>
                     </div>
                     <div className="chude2 hinh">
                         <a href="#" onClick={() => this.displayTheme(2)}>
-                            <img src="Images/HomePage/Number_Image2.png" width="90%"></img>
+                            <img src="Images/HomePage/Number_Image2.png" width="90%" style={{marginTop: "-14px"}}></img>
                         </a>
                     </div>
                     <div className="chude2 hinh">
                         <a href="#" onClick={() => this.displayTheme(3)}>
-                            <img src="Images/HomePage/Number_Image2.png" width="90%"></img>
+                            <img src="Images/HomePage/Number_Image2.png" width="90%" style={{marginTop: "-14px"}}></img>
                         </a>
                     </div>
                     <div className="chude2 hinh">
                         <a href="#" onClick={() => this.displayTheme(4)}>
-                            <img src="Images/HomePage/Alphabet_Image2.png" width="90%"></img>
+                            <img src="Images/HomePage/Alphabet_Image2.png" width="90%" style={{marginTop: "-14px"}}></img>
                         </a>
                     </div>
                 </div>

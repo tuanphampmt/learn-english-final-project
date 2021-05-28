@@ -86,6 +86,7 @@ class ContentChangeAvatar extends Component {
     };
 
     changeAvatar = () => {
+        
         const {currentUser} = this.state;
         (async () => {
             try {
