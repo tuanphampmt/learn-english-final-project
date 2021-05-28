@@ -1,10 +1,9 @@
 import React, {Component} from "react";
-import {NumberDidMount} from "../common/js/Number";
-import {DialogDidMount} from "../common/js/Dialog";
 import {Link} from "react-router-dom";
 import Auth from "../service/Auth";
 import QuestionNumber from "./QuestionNumber";
 import AnswerNumber from "./AnswerNumber";
+import axios from "axios";
 
 
 class UnitNumber extends Component {
@@ -23,7 +22,6 @@ class UnitNumber extends Component {
                 "eight",
                 "nine",
             ],
-
             answers: [
                 {
                     ans1: "/Images/Unit_Number/Question_Card/eight_1.png",
@@ -116,7 +114,9 @@ class UnitNumber extends Component {
             minutes: 0,
             seconds: "00",
             number: "",
-            gameOver: false
+            gameOver: false,
+            ids: ["answer-one", "answer-two", "answer-three", "answer-four"],
+            currentUser: Auth.getCurrentUser(),
         };
     }
 
@@ -144,6 +144,12 @@ class UnitNumber extends Component {
                     document.getElementById("countdown").classList.remove("overlay-text");
                     document.getElementById("countdown").classList.remove("visible");
                     document.getElementsByClassName("demo")[0].style.display = "none";
+                    for (let i = 0; i < this.state.ids.length; i++) {
+                        const e = document.getElementById(this.state.ids[i]);
+                        if (e) {
+                            e.style.cursor = "pointer";
+                        }
+                    }
                     const presentNumber = this.random(this.state.numbers, 1)[0];
                     const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
                     const presentAnswer = this.state.answers.find(a => a.code === presentNumber);
@@ -165,6 +171,12 @@ class UnitNumber extends Component {
             .then(() => wait(3600))
             .then(() => {
                 this.setState({isHidden: false})
+                for (let i = 0; i < this.state.ids.length; i++) {
+                    const e = document.getElementById(this.state.ids[i]);
+                    if (e) {
+                        e.style.cursor = "pointer";
+                    }
+                }
                 const presentNumber = this.random(this.state.numbers, 1)[0];
                 const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
                 const presentAnswer = this.state.answers.find(a => a.code === presentNumber);
@@ -194,7 +206,6 @@ class UnitNumber extends Component {
         let minutes = 2;
         let display = document.getElementById("Timer");
         this.startTimer(minutes, display);
-        // document.getElementById("score").innerText = `Điểm: ${this.state.score}`;
     }
 
     startTimer = (duration, display) => {
@@ -238,6 +249,7 @@ class UnitNumber extends Component {
     redirectAnswer = () => {
         if (this.state.answers.length === 0) {
             this.setState({score: this.state.score, isWin: true})
+            this.apiScore();
             clearInterval(this.state.countdown);
         } else {
             this.setState({
@@ -266,34 +278,53 @@ class UnitNumber extends Component {
         })
     }
 
-    redirectNoAnswer = () => {
-        var wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-        Promise.resolve(2000)
-            .then(() => wait(2000))
-            .then(() => {
-                if (this.state.answers.length === 0) {
-                    this.setState({score: this.state.score, isWin: true})
-                    clearInterval(this.state.countdown);
-                } else {
-                    this.setState({
-                        isCorrectAnswer: false
-                    })
-                    const presentNumber = this.random(this.state.numbers, 1)[0];
-                    this.toSpeak(presentNumber)
-                    const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
-                    this.setState({number: presentNumber, numbers: arrNumber})
-                    const checkAnswer = this.state.answers.find(a => a.code === presentNumber);
-                    const arrAnswers = this.state.answers.filter(b => b.code !== checkAnswer.code);
-
-                    if (checkAnswer) {
-                        this.setState({
-                            answer: checkAnswer,
-                            answers: arrAnswers
-                        });
+    redirectNoAnswer = (id) => {
+        const e = document.getElementById(id);
+        if (e) {
+            if (e.style.cursor === "pointer") {
+                this.toSpeak("No");
+                for (let i = 0; i < this.state.ids.length; i++) {
+                    const e = document.getElementById(this.state.ids[i]);
+                    if (e) {
+                        e.style.cursor = "not-allowed";
                     }
                 }
-            });
+                var wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+                Promise.resolve(2000)
+                    .then(() => wait(2000))
+                    .then(() => {
+                        if (this.state.answers.length === 0) {
+                            this.setState({score: this.state.score, isWin: true})
+                            this.apiScore();
+                            clearInterval(this.state.countdown);
+                        } else {
+                            this.setState({
+                                isCorrectAnswer: false
+                            })
+                            const presentNumber = this.random(this.state.numbers, 1)[0];
+                            this.toSpeak(presentNumber)
+                            const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
+                            this.setState({number: presentNumber, numbers: arrNumber})
+                            const checkAnswer = this.state.answers.find(a => a.code === presentNumber);
+                            const arrAnswers = this.state.answers.filter(b => b.code !== checkAnswer.code);
+                            for (let i = 0; i < this.state.ids.length; i++) {
+                                const e = document.getElementById(this.state.ids[i]);
+                                if (e) {
+                                    e.style.cursor = "pointer";
+                                }
+                            }
+                            if (checkAnswer) {
+                                this.setState({
+                                    answer: checkAnswer,
+                                    answers: arrAnswers
+                                });
+                            }
+                        }
+                    });
+            }
+        }
+
     }
 
     gameOverCountdown = () => {
@@ -306,6 +337,12 @@ class UnitNumber extends Component {
             .then(() => wait(3600))
             .then(() => {
                 this.setState({isHidden: false})
+                for (let i = 0; i < this.state.ids.length; i++) {
+                    const e = document.getElementById(this.state.ids[i]);
+                    if (e) {
+                        e.style.cursor = "pointer";
+                    }
+                }
                 const presentNumber = this.random(this.state.numbers, 1)[0];
                 const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
                 const presentAnswer = this.state.answers.find(a => a.code === presentNumber);
@@ -325,8 +362,44 @@ class UnitNumber extends Component {
             });
     }
 
+    apiScore = () => {
+        (async () => {
+            try {
+                if(this.state.currentUser) {
+                    const {id, accessToken} = this.state.currentUser;
+                    const res = await axios.put(
+                        `https://backend-kide.herokuapp.com/api/user/score/${id}`,
+                        {
+                            name: "number",
+                            score: this.state.score,
+                        },
+                        {
+                            headers: {
+                                Authorization: `Bearer ${accessToken}`,
+                            },
+                        }
+                    );
+                    const {data} = res;
+                    if (data) {
+                        if (data.exp) {
+                            this.state.currentUser.exp = data.exp;
+                            localStorage.setItem(
+                                "user",
+                                JSON.stringify({
+                                    ...this.state.currentUser,
+                                })
+                            );
+                        }
+                    }
+                }
+
+            } catch (e) {
+                console.log(e);
+            }
+        })();
+    };
+
     render() {
-        console.log(this.state.score)
         return (
             <div className="container unit-aphabet">
                 {this.state.isWin && (
@@ -500,7 +573,7 @@ class UnitNumber extends Component {
                         win={() => this.win()}
                         redirectAnswer={() => this.redirectAnswer()}
                         showAnswer={() => this.showAnswer()}
-                        redirectNoAnswer={() => this.redirectNoAnswer()}
+                        redirectNoAnswer={(a) => this.redirectNoAnswer(a)}
                     />
                 </div>
             </div>

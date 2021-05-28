@@ -20,6 +20,7 @@ class AnswerNumber extends Component {
                 "nine",
             ],
             url: "",
+            ids: ["answer-one", "answer-two", "answer-three", "answer-four"]
         };
     }
 
@@ -30,14 +31,33 @@ class AnswerNumber extends Component {
         window.speechSynthesis.speak(speechSynthesisUtterance);
     };
 
-    nextAns = () => {
-        this.props.showAnswer();
-        var wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-        Promise.resolve(3000)
-            .then(() => wait(3000))
-            .then(() => {
-                this.props.redirectAnswer();
-            });
+    nextAns = (id) => {
+        const e = document.getElementById(id);
+        if (e) {
+            if (e.style.cursor === "pointer") {
+                this.toSpeak("Yes");
+                for (let i = 0; i < this.state.ids.length; i++) {
+                    const e = document.getElementById(this.state.ids[i]);
+                    if (e) {
+                        e.style.cursor = "not-allowed";
+                    }
+                }
+                this.props.showAnswer();
+                let wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+                Promise.resolve(3000)
+                    .then(() => wait(3000))
+                    .then(() => {
+                        for (let i = 0; i < this.state.ids.length; i++) {
+                            const e = document.getElementById(this.state.ids[i]);
+                            if (e) {
+                                e.style.cursor = "pointer";
+                            }
+                        }
+                        this.props.redirectAnswer();
+                    });
+            }
+        }
+
     };
 
     displayElement = () => {
@@ -52,9 +72,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("Yes");
-                                        this.nextAns();
+                                        
+                                        this.nextAns("answer-one");
                                     }}
+                                    id="answer-one"
                                 />
                             </a>
                         </div>
@@ -65,9 +86,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-two");
                                     }}
+                                    id="answer-two"
                                 />
                             </a>
                         </div>
@@ -78,9 +100,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-three")
                                     }}
+                                    id="answer-three"
                                 />
                             </a>
                         </div>
@@ -91,9 +114,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-four")
                                     }}
+                                    id="answer-four"
                                 />
                             </a>
                         </div>
@@ -109,9 +133,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-one")
                                     }}
+                                    id="answer-one"
                                 />
                             </a>
                         </div>
@@ -122,9 +147,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("Yes");
-                                        this.nextAns();
+                                        
+                                        this.nextAns("answer-two");
                                     }}
+                                    id="answer-two"
                                 />
                             </a>
                         </div>
@@ -135,9 +161,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-three")
                                     }}
+                                    id="answer-three"
                                 />
                             </a>
                         </div>
@@ -148,9 +175,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-four")
                                     }}
+                                    id="answer-four"
                                 />
                             </a>
                         </div>
@@ -166,9 +194,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-one")
                                     }}
+                                    id="answer-one"
                                 />
                             </a>
                         </div>
@@ -179,9 +208,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-two")
                                     }}
+                                    id="answer-two"
                                 />
                             </a>
                         </div>
@@ -192,9 +222,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("Yes");
-                                        this.nextAns();
+                                        
+                                        this.nextAns("answer-three");
                                     }}
+                                    id="answer-three"
                                 />
                             </a>
                         </div>
@@ -205,9 +236,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-four")
                                     }}
+                                    id="answer-four"
                                 />
                             </a>
                         </div>
@@ -223,9 +255,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-one")
                                     }}
+                                    id="answer-one"
                                 />
                             </a>
                         </div>
@@ -236,9 +269,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-two")
                                     }}
+                                    id="answer-two"
                                 />
                             </a>
                         </div>
@@ -249,9 +283,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("No");
-                                        this.props.redirectNoAnswer()
+                                        
+                                        this.props.redirectNoAnswer("answer-three")
                                     }}
+                                    id="answer-three"
                                 />
                             </a>
                         </div>
@@ -262,9 +297,10 @@ class AnswerNumber extends Component {
                                     width="70%"
                                     style={{marginLeft: "35px"}}
                                     onClick={() => {
-                                        this.toSpeak("Yes");
-                                        this.nextAns();
+                                        
+                                        this.nextAns("answer-four");
                                     }}
+                                    id="answer-four"
                                 />
                             </a>
                         </div>
