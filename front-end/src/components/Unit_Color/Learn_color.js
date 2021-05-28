@@ -108,7 +108,6 @@ class Learn_color extends Component {
                 style={{
                   textAlign: "center",
                   backgroundColor: "white",
-                  marginLeft: "50px",
                   borderRadius: "12px",
                   marginLeft: "17%",
                   position: "absolute",

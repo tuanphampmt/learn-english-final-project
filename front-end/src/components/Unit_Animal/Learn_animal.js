@@ -86,24 +86,25 @@ class Learn_animal extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row" style={{ marginTop: "20px", display: "flex" }}>
-          <div className="col-sm-1">
+        <div className="row" style={{ marginTop: "20px", display: "flex", position: "relative"}}>
+          <div>
             <Link to="/home-page">
               <img
                 src="/Images/LoginPage/Back_Button.png"
                 alt=""
-                style={{ width: "200%" }}
+                style={{ width: "10%", position: "absolute" }}
               />
             </Link>
           </div>
-          <div className="col-sm-11">
+          <div>
             <div
               className="menu"
               style={{
                 textAlign: "center",
                 backgroundColor: "white",
-                marginLeft: "50px",
                 borderRadius: "12px",
+                marginLeft: "9%",
+                  position: "absolute",
               }}
             >
               <Link to="#1" onClick={() => this.onChangeImg("0")}>
@@ -198,7 +199,7 @@ class Learn_animal extends Component {
             </div>
           </div>
         </div>
-        <div>
+        <div style={{marginTop: "35%", marginLeft: "-11%"}}>
           <div
             className="detailNumber"
             onClick={() => this.toSpeak(this.state.code)}

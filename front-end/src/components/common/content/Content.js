@@ -43,7 +43,7 @@ class Content extends Component {
 
     rendernd3 = () => (
         <div className="aphabet-image">
-            <img src="Images/HomePage/Number_Image.png" width="90%"></img>
+            <img src="Images/HomePage/Color_Image.png" width="90%"></img>
             <label className="point">Điểm cao nhất: {this.handleScore("UNIT_COLOR")}</label>
 
             <div style={{display: 'flex', marginTop: '5%'}}>

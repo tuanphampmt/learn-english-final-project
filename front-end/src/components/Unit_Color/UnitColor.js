@@ -377,7 +377,7 @@ class UnitColor extends Component {
                         <div className="panel__content">
                             <h4>Hướng dẫn</h4>
                             <p style={{fontSize: "1.5em"}}>
-                                Bạn hãy nghe và chọn câu trả lời đúng nhất.
+                                Bạn hãy nghe và chọn màu đúng với yêu cầu để tô màu cho con vật.
                             </p>
                         </div>
                         <div className="panel__flaps">

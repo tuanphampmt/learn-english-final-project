@@ -130,7 +130,7 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/LoginPage/Back_Button.png"
                   alt=""
-                  style={{ width: "10%", position: "absolute" }}
+                  style={{ width: "10%", position: "absolute", marginLeft: "-20%" }}
                 />
               </Link>
             </div>
@@ -140,8 +140,9 @@ class LearnAlphabet extends Component {
                 textAlign: "center",
                 backgroundColor: "white",
                 borderRadius: "12px",
-                marginLeft: "10%",
-                position: "absolute"
+                marginLeft: "-5%",
+                position: "absolute",
+                width : "110%"
               }}
             >
               <Link
@@ -154,8 +155,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/A.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -168,8 +169,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/B.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -182,8 +183,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/C.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -196,8 +197,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/D.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -210,8 +211,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/E.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -224,8 +225,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/F.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -238,8 +239,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/G.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -252,8 +253,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/H.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -266,8 +267,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/I.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <br />
@@ -281,8 +282,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/J.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -295,8 +296,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/K.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -309,8 +310,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/L.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -323,8 +324,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/M.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -337,8 +338,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/N.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -351,8 +352,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/O.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -365,8 +366,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/P.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -379,8 +380,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/Q.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -393,8 +394,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/R.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <br />
@@ -408,8 +409,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/S.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -422,8 +423,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/T.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -436,8 +437,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/U.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -450,8 +451,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/V.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -464,8 +465,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/W.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -478,8 +479,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/X.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -492,8 +493,8 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/Y.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
               <Link
@@ -506,24 +507,24 @@ class LearnAlphabet extends Component {
                 <img
                   src="/Images/Unit_Aphabet/Normal Cards/Z.png"
                   alt=""
-                  width="100px"
-                  height="100px"
+                  width="130px"
+                  height="130px"
                 />
               </Link>
             </div>
           </div>
 
-          <div style={{marginTop: "30%"}}>
+          <div style={{marginTop: "37%"}}>
             <div
               className="detailAlphabet"
               onClick={() => this.toSpeak(this.state.code)}
             >
               <img
                 src={this.onChangeImgNoBorder()}
-                style={{ width: "45%" }}
+                style={{ width: "50%" }}
                 id="avatar"
               />
-              <img src={this.state.image} style={{ width: "40%" }} />
+              <img src={this.state.image} style={{ width: "50%" }} />
             </div>
           </div>
         </div>
