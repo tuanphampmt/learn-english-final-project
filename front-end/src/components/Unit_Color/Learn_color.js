@@ -51,7 +51,7 @@ class Learn_color extends Component {
     if (img) {
       this.setState({ title: img.title });
       this.setState({ image: img.image });
-      this.setState({ code: img.code });
+      this.setState({ code: img.key });
       this.toSpeak(img.key);
       this.setState({ isChanged: true });
     }
