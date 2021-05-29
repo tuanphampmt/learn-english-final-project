@@ -55,7 +55,7 @@ class Content extends Component {
 
     rendernd4 = () => (
         <div className="aphabet-image">
-            <img src="Images/HomePage/Aphabet_Image.png" width="90%"></img>
+            <img src="Images/HomePage/Animal_Image.png" width="90%"></img>
             <label className="point">Điểm cao nhất: {this.handleScore("UNIT_ANIMAL")}</label>
             <div style={{display: 'flex', marginTop: '5%'}}>
                 <Link to="/learn-animal"><img src="Images/HomePage/Learn_Button.png" width="90%"/></Link>
@@ -113,12 +113,12 @@ class Content extends Component {
                     </div>
                     <div className="chude2 hinh">
                         <a href="#" onClick={() => this.displayTheme(3)}>
-                            <img src="Images/HomePage/Number_Image2.png" width="90%" style={{marginTop: "-14px"}}></img>
+                            <img src="Images/HomePage/Color_Image2.png" width="90%" style={{marginTop: "-14px"}}></img>
                         </a>
                     </div>
                     <div className="chude2 hinh">
                         <a href="#" onClick={() => this.displayTheme(4)}>
-                            <img src="Images/HomePage/Alphabet_Image2.png" width="90%" style={{marginTop: "-14px"}}></img>
+                            <img src="Images/HomePage/Animal_Image2.png" width="90%" style={{marginTop: "-14px"}}></img>
                         </a>
                     </div>
                 </div>
