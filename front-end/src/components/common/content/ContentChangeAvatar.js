@@ -3,6 +3,7 @@ import ImageAvatar from "./ImageAvatar";
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import Auth from "../../service/Auth";
+import {withRouter} from 'react-router';
 
 class ContentChangeAvatar extends Component {
     constructor(props, context) {
@@ -12,7 +13,17 @@ class ContentChangeAvatar extends Component {
             avatar: "cat",
             isChanged: false,
             currentUser: Auth.getCurrentUser(),
+            ids: ["cat", "dinosaur", "dolphin", "save-button", "close"]
         };
+    }
+
+    componentDidMount() {
+        for (let i = 0; i < this.state.ids.length; i++) {
+            const e = document.getElementById(this.state.ids[i]);
+            if (e) {
+                e.style.cursor = "pointer";
+            }
+        }
     }
 
     renderAvatar1 = () => (
@@ -86,73 +97,117 @@ class ContentChangeAvatar extends Component {
     };
 
     changeAvatar = () => {
-        
-        const {currentUser} = this.state;
-        (async () => {
-            try {
-                const {id, accessToken} = currentUser;
-                const res = await axios.put(`https://backend-kide.herokuapp.com/api/user/avatar/${id}/${this.state.avatar}`, {}, {
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`
+        const e = document.getElementById("save-button");
+        if (e) {
+            if (e.style.cursor === "pointer") {
+                for (let i = 0; i < this.state.ids.length; i++) {
+                    const e = document.getElementById(this.state.ids[i]);
+                    if (e) {
+                        e.style.cursor = "not-allowed";
                     }
-                });
-                const {data} = res;
-                if (data) {
-                    if (data.status) {
-                        //display alert
-                        document.getElementById("alert-change-avatar-success").style.display = "block";
-                        document.getElementById("alert-change-avatar-success").innerHTML = `${data.message}`;
-
-                        // change avatar
-                        switch (this.state.avatar) {
-                            case "cat" :
-                                document.getElementById("avatar").src = "Images/HomePage/Cat_avatar.png";
-                                //change localStorage
-                                currentUser.avatar = "AVATAR_CAT"
-                                localStorage.setItem("user", JSON.stringify({
-                                    ...currentUser
-                                }));
-                                break;
-                            case "dinosaur":
-                                document.getElementById("avatar").src = "Images/HomePage/Dinosaur_avatar.png";
-                                currentUser.avatar = "AVATAR_DINOSAUR"
-                                localStorage.setItem("user", JSON.stringify({
-                                    ...currentUser
-                                }));
-                                break;
-                            default:
-                                document.getElementById("avatar").src = "Images/HomePage/Dolphin_avatar.png";
-                                currentUser.avatar = "AVATAR_DOLPHIN"
-                                localStorage.setItem("user", JSON.stringify({
-                                    ...currentUser
-                                }));
-                                break;
-                        }
-
-                    } else {
-                        document.getElementById("alert-change-avatar-failed").style.display = "block";
-                        document.getElementById("alert-change-avatar-failed").innerHTML = `${data.message}`;
-                    }
-
-                    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-                    Promise.resolve(2000)
-                        .then(() => wait(2000))
-                        .then(() => {
-                            document.getElementById("alert-change-avatar-success").style.display = "none";
-                            document.getElementById("alert-change-avatar-failed").style.display = "none";
-                        });
                 }
-                console.log(data);
-            } catch (e) {
-                console.log(e);
+                const {currentUser} = this.state;
+                (async () => {
+                    try {
+                        const {id, accessToken} = currentUser;
+                        const res = await axios.put(`https://backend-kide.herokuapp.com/api/user/avatar/${id}/${this.state.avatar}`, {}, {
+                            headers: {
+                                'Authorization': `Bearer ${accessToken}`
+                            }
+                        });
+                        const {data} = res;
+                        if (data) {
+                            if (data.status) {
+                                //display alert
+                                if (document.getElementById("alert-change-avatar-success")) {
+                                    document.getElementById("alert-change-avatar-success").style.display = "block";
+                                }
+                                if (document.getElementById("alert-change-avatar-success")) {
+                                    document.getElementById("alert-change-avatar-success").innerHTML = `${data.message}`;
+                                }
+
+
+                                // change avatar
+                                switch (this.state.avatar) {
+                                    case "cat" :
+                                        document.getElementById("avatar").src = "Images/HomePage/Cat_avatar.png";
+                                        //change localStorage
+                                        currentUser.avatar = "AVATAR_CAT"
+                                        localStorage.setItem("user", JSON.stringify({
+                                            ...currentUser
+                                        }));
+                                        break;
+                                    case "dinosaur":
+                                        document.getElementById("avatar").src = "Images/HomePage/Dinosaur_avatar.png";
+                                        currentUser.avatar = "AVATAR_DINOSAUR"
+                                        localStorage.setItem("user", JSON.stringify({
+                                            ...currentUser
+                                        }));
+                                        break;
+                                    default:
+                                        document.getElementById("avatar").src = "Images/HomePage/Dolphin_avatar.png";
+                                        currentUser.avatar = "AVATAR_DOLPHIN"
+                                        localStorage.setItem("user", JSON.stringify({
+                                            ...currentUser
+                                        }));
+                                        break;
+                                }
+                                for (let i = 0; i < this.state.ids.length; i++) {
+                                    const e = document.getElementById(this.state.ids[i]);
+                                    if (e) {
+                                        e.style.cursor = "pointer";
+                                    }
+                                }
+                            } else {
+                                document.getElementById("alert-change-avatar-failed").style.display = "block";
+                                document.getElementById("alert-change-avatar-failed").innerHTML = `${data.message}`;
+                            }
+
+                            const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+                            Promise.resolve(2000)
+                                .then(() => wait(2000))
+                                .then(() => {
+                                    if (document.getElementById("alert-change-avatar-success")) {
+                                        document.getElementById("alert-change-avatar-success").style.display = "none";
+                                    }
+
+                                    if (document.getElementById("alert-change-avatar-failed")) {
+                                        document.getElementById("alert-change-avatar-failed").style.display = "none";
+                                    }
+
+
+                                });
+                        }
+                        console.log(data);
+                    } catch (e) {
+                        console.log(e);
+                    }
+                })()
             }
-        })()
+        }
+
     }
     getAvatar = (avatar) => {
-        this.setState({
-            avatar,
-            isChanged: true
-        })
+        const e = document.getElementById(avatar);
+        console.log(e.style.cursor)
+        if (e) {
+            if (e.style.cursor === "pointer") {
+                this.setState({
+                    avatar,
+                    isChanged: true
+                })
+            }
+        }
+
+    }
+    redirectHomePage = () => {
+        const e = document.getElementById("close");
+        if (e) {
+            if (e.style.cursor === "pointer") {
+                this.props.history.push("home-page")
+            }
+        }
+
     }
 
     render() {
@@ -164,7 +219,9 @@ class ContentChangeAvatar extends Component {
                         this.displayTheme(1);
                         this.getAvatar("cat")
                     }}>
-                        <ImageAvatar image="Images\HomePage\Cat_avatar.png"/>
+                        <ImageAvatar image="Images\HomePage\Cat_avatar.png"
+                                     id="cat"
+                        />
                     </a>
                     <a href="#" onClick={() => {
                         this.displayTheme(2);
@@ -173,6 +230,7 @@ class ContentChangeAvatar extends Component {
                         <ImageAvatar
                             image="Images\HomePage\Dinosaur_avatar.png"
                             level="Mở khóa Lv5"
+                            id="dinosaur"
                         />
                     </a>
                     <a href="#" onClick={() => {
@@ -182,15 +240,16 @@ class ContentChangeAvatar extends Component {
                         <ImageAvatar
                             image="Images\HomePage\Dolphin_avatar.png"
                             level="Mở khóa Lv10"
+                            id="dolphin"
                         />
                     </a>
                 </div>
                 <div style={{display: "flex", marginTop: "-5%"}}>
                     <Link to="#save" onClick={() => this.changeAvatar()}>
-                        <img src="Images/HomePage/Save_Button.png" width="55%"/>
+                        <img src="Images/HomePage/Save_Button.png" id="save-button" width="55%"/>
                     </Link>
-                    <Link to="/home-page">
-                        <img src="Images/HomePage/Close_Button.png" width="55%"/>
+                    <Link to="#close" onClick={() => this.redirectHomePage()}>
+                        <img src="Images/HomePage/Close_Button.png" id="close" width="55%"/>
                     </Link>
                 </div>
                 <div className="alert alert-success" role="alert" id="alert-change-avatar-success"
@@ -204,4 +263,4 @@ class ContentChangeAvatar extends Component {
     }
 }
 
-export default ContentChangeAvatar;
+export default withRouter(ContentChangeAvatar);
