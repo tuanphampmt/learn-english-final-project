@@ -1,22 +1,45 @@
-import React, { useState, useEffect } from "react";
-import { CCard, CCardBody, CCardHeader, CCol, CRow } from "@coreui/react";
-import { useHistory } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {CCard, CCardBody, CCardHeader, CCol, CRow} from "@coreui/react";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 import Auth from "../pages/service/Auth";
-import { Doughnut } from "react-chartjs-2";
+import {Doughnut} from "react-chartjs-2";
 
-const User = ({ match }) => {
+const User = ({match}) => {
   const history = useHistory();
   const [currentUser] = useState(Auth.getCurrentUser());
   const [userDetails, setuserDetails] = useState(null);
   const [show, setShow] = useState(false);
-  const [inputValues, setInputValues] = useState({ exp: "", avatar: "" });
+  const [inputValues, setInputValues] = useState({exp: "", avatar: ""});
   const [checked, setChecked] = useState(null);
-  const [dataChart, setDataChart] = useState({});
+
+  const [dataChart, setDataChart] = useState({
+    labels: [
+      "UNIT_APHABET",
+      "UNIT_COLOR",
+      "UNIT_ANIMAL",
+      "UNIT_NUMBER",
+    ],
+    datasets: [
+      {
+        data: [
+          // 90,10,10,20
+
+        ],
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#23F464"],
+        hoverBackgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "#23F464",
+        ],
+      },
+    ],
+  });
   const handleOnChange = (event) => {
-    const { name, value } = event.target;
-    setInputValues({ ...inputValues, [name]: value });
+    const {name, value} = event.target;
+    setInputValues({...inputValues, [name]: value});
   };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,9 +54,9 @@ const User = ({ match }) => {
             },
           }
         );
-        const { data } = res;
+        const {data} = res;
         if (data) {
-          console.log(data);
+          console.log(data)
           setuserDetails(data);
           setInputValues({
             exp: data.exp,
@@ -44,37 +67,24 @@ const User = ({ match }) => {
           );
 
           //chart
-          setDataChart({
-            labels: [
-              "Unit animal",
-              "Unit color",
-              "Unit alphabet",
-              "Unit number",
-            ],
-            datasets: [
-              {
-                data: [
-                  parseInt(data.listScore[1].score),
-                  parseInt(data.listScore[2].score),
-                  parseInt(data.listScore[3].score),
-                  parseInt(data.listScore[4].score),
-                ],
-                backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#23F464"],
-                hoverBackgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56",
-                  "#23F464",
-                ],
-              },
-            ],
-          });
+          dataChart.datasets[0].data = [
+            JSON.parse(data.listScore[0].score),
+            JSON.parse(data.listScore[1].score),
+            JSON.parse(data.listScore[2].score),
+            JSON.parse(data.listScore[3].score)
+          ]
+
+          setDataChart({...dataChart})
+
+          // setDataChart();
         }
-      } catch (e) {}
+      } catch (e) {
+      }
     }
 
     fetchMyAPI();
   }, []);
+
 
   const convertAvatar = (avatar) => {
     if (avatar === "AVATAR_CAT") return "cat";
@@ -147,7 +157,7 @@ const User = ({ match }) => {
                 },
               }
             );
-            const { data } = res;
+            const {data} = res;
             if (data) {
               if (data.message === "User data has been changed!") {
                 return swal({
@@ -168,7 +178,8 @@ const User = ({ match }) => {
                 });
               }
             }
-          } catch (e) {}
+          } catch (e) {
+          }
         }
       });
     }
@@ -205,7 +216,7 @@ const User = ({ match }) => {
               },
             }
           );
-          const { data } = res;
+          const {data} = res;
           if (data) {
             if (data.message === "Account has been deleted!") {
               swal({
@@ -271,7 +282,7 @@ const User = ({ match }) => {
             <button
               type="button"
               className="btn btn-primary"
-              style={{ marginLeft: "200px" }}
+              style={{marginLeft: "200px"}}
               onClick={handleShow}
               data-toggle="modal"
               data-target="#exampleModal"
@@ -282,7 +293,7 @@ const User = ({ match }) => {
             <button
               type="button"
               className="btn btn-danger"
-              style={{ marginLeft: "23px" }}
+              style={{marginLeft: "23px"}}
               onClick={deleted}
             >
               Delete User
@@ -322,7 +333,7 @@ const User = ({ match }) => {
         </CCard>
       </CCol>
       <CCol xl={5}>
-        <Doughnut data={dataChart} />
+        <Doughnut data={dataChart}/>
       </CCol>
       <div
         className="modal fade"
@@ -349,7 +360,7 @@ const User = ({ match }) => {
             </div>
             <div className="modal-body">
               <form className="form-update">
-                <div className="form-group" style={{ display: "flex" }}>
+                <div className="form-group" style={{display: "flex"}}>
                   <CCol xl={5}>
                     <label htmlFor="exampleInputEmail1">Username</label>
                   </CCol>
@@ -363,7 +374,7 @@ const User = ({ match }) => {
                     />
                   </CCol>
                 </div>
-                <div className="form-group" style={{ display: "flex" }}>
+                <div className="form-group" style={{display: "flex"}}>
                   <CCol xl={5}>
                     <label htmlFor="exp">EXP</label>
                   </CCol>
@@ -378,7 +389,7 @@ const User = ({ match }) => {
                     />
                   </CCol>
                 </div>
-                <div className="form-group" style={{ display: "flex" }}>
+                <div className="form-group" style={{display: "flex"}}>
                   <CCol xl={5}>
                     <label htmlFor="passwork">Avatar</label>
                   </CCol>
@@ -397,7 +408,7 @@ const User = ({ match }) => {
                 </div>
                 <div
                   className="form-check"
-                  style={{ display: "flex", marginLeft: "-20px" }}
+                  style={{display: "flex", marginLeft: "-20px"}}
                 >
                   <CCol xl={5}>
                     <label htmlFor="roleAdmin"> Role Admin</label>
