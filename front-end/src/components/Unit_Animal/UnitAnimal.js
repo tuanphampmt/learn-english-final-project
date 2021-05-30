@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import Auth from "../service/Auth";
-import AnimalItem from "../Unit_Color/AnimalItem";
+import AnimalItem from "./AnimalItem";
 import axios from "axios";
 
 class UnitAnimal extends Component {
@@ -73,18 +73,6 @@ class UnitAnimal extends Component {
                     name: "Images/Unit Animal/Game_Card/G_Sheep.png",
                 },
             ],
-            ids: [
-                "Cat",
-                "Crab",
-                "Dog",
-                "Dolphin",
-                "Duck",
-                "Lion",
-                "Monkey",
-                "Penguin",
-                "Pig",
-                "Sheep",
-            ],
             data: [],
             ok: "Images/Unit Animal/Game_Card/G_Ok.png",
             countData: []
@@ -101,21 +89,35 @@ class UnitAnimal extends Component {
         if (this.state.animals.length === 0) {
             const urls = JSON.parse(sessionStorage.getItem("urls"));
             const animals = JSON.parse(sessionStorage.getItem("animals"));
+            if (urls) {
+                this.setState({urls});
+            }
+            if (animals) {
+                this.setState({animals});
+            }
+            if (document.getElementsByClassName("demo")) {
+                document.getElementsByClassName("demo")[0].style.display = "block";
+            }
+            if (document.getElementById("countdown")) {
+                document.getElementById("countdown").classList.add("overlay-text");
+                document.getElementById("countdown").classList.add("visible");
+            }
 
-            document.getElementsByClassName("demo")[0].style.display = "block";
-            document.getElementById("countdown").classList.add("overlay-text");
-            document.getElementById("countdown").classList.add("visible");
-            this.setState({isWin: false, animals, urls});
+            this.setState({isWin: false});
             const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
             Promise.resolve(3600)
                 .then(() => wait(3600))
                 .then(() => {
                     this.setState({isHidden: false, isCorrectAnswer: false});
-                    document.getElementById("countdown").classList.remove("overlay-text");
-                    document.getElementById("countdown").classList.remove("visible");
-                    document.getElementsByClassName("demo")[0].style.display = "none";
-                    //
+                    if (document.getElementById("countdown")) {
+                        document.getElementById("countdown").classList.remove("overlay-text");
+                        document.getElementById("countdown").classList.remove("visible");
+                    }
+                    if (document.getElementsByClassName("demo")) {
+                        document.getElementsByClassName("demo")[0].style.display = "none";
+                    }
+                    this.setState({score: 0})
                     this.createData();
                 });
             return;
@@ -124,11 +126,15 @@ class UnitAnimal extends Component {
         Promise.resolve(3600)
             .then(() => wait(3600))
             .then(() => {
-                document.getElementById("countdown").classList.remove("overlay-text");
-                document.getElementById("countdown").classList.remove("visible");
-                document.getElementsByClassName("demo")[0].style.display = "none";
+                if (document.getElementById("countdown")) {
+                    document.getElementById("countdown").classList.remove("overlay-text");
+                    document.getElementById("countdown").classList.remove("visible");
+                }
+                if (document.getElementsByClassName("demo")) {
+                    document.getElementsByClassName("demo")[0].style.display = "none";
+                }
                 this.setState({isHidden: false})
-                //
+                this.setState({score: 0})
                 this.createData();
             });
     }
@@ -145,15 +151,14 @@ class UnitAnimal extends Component {
     init = () => {
         this.next();
         let minutes = 1 / 6;
-        let display = document.getElementById("Timer");
-        this.startTimer(minutes, display);
+        this.startTimer(minutes);
     }
 
     createData = () => {
         if (this.state.animals.length === 0) {
             let wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-            Promise.resolve(2000)
-                .then(() => wait(2000))
+            Promise.resolve(3000)
+                .then(() => wait(3000))
                 .then(() => {
                     this.setState({isWin: true});
                     this.apiScore();
@@ -171,10 +176,6 @@ class UnitAnimal extends Component {
                     ...this.random(this.state.urls, 7),
                     ...this.random(this.state.urls, 7)
                 ];
-
-                for (let i = 0; i < this.state.data.length; i++) {
-                    document.getElementById(this.state.data[i].code + "-" + i).src = this.state.data[i].name;
-                }
                 const aCount = new Map([...new Set(data)].map(x => [x, data.filter(y => y === x).length]));
                 const countData = this.state.urls.map(b => ({code: b.code, count: aCount.get(b)}));
                 const k = countData.find(e => e.count === 0);
@@ -182,13 +183,24 @@ class UnitAnimal extends Component {
                 if (!k) {
                     this.init();
                     this.setState({countData, data: this.random(data, 28)})
+                    for (let i = 0; i < this.state.data.length; i++) {
+                        if (document.getElementById(this.state.data[i].code + "-" + i)) {
+                            document.getElementById(this.state.data[i].code + "-" + i).src = this.state.data[i].name;
+                        }
+                    }
                     break;
+                }
+            }
+            for (let i = 0; i < this.state.data.length; i++) {
+                const e = document.getElementById(this.state.data[i].code + "-" + i);
+                if (e) {
+                    e.style.cursor = "pointer";
                 }
             }
         }
     }
 
-    startTimer = (duration, display) => {
+    startTimer = (duration) => {
         let timer = 60 * duration,
             minutes,
             seconds;
@@ -227,38 +239,47 @@ class UnitAnimal extends Component {
     };
 
     selectAnimal = (animal, id) => {
-        if (this.state.animal === animal) {
-            this.setState({score: this.state.score + 10})
-            console.log(animal)
-            this.toSpeak("Yes");
-            document.getElementById(id).src = this.state.ok;
-            const countData = this.state.countData.map(e => {
-                if (e.code === animal) {
-                    --e.count;
-                    return e;
-                }
-                return e;
-            })
-            const x = countData.find(e => e.code === animal);
-            if (x.count !== 0) {
-                this.setState({countData})
-            } else {
-                const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-                Promise.resolve(2000)
-                    .then(() => wait(2000))
-                    .then(() => {
-                        this.createData();
-                    })
-            }
-        } else {
-            this.toSpeak("No");
-            if(this.state.score > 0) {
-                this.setState({score: this.state.score - 10})
-            } else {
-                this.setState({score: 0})
-            }
+        const e = document.getElementById(id);
+        console.log(e.style.cursor)
+        if (e) {
+            if (e.style.cursor === "pointer") {
+                if (this.state.animal === animal) {
+                    this.setState({score: this.state.score + 10})
+                    this.toSpeak("Yes");
+                    if (document.getElementById(id)) {
+                        document.getElementById(id).src = this.state.ok;
+                        document.getElementById(id).style.cursor = "not-allowed";
+                    }
 
+                    const countData = this.state.countData.map(e => {
+                        if (e.code === animal) {
+                            --e.count;
+                            return e;
+                        }
+                        return e;
+                    })
+                    const x = countData.find(e => e.code === animal);
+                    if (x.count !== 0) {
+                        this.setState({countData})
+                    } else {
+                        const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+                        Promise.resolve(3000)
+                            .then(() => wait(3000))
+                            .then(() => {
+                                this.createData();
+                            })
+                    }
+                } else {
+                    this.toSpeak("No");
+                    if (this.state.score > 0) {
+                        this.setState({score: this.state.score - 10})
+                    } else {
+                        this.setState({score: 0})
+                    }
+                }
+            }
         }
+
     }
 
     apiScore = () => {
@@ -280,8 +301,21 @@ class UnitAnimal extends Component {
                     );
                     const {data} = res;
                     if (data) {
-                        if (data.exp) {
+                        console.log(data)
+                        if (data.exp && data.score) {
                             this.state.currentUser.exp = data.exp;
+                            this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
+                                if (e.unit.name === "UNIT_ANIMAL") {
+                                    if (e.score < data.score) {
+                                        e.score = data.score;
+                                    }
+                                    return e;
+                                }
+                                return e;
+                            })
+
+                            console.log(this.state.currentUser.listScore)
+
                             localStorage.setItem(
                                 "user",
                                 JSON.stringify({

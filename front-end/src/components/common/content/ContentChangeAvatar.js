@@ -38,7 +38,7 @@ class ContentChangeAvatar extends Component {
             <input
                 className="box-shadow"
                 type="text"
-                value={this.state.currentUser.username}
+                value={this.state.currentUser ? this.state.currentUser.username : ""}
             />
         </div>
     );
@@ -54,7 +54,7 @@ class ContentChangeAvatar extends Component {
             <input
                 className="box-shadow"
                 type="text"
-                value={this.state.currentUser.username}
+                value={this.state.currentUser ? this.state.currentUser.username : ""}
             />
         </div>
     );
@@ -70,7 +70,7 @@ class ContentChangeAvatar extends Component {
             <input
                 className="box-shadow"
                 type="text"
-                value={this.state.currentUser.username}
+                value={this.state.currentUser ? this.state.currentUser.username : ""}
 
             />
         </div>
@@ -109,76 +109,93 @@ class ContentChangeAvatar extends Component {
                 const {currentUser} = this.state;
                 (async () => {
                     try {
-                        const {id, accessToken} = currentUser;
-                        const res = await axios.put(`https://backend-kide.herokuapp.com/api/user/avatar/${id}/${this.state.avatar}`, {}, {
-                            headers: {
-                                'Authorization': `Bearer ${accessToken}`
-                            }
-                        });
-                        const {data} = res;
-                        if (data) {
-                            if (data.status) {
-                                //display alert
-                                if (document.getElementById("alert-change-avatar-success")) {
-                                    document.getElementById("alert-change-avatar-success").style.display = "block";
+                        if (currentUser) {
+                            const {id, accessToken} = currentUser;
+                            const res = await axios.put(`https://backend-kide.herokuapp.com/api/user/avatar/${id}/${this.state.avatar}`, {}, {
+                                headers: {
+                                    'Authorization': `Bearer ${accessToken}`
                                 }
-                                if (document.getElementById("alert-change-avatar-success")) {
-                                    document.getElementById("alert-change-avatar-success").innerHTML = `${data.message}`;
-                                }
-
-
-                                // change avatar
-                                switch (this.state.avatar) {
-                                    case "cat" :
-                                        document.getElementById("avatar").src = "Images/HomePage/Cat_avatar.png";
-                                        //change localStorage
-                                        currentUser.avatar = "AVATAR_CAT"
-                                        localStorage.setItem("user", JSON.stringify({
-                                            ...currentUser
-                                        }));
-                                        break;
-                                    case "dinosaur":
-                                        document.getElementById("avatar").src = "Images/HomePage/Dinosaur_avatar.png";
-                                        currentUser.avatar = "AVATAR_DINOSAUR"
-                                        localStorage.setItem("user", JSON.stringify({
-                                            ...currentUser
-                                        }));
-                                        break;
-                                    default:
-                                        document.getElementById("avatar").src = "Images/HomePage/Dolphin_avatar.png";
-                                        currentUser.avatar = "AVATAR_DOLPHIN"
-                                        localStorage.setItem("user", JSON.stringify({
-                                            ...currentUser
-                                        }));
-                                        break;
-                                }
-                                for (let i = 0; i < this.state.ids.length; i++) {
-                                    const e = document.getElementById(this.state.ids[i]);
-                                    if (e) {
-                                        e.style.cursor = "pointer";
-                                    }
-                                }
-                            } else {
-                                document.getElementById("alert-change-avatar-failed").style.display = "block";
-                                document.getElementById("alert-change-avatar-failed").innerHTML = `${data.message}`;
-                            }
-
-                            const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-                            Promise.resolve(2000)
-                                .then(() => wait(2000))
-                                .then(() => {
+                            });
+                            const {data} = res;
+                            if (data) {
+                                if (data.status) {
+                                    //display alert
                                     if (document.getElementById("alert-change-avatar-success")) {
-                                        document.getElementById("alert-change-avatar-success").style.display = "none";
+                                        document.getElementById("alert-change-avatar-success").style.display = "block";
+                                    }
+                                    if (document.getElementById("alert-change-avatar-success")) {
+                                        document.getElementById("alert-change-avatar-success").innerHTML = `${data.message}`;
                                     }
 
-                                    if (document.getElementById("alert-change-avatar-failed")) {
-                                        document.getElementById("alert-change-avatar-failed").style.display = "none";
+
+                                    // change avatar
+                                    switch (this.state.avatar) {
+                                        case "cat" :
+                                            if (document.getElementById("avatar")) {
+                                                document.getElementById("avatar").src = "Images/HomePage/Cat_avatar.png";
+                                            }
+
+                                            //change localStorage
+                                            currentUser.avatar = "AVATAR_CAT"
+                                            localStorage.setItem("user", JSON.stringify({
+                                                ...currentUser
+                                            }));
+                                            break;
+                                        case "dinosaur":
+                                            if (document.getElementById("avatar")) {
+                                                document.getElementById("avatar").src = "Images/HomePage/Dinosaur_avatar.png";
+                                            }
+
+                                            currentUser.avatar = "AVATAR_DINOSAUR"
+                                            localStorage.setItem("user", JSON.stringify({
+                                                ...currentUser
+                                            }));
+                                            break;
+                                        default:
+                                            if(document.getElementById("avatar")) {
+                                                document.getElementById("avatar").src = "Images/HomePage/Dolphin_avatar.png";
+                                            }
+
+                                            currentUser.avatar = "AVATAR_DOLPHIN"
+                                            localStorage.setItem("user", JSON.stringify({
+                                                ...currentUser
+                                            }));
+                                            break;
+                                    }
+                                    for (let i = 0; i < this.state.ids.length; i++) {
+                                        const e = document.getElementById(this.state.ids[i]);
+                                        if (e) {
+                                            e.style.cursor = "pointer";
+                                        }
+                                    }
+                                } else {
+                                    if(document.getElementById("alert-change-avatar-failed")) {
+                                        document.getElementById("alert-change-avatar-failed").style.display = "block";
+                                    }
+                                    if(document.getElementById("alert-change-avatar-failed")) {
+                                        document.getElementById("alert-change-avatar-failed").innerHTML = `${data.message}`;
                                     }
 
+                                }
 
-                                });
+                                const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+                                Promise.resolve(2000)
+                                    .then(() => wait(2000))
+                                    .then(() => {
+                                        if (document.getElementById("alert-change-avatar-success")) {
+                                            document.getElementById("alert-change-avatar-success").style.display = "none";
+                                        }
+
+                                        if (document.getElementById("alert-change-avatar-failed")) {
+                                            document.getElementById("alert-change-avatar-failed").style.display = "none";
+                                        }
+
+
+                                    });
+                            }
+                            console.log(data);
                         }
-                        console.log(data);
+
                     } catch (e) {
                         console.log(e);
                     }
@@ -189,7 +206,6 @@ class ContentChangeAvatar extends Component {
     }
     getAvatar = (avatar) => {
         const e = document.getElementById(avatar);
-        console.log(e.style.cursor)
         if (e) {
             if (e.style.cursor === "pointer") {
                 this.setState({

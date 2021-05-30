@@ -131,19 +131,34 @@ class UnitNumber extends Component {
         if (this.state.numbers.length === 0) {
             const numbers = JSON.parse(sessionStorage.getItem("numbers"));
             const answers = JSON.parse(sessionStorage.getItem("answers"));
-            document.getElementsByClassName("demo")[0].style.display = "block";
-            document.getElementById("countdown").classList.add("overlay-text");
-            document.getElementById("countdown").classList.add("visible");
-            this.setState({isWin: false, numbers, answers});
+            if (numbers) {
+                this.setState({numbers});
+            }
+            if (answers) {
+                this.setState({answers});
+            }
+            if (document.getElementsByClassName("demo")) {
+                document.getElementsByClassName("demo")[0].style.display = "block";
+            }
+            if (document.getElementById("countdown")) {
+                document.getElementById("countdown").classList.add("overlay-text");
+                document.getElementById("countdown").classList.add("visible");
+            }
+
+            this.setState({isWin: false});
             const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
             Promise.resolve(3600)
                 .then(() => wait(3600))
                 .then(() => {
                     this.setState({isHidden: false, isCorrectAnswer: false});
-                    document.getElementById("countdown").classList.remove("overlay-text");
-                    document.getElementById("countdown").classList.remove("visible");
-                    document.getElementsByClassName("demo")[0].style.display = "none";
+                    if (document.getElementById("countdown")) {
+                        document.getElementById("countdown").classList.remove("overlay-text");
+                        document.getElementById("countdown").classList.remove("visible");
+                    }
+                    if (document.getElementsByClassName("demo")) {
+                        document.getElementsByClassName("demo")[0].style.display = "none";
+                    }
                     for (let i = 0; i < this.state.ids.length; i++) {
                         const e = document.getElementById(this.state.ids[i]);
                         if (e) {
@@ -189,9 +204,13 @@ class UnitNumber extends Component {
                 }
                 this.toSpeak(presentNumber);
                 this.setState({...answers})
-                document.getElementById("countdown").classList.remove("overlay-text");
-                document.getElementById("countdown").classList.remove("visible");
-                document.getElementsByClassName("demo")[0].style.display = "none";
+                if (document.getElementById("countdown")) {
+                    document.getElementById("countdown").classList.remove("overlay-text");
+                    document.getElementById("countdown").classList.remove("visible");
+                }
+                if (document.getElementsByClassName("demo")) {
+                    document.getElementsByClassName("demo")[0].style.display = "none";
+                }
                 this.init();
             });
     }
@@ -204,11 +223,10 @@ class UnitNumber extends Component {
     init = () => {
         this.setState({score: 0});
         let minutes = 2;
-        let display = document.getElementById("Timer");
-        this.startTimer(minutes, display);
+        this.startTimer(minutes);
     }
 
-    startTimer = (duration, display) => {
+    startTimer = (duration) => {
         let timer = 60 * duration,
             minutes,
             seconds;
@@ -329,9 +347,13 @@ class UnitNumber extends Component {
 
     gameOverCountdown = () => {
         this.setState({start: true, gameOver: false})
-        document.getElementsByClassName("demo")[0].style.display = "block";
-        document.getElementById("countdown").classList.add("overlay-text");
-        document.getElementById("countdown").classList.add("visible");
+        if (document.getElementsByClassName("demo")) {
+            document.getElementsByClassName("demo")[0].style.display = "block";
+        }
+        if (document.getElementById("countdown")) {
+            document.getElementById("countdown").classList.add("overlay-text");
+            document.getElementById("countdown").classList.add("visible");
+        }
         let wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         Promise.resolve(3600)
             .then(() => wait(3600))
@@ -355,9 +377,13 @@ class UnitNumber extends Component {
                 }
                 this.toSpeak(presentNumber);
                 this.setState({...answers})
-                document.getElementById("countdown").classList.remove("overlay-text");
-                document.getElementById("countdown").classList.remove("visible");
-                document.getElementsByClassName("demo")[0].style.display = "none";
+                if (document.getElementById("countdown")) {
+                    document.getElementById("countdown").classList.remove("overlay-text");
+                    document.getElementById("countdown").classList.remove("visible");
+                }
+                if (document.getElementsByClassName("demo")) {
+                    document.getElementsByClassName("demo")[0].style.display = "none";
+                }
                 this.init();
             });
     }
@@ -381,8 +407,20 @@ class UnitNumber extends Component {
                     );
                     const {data} = res;
                     if (data) {
-                        if (data.exp) {
+                        if (data.exp && data.score) {
                             this.state.currentUser.exp = data.exp;
+                            this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
+                                if (e.unit.name === "UNIT_NUMBER") {
+                                    if(e.score < data.score) {
+                                        e.score = data.score;
+                                    }
+                                    return e;
+                                }
+                                return e;
+                            })
+
+                            console.log(this.state.currentUser.listScore)
+
                             localStorage.setItem(
                                 "user",
                                 JSON.stringify({

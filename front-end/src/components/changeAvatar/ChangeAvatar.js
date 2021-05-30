@@ -6,8 +6,8 @@ class ChangeAvatar extends Component {
     render() {
         return (
             <div className="center w-100" style={{flexDirection: 'column'}}>
-                <HeaderChangeAvatar></HeaderChangeAvatar>
-                <ContentChangeAvatar></ContentChangeAvatar>
+                <HeaderChangeAvatar/>
+                <ContentChangeAvatar/>
             </div>
         );
     }

@@ -148,7 +148,7 @@ class UnitColor extends Component {
                             });
                     } else {
                         this.toSpeak("No");
-                        this.setState({color : "No"})
+                        this.setState({color: "No"})
                         let urls = this.state.urls.filter((item) => item.code !== color);
                         this.setState({urls});
 
@@ -210,19 +210,38 @@ class UnitColor extends Component {
         if (this.state.colors.length === 0) {
             const colors = JSON.parse(sessionStorage.getItem("colors"));
             const urls = JSON.parse(sessionStorage.getItem("urls"));
-            document.getElementsByClassName("demo")[0].style.display = "block";
-            document.getElementById("countdown").classList.add("overlay-text");
-            document.getElementById("countdown").classList.add("visible");
-            this.setState({isWin: false, colors, urls});
+            if (colors) {
+                this.setState({colors})
+            }
+            if (urls) {
+                this.setState({urls})
+            }
+            if (document.getElementsByClassName("demo")) {
+                document.getElementsByClassName("demo")[0].style.display = "block";
+            }
+            if (document.getElementById("countdown")) {
+                document.getElementById("countdown").classList.add("overlay-text");
+                document.getElementById("countdown").classList.add("visible");
+            }
+            this.setState({isWin: false});
             const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
             Promise.resolve(3600)
                 .then(() => wait(3600))
                 .then(() => {
-                    this.setState({isHidden: false, isCorrectAnswer: false, url: "/Images/Unit Color/Game_Card/Pig/NoColor_Pig.png"});
-                    document.getElementById("countdown").classList.remove("overlay-text");
-                    document.getElementById("countdown").classList.remove("visible");
-                    document.getElementsByClassName("demo")[0].style.display = "none";
+                    this.setState({
+                        isHidden: false,
+                        isCorrectAnswer: false,
+                        url: "/Images/Unit Color/Game_Card/Pig/NoColor_Pig.png"
+                    });
+                    if (document.getElementById("countdown")) {
+                        document.getElementById("countdown").classList.remove("overlay-text");
+                        document.getElementById("countdown").classList.remove("visible");
+                    }
+                    if (document.getElementsByClassName("demo")) {
+                        document.getElementsByClassName("demo")[0].style.display = "none";
+                    }
+
                     let color = this.random(this.state.colors, 1)[0];
                     let colors = this.state.colors.filter(i => i !== color)
                     this.setState({color, colors});
@@ -252,9 +271,13 @@ class UnitColor extends Component {
                         e.style.cursor = "pointer";
                     }
                 }
-                document.getElementById("countdown").classList.remove("overlay-text");
-                document.getElementById("countdown").classList.remove("visible");
-                document.getElementsByClassName("demo")[0].style.display = "none";
+                if (document.getElementById("countdown")) {
+                    document.getElementById("countdown").classList.remove("overlay-text");
+                    document.getElementById("countdown").classList.remove("visible");
+                }
+                if (document.getElementsByClassName("demo")) {
+                    document.getElementsByClassName("demo")[0].style.display = "none";
+                }
                 this.init();
             });
     }
@@ -267,11 +290,10 @@ class UnitColor extends Component {
     init = () => {
         this.setState({score: 0});
         let minutes = 2;
-        let display = document.getElementById("Timer");
-        this.startTimer(minutes, display);
+        this.startTimer(minutes);
     }
 
-    startTimer = (duration, display) => {
+    startTimer = (duration) => {
         let timer = 60 * duration,
             minutes,
             seconds;
@@ -292,15 +314,24 @@ class UnitColor extends Component {
         this.setState({start: true, gameOver: false})
         const colors = JSON.parse(sessionStorage.getItem("colors"));
         const urls = JSON.parse(sessionStorage.getItem("urls"));
-        document.getElementsByClassName("demo")[0].style.display = "block";
-        document.getElementById("countdown").classList.add("overlay-text");
-        document.getElementById("countdown").classList.add("visible");
-        this.setState({colors, urls});
+        if (colors) {
+            this.setState({colors})
+        }
+        if (urls) {
+            this.setState({urls})
+        }
+        if (document.getElementsByClassName("demo")) {
+            document.getElementsByClassName("demo")[0].style.display = "block";
+        }
+        if (document.getElementById("countdown")) {
+            document.getElementById("countdown").classList.add("overlay-text");
+            document.getElementById("countdown").classList.add("visible");
+        }
         let wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         Promise.resolve(3600)
             .then(() => wait(3600))
             .then(() => {
-                this.setState({isHidden: false,url: "/Images/Unit Color/Game_Card/Pig/NoColor_Pig.png"})
+                this.setState({isHidden: false, url: "/Images/Unit Color/Game_Card/Pig/NoColor_Pig.png"})
                 let color = this.random(this.state.colors, 1)[0];
                 let colors = this.state.colors.filter(i => i !== color)
                 this.setState({color, colors});
@@ -311,9 +342,13 @@ class UnitColor extends Component {
                         e.style.cursor = "pointer";
                     }
                 }
-                document.getElementById("countdown").classList.remove("overlay-text");
-                document.getElementById("countdown").classList.remove("visible");
-                document.getElementsByClassName("demo")[0].style.display = "none";
+                if (document.getElementById("countdown")) {
+                    document.getElementById("countdown").classList.remove("overlay-text");
+                    document.getElementById("countdown").classList.remove("visible");
+                }
+                if (document.getElementsByClassName("demo")) {
+                    document.getElementsByClassName("demo")[0].style.display = "none";
+                }
                 this.init();
             });
     }
@@ -321,7 +356,7 @@ class UnitColor extends Component {
     apiScore = () => {
         (async () => {
             try {
-                if(this.state.currentUser) {
+                if (this.state.currentUser) {
                     const {id, accessToken} = this.state.currentUser;
                     const res = await axios.put(
                         `https://backend-kide.herokuapp.com/api/user/score/${id}`,
@@ -337,8 +372,20 @@ class UnitColor extends Component {
                     );
                     const {data} = res;
                     if (data) {
-                        if (data.exp) {
+                        if (data.exp && data.score) {
                             this.state.currentUser.exp = data.exp;
+                            this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
+                                if (e.unit.name === "UNIT_COLOR") {
+                                    if(e.score < data.score) {
+                                        e.score = data.score;
+                                    }
+                                    return e;
+                                }
+                                return e;
+                            })
+
+                            console.log(this.state.currentUser.listScore)
+
                             localStorage.setItem(
                                 "user",
                                 JSON.stringify({
@@ -367,7 +414,8 @@ class UnitColor extends Component {
                             <h2>
                                 Bạn đạt <span id="score-game">{this.state.score}</span> điểm
                             </h2>
-                            {this.state.currentUser ? <p id="description">Bạn được nhận thêm điểm kinh nghiệm</p> : <p id="description">Hãy đăng ký để lưu điểm của bạn</p>}
+                            {this.state.currentUser ? <p id="description">Bạn được nhận thêm điểm kinh nghiệm</p> :
+                                <p id="description">Hãy đăng ký để lưu điểm của bạn</p>}
                         </div>
                         <div className="panel__flaps">
                             <div className="flap outer flap--left"/>
@@ -562,8 +610,8 @@ class UnitColor extends Component {
                                 alt=""
                                 width="100px"
                                 id="Green"
-            
-                        style={{cursor: "pointer"}}
+
+                                style={{cursor: "pointer"}}
                                 height="150px"
                                 onClick={() => this.playAudio("Green")}
                             />
@@ -587,7 +635,7 @@ class UnitColor extends Component {
                                 id="White"
                                 width="100px"
                                 height="150px"
-                        
+
                                 style={{cursor: "pointer"}}
                                 style={{marginLeft: "50px"}}
                                 onClick={() => this.playAudio("White")}
@@ -600,7 +648,7 @@ class UnitColor extends Component {
                                 width="100px"
                                 id="Orange"
                                 height="150px"
-                        
+
                                 style={{cursor: "pointer"}}
                                 style={{marginLeft: "50px"}}
                                 onClick={() => this.playAudio("Orange")}
@@ -613,8 +661,8 @@ class UnitColor extends Component {
                                 alt=""
                                 width="100px"
                                 id="Blue"
-            
-                        style={{cursor: "pointer"}}
+
+                                style={{cursor: "pointer"}}
                                 height="150px"
                                 onClick={() => this.playAudio("Blue")}
                             />
