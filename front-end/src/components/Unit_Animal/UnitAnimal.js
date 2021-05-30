@@ -370,7 +370,7 @@ class UnitAnimal extends Component {
                         <div className="panel__content">
                             <h4>Hướng dẫn</h4>
                             <p style={{fontSize: "1.5em"}}>
-                                Bạn hãy nghe và chọn màu đúng với yêu cầu để tô màu cho con vật.
+                                Bạn hãy nghe và chọn tất cả con vật theo yêu cầu.
                             </p>
                         </div>
                         <div className="panel__flaps">

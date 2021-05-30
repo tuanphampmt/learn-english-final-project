@@ -162,6 +162,7 @@ class LoginMaster extends Component {
               src="Images/LoginPage/SignUp_Button.png"
               alt=""
               className="heart"
+              style={{width: "120%"}}
             />
           </Link>
         </div>
