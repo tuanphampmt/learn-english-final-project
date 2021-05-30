@@ -17,7 +17,7 @@ class HomeMaster extends Component {
                 </div>
                 <div id="login-button">
                     <Link to="/login">
-                        <img src="Images/StartPage/Login_Button.png" alt="" className="heart"/>
+                        <img style={{width: "10%"}} src="Images/StartPage/Login_Button.png" alt="" className="heart"/>
                     </Link>
                 </div>
                 <div className="letgo-button center zoom">
