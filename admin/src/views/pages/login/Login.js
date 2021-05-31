@@ -8,7 +8,7 @@ import CheckButton from "react-validation/build/button";
 const required = (value) => {
   if (!value) {
     return (
-      <span className="notify-validate">Bắt buộc</span>
+      <span className="notify-validate">This field is mandatory</span>
     );
   }
 };
@@ -69,7 +69,7 @@ class Login extends Component {
               loading: false,
             });
             swal({
-              title: "Sai tên đăng nhập hoặc mật khẩu",
+              title: "Wrong username or password",
               icon: "error",
             });
           }

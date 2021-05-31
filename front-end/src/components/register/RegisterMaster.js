@@ -225,6 +225,7 @@ class RegisterMaster extends Component {
                             src="Images/StartPage/Login_Button.png"
                             alt=""
                             className="heart"
+                            width="120%"
                         />
                     </Link>
                 </div>
