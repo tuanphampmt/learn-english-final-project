@@ -8,13 +8,6 @@ class Auth {
             .post("https://backend-kide.herokuapp.com/api/signin", {
                     username,
                     password
-                },
-                {
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    }
                 })
             .then(response => {
                 if (response.data.accessToken) {
