@@ -14,29 +14,7 @@ const User = ({match}) => {
   const [inputValues, setInputValues] = useState({exp: "", avatar: ""});
   const [checked, setChecked] = useState(null);
 
-  const [dataChart, setDataChart] = useState({
-    labels: [
-      "UNIT_APHABET",
-      "UNIT_COLOR",
-      "UNIT_ANIMAL",
-      "UNIT_NUMBER",
-    ],
-    datasets: [
-      {
-        data: [
-          // 90,10,10,20
 
-        ],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#23F464"],
-        hoverBackgroundColor: [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56",
-          "#23F464",
-        ],
-      },
-    ],
-  });
   const handleOnChange = (event) => {
     const {name, value} = event.target;
     setInputValues({...inputValues, [name]: value});
@@ -65,18 +43,6 @@ const User = ({match}) => {
           setChecked(
             data.roles[0] === "ROLE_ADMIN" || data.roles[1] === "ROLE_ADMIN"
           );
-
-          //chart
-          dataChart.datasets[0].data = [
-            JSON.parse(data.listScore[0].score),
-            JSON.parse(data.listScore[1].score),
-            JSON.parse(data.listScore[2].score),
-            JSON.parse(data.listScore[3].score)
-          ]
-
-          setDataChart({...dataChart})
-
-          // setDataChart();
         }
       } catch (e) {
       }
@@ -333,7 +299,7 @@ const User = ({match}) => {
         </CCard>
       </CCol>
       <CCol xl={5}>
-        <Doughnut data={dataChart}/>
+
       </CCol>
       <div
         className="modal fade"
