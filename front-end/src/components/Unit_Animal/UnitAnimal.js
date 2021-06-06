@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Auth from "../service/Auth";
 import AnimalItem from "./AnimalItem";
 import axios from "axios";
+import {withRouter} from 'react-router';
 
 class UnitAnimal extends Component {
     constructor(props) {
@@ -82,7 +83,17 @@ class UnitAnimal extends Component {
     componentDidMount() {
         sessionStorage.setItem("urls", JSON.stringify(this.state.urls));
         sessionStorage.setItem("animals", JSON.stringify(this.state.animals));
+
+        window.history.pushState(null, null, window.location.pathname);
+        window.addEventListener('popstate', this.onBackButtonEvent);
     }
+
+    onBackButtonEvent = (e) => {
+        e.preventDefault();
+        this.gameOver();
+        this.props.history.push("/home-page");
+    }
+
 
     countdown = () => {
         this.setState({start: true})
@@ -179,7 +190,6 @@ class UnitAnimal extends Component {
                 const aCount = new Map([...new Set(data)].map(x => [x, data.filter(y => y === x).length]));
                 const countData = this.state.urls.map(b => ({code: b.code, count: aCount.get(b)}));
                 const k = countData.find(e => e.count === 0);
-                console.log(k)
                 if (!k) {
                     this.init();
                     this.setState({countData, data: this.random(data, 28)})
@@ -332,6 +342,10 @@ class UnitAnimal extends Component {
         })();
     };
 
+    backHome = () => {
+        this.gameOver();
+    }
+
     render() {
         return (
             <div className="container unit-aphabet">
@@ -449,6 +463,7 @@ class UnitAnimal extends Component {
                                 src="/Images/LoginPage/Back_Button.png"
                                 alt=""
                                 style={{width: "200%", marginLeft: "-190px"}}
+                                onClick={() => this.backHome()}
                             />
                         </Link>
                     </div>
@@ -510,4 +525,4 @@ class UnitAnimal extends Component {
     }
 }
 
-export default UnitAnimal;
+export default withRouter(UnitAnimal);
