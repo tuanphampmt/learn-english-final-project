@@ -377,7 +377,10 @@ export const FlipFlopDidMount = (currentUser) => {
         hideElements();
         gameOn = false;
         if (document.getElementsByClassName("panel")) {
-            document.getElementsByClassName("panel")[0].style.display = "block";
+            if (document.getElementsByClassName("panel")[0]) {
+                document.getElementsByClassName("panel")[0].style.display = "block";
+            }
+
         }
         if (document.getElementById("notify")) {
             document.getElementById("notify").innerHTML = "Chúc mừng";
@@ -403,19 +406,22 @@ export const FlipFlopDidMount = (currentUser) => {
 
     function gameOver() {
         gameOn = false;
-        if(document.getElementsByClassName("panel")) {
-            document.getElementsByClassName("panel")[0].style.display = "block";
+        if (document.getElementsByClassName("panel")) {
+            if (document.getElementsByClassName("panel")[0]) {
+                document.getElementsByClassName("panel")[0].style.display = "block";
+            }
+
         }
-        if(document.getElementById("notify")) {
+        if (document.getElementById("notify")) {
             document.getElementById("notify").innerHTML = "Hết giờ";
         }
-        if(document.getElementById("notify")) {
+        if (document.getElementById("notify")) {
             document.getElementById("notify").style.color = "#dc3545";
         }
-        if(document.getElementById("description")) {
+        if (document.getElementById("description")) {
             document.getElementById("description").style.display = "none";
         }
-        if(document.getElementById("point-game")) {
+        if (document.getElementById("point-game")) {
             document.getElementById("point-game").innerHTML = `${flipCounter}`;
         }
         apiScore();
@@ -465,7 +471,7 @@ export const FlipFlopDidMount = (currentUser) => {
                             currentUser.exp = data.exp;
                             currentUser.listScore = currentUser.listScore.map(e => {
                                 if (e.unit.name === "UNIT_APHABET") {
-                                    if(e.score < data.score) {
+                                    if (e.score < data.score) {
                                         e.score = data.score;
                                     }
                                     return e;
