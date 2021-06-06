@@ -189,7 +189,7 @@ const Users = () => {
             }
           } catch (e) {
             return swal({
-              title: "Username is duplicated!",
+              title: "Username has been used",
               icon: "warning",
             });
           }

@@ -1,14 +1,14 @@
 import axios from "axios";
 
-// const API_URL = "https://backend-kide.herokuapp.com/api/";
+const API_URL = "https://backend-kide.herokuapp.com/api/signin";
 
 class Auth {
     login(username, password) {
         return axios
             .post("https://backend-kide.herokuapp.com/api/signin", {
-                    username,
-                    password
-                })
+                username,
+                password
+            })
             .then(response => {
                 if (response.data.accessToken) {
                     localStorage.setItem("user", JSON.stringify(response.data));
@@ -33,7 +33,6 @@ class Auth {
     getCurrentUser() {
         return JSON.parse(localStorage.getItem('user'));
     }
-
 }
 
 export default new Auth();
