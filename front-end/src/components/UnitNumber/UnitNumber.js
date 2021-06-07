@@ -128,85 +128,64 @@ class UnitNumber extends Component {
 
     countdown = () => {
         this.setState({start: true})
-        // if (this.state.numbers.length === 0) {
-        //     const numbers = JSON.parse(sessionStorage.getItem("numbers"));
-        //     const answers = JSON.parse(sessionStorage.getItem("answers"));
-        //     if (numbers) {
-        //         this.setState({numbers});
-        //     }
-        //     if (answers) {
-        //         this.setState({answers});
-        //     }
-        //     if (document.getElementsByClassName("demo")) {
-        //         document.getElementsByClassName("demo")[0].style.display = "block";
-        //     }
-        //     if (document.getElementById("countdown")) {
-        //         document.getElementById("countdown").classList.add("overlay-text");
-        //         document.getElementById("countdown").classList.add("visible");
-        //     }
-        //
-        //     this.setState({isWin: false});
-        //     const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-        //
-        //     Promise.resolve(3600)
-        //         .then(() => wait(3600))
-        //         .then(() => {
-        //             this.setState({isHidden: false, isCorrectAnswer: false});
-        //             if (document.getElementById("countdown")) {
-        //                 document.getElementById("countdown").classList.remove("overlay-text");
-        //                 document.getElementById("countdown").classList.remove("visible");
-        //             }
-        //             if (document.getElementsByClassName("demo")) {
-        //                 document.getElementsByClassName("demo")[0].style.display = "none";
-        //             }
-        //             for (let i = 0; i < this.state.ids.length; i++) {
-        //                 const e = document.getElementById(this.state.ids[i]);
-        //                 if (e) {
-        //                     e.style.cursor = "pointer";
-        //                 }
-        //             }
-        //             const presentNumber = this.random(this.state.numbers, 1)[0];
-        //             const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
-        //             const presentAnswer = this.state.answers.find(a => a.code === presentNumber);
-        //             const arrAnswers = this.state.answers.filter(b => b.code !== presentAnswer.code);
-        //             const answers = {
-        //                 number: presentNumber,
-        //                 numbers: arrNumber,
-        //                 answer: presentAnswer,
-        //                 answers: arrAnswers
-        //             }
-        //             this.toSpeak(presentNumber);
-        //             this.setState({...answers})
-        //             this.init();
-        //         });
-        //     return;
-        // }
-
-        const numbers = JSON.parse(sessionStorage.getItem("numbers"));
-        const answers = JSON.parse(sessionStorage.getItem("answers"));
-        if (numbers) {
-            this.setState({numbers});
-        }
-        if (answers) {
-            this.setState({answers});
-        }
-        if (document.getElementsByClassName("demo")) {
-            if (document.getElementsByClassName("demo")[0]) {
+        if (this.state.numbers.length === 0) {
+            const numbers = JSON.parse(sessionStorage.getItem("numbers"));
+            const answers = JSON.parse(sessionStorage.getItem("answers"));
+            if (numbers) {
+                this.setState({numbers});
+            }
+            if (answers) {
+                this.setState({answers});
+            }
+            if (document.getElementsByClassName("demo")) {
                 document.getElementsByClassName("demo")[0].style.display = "block";
             }
+            if (document.getElementById("countdown")) {
+                document.getElementById("countdown").classList.add("overlay-text");
+                document.getElementById("countdown").classList.add("visible");
+            }
 
-        }
-        if (document.getElementById("countdown")) {
-            document.getElementById("countdown").classList.add("overlay-text");
-            document.getElementById("countdown").classList.add("visible");
-        }
+            this.setState({isWin: false});
+            const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-        this.setState({isWin: false});
+            Promise.resolve(3600)
+                .then(() => wait(3600))
+                .then(() => {
+                    this.setState({isHidden: false, isCorrectAnswer: false});
+                    if (document.getElementById("countdown")) {
+                        document.getElementById("countdown").classList.remove("overlay-text");
+                        document.getElementById("countdown").classList.remove("visible");
+                    }
+                    if (document.getElementsByClassName("demo")) {
+                        document.getElementsByClassName("demo")[0].style.display = "none";
+                    }
+                    for (let i = 0; i < this.state.ids.length; i++) {
+                        const e = document.getElementById(this.state.ids[i]);
+                        if (e) {
+                            e.style.cursor = "pointer";
+                        }
+                    }
+                    const presentNumber = this.random(this.state.numbers, 1)[0];
+                    const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
+                    const presentAnswer = this.state.answers.find(a => a.code === presentNumber);
+                    const arrAnswers = this.state.answers.filter(b => b.code !== presentAnswer.code);
+                    const answers = {
+                        number: presentNumber,
+                        numbers: arrNumber,
+                        answer: presentAnswer,
+                        answers: arrAnswers
+                    }
+                    this.toSpeak(presentNumber);
+                    this.setState({...answers})
+                    this.init();
+                });
+            return;
+        }
         let wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         Promise.resolve(3600)
             .then(() => wait(3600))
             .then(() => {
-                this.setState({isHidden: false, isCorrectAnswer: false});
+                this.setState({isHidden: false})
                 for (let i = 0; i < this.state.ids.length; i++) {
                     const e = document.getElementById(this.state.ids[i]);
                     if (e) {
@@ -214,14 +193,14 @@ class UnitNumber extends Component {
                     }
                 }
                 const presentNumber = this.random(this.state.numbers, 1)[0];
-                // const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
+                const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
                 const presentAnswer = this.state.answers.find(a => a.code === presentNumber);
-                // const arrAnswers = this.state.answers.filter(b => b.code !== presentAnswer.code);
+                const arrAnswers = this.state.answers.filter(b => b.code !== presentAnswer.code);
                 const answers = {
                     number: presentNumber,
-                    // numbers: arrNumber,
+                    numbers: arrNumber,
                     answer: presentAnswer,
-                    // answers: arrAnswers
+                    answers: arrAnswers
                 }
                 this.toSpeak(presentNumber);
                 this.setState({...answers})
@@ -237,9 +216,7 @@ class UnitNumber extends Component {
     }
 
     gameOver = () => {
-        this.setState({score: this.state.score, isWin: true})
-        // this.setState({gameOver: true})
-        this.apiScore();
+        this.setState({gameOver: true})
         clearInterval(this.state.countdown);
     }
 
@@ -288,25 +265,28 @@ class UnitNumber extends Component {
 
 
     redirectAnswer = () => {
-        this.setState({
-            score: this.state.score + 10,
-            isCorrectAnswer: false
-        })
-        const presentNumber = this.random(this.state.numbers, 1)[0];
-        this.toSpeak(presentNumber)
-        // const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
-        this.setState({
-            number: presentNumber,
-            // numbers: arrNumber
-        })
-        const checkAnswer = this.state.answers.find(a => a.code === presentNumber);
-        // const arrAnswers = this.state.answers.filter(b => b.code !== checkAnswer.code);
-
-        if (checkAnswer) {
+        if (this.state.answers.length === 0) {
+            this.setState({score: this.state.score, isWin: true})
+            this.apiScore();
+            clearInterval(this.state.countdown);
+        } else {
             this.setState({
-                answer: checkAnswer,
-                // answers: arrAnswers
-            });
+                score: this.state.score + 10,
+                isCorrectAnswer: false
+            })
+            const presentNumber = this.random(this.state.numbers, 1)[0];
+            this.toSpeak(presentNumber)
+            const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
+            this.setState({number: presentNumber, numbers: arrNumber})
+            const checkAnswer = this.state.answers.find(a => a.code === presentNumber);
+            const arrAnswers = this.state.answers.filter(b => b.code !== checkAnswer.code);
+
+            if (checkAnswer) {
+                this.setState({
+                    answer: checkAnswer,
+                    answers: arrAnswers
+                });
+            }
         }
     }
 
@@ -321,12 +301,6 @@ class UnitNumber extends Component {
         if (e) {
             if (e.style.cursor === "pointer") {
                 this.toSpeak("No");
-                if (this.state.score > 0) {
-                    this.setState({score: this.state.score - 10})
-                } else {
-                    this.setState({score: 0})
-                }
-
                 for (let i = 0; i < this.state.ids.length; i++) {
                     const e = document.getElementById(this.state.ids[i]);
                     if (e) {
@@ -338,29 +312,32 @@ class UnitNumber extends Component {
                 Promise.resolve(2000)
                     .then(() => wait(2000))
                     .then(() => {
-                        this.setState({
-                            isCorrectAnswer: false
-                        })
-                        const presentNumber = this.random(this.state.numbers, 1)[0];
-                        this.toSpeak(presentNumber)
-                        // const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
-                        this.setState({
-                            number: presentNumber,
-                            // numbers: arrNumber
-                        })
-                        const checkAnswer = this.state.answers.find(a => a.code === presentNumber);
-                        // const arrAnswers = this.state.answers.filter(b => b.code !== checkAnswer.code);
-                        for (let i = 0; i < this.state.ids.length; i++) {
-                            const e = document.getElementById(this.state.ids[i]);
-                            if (e) {
-                                e.style.cursor = "pointer";
-                            }
-                        }
-                        if (checkAnswer) {
+                        if (this.state.answers.length === 0) {
+                            this.setState({score: this.state.score, isWin: true})
+                            this.apiScore();
+                            clearInterval(this.state.countdown);
+                        } else {
                             this.setState({
-                                answer: checkAnswer,
-                                // answers: arrAnswers
-                            });
+                                isCorrectAnswer: false
+                            })
+                            const presentNumber = this.random(this.state.numbers, 1)[0];
+                            this.toSpeak(presentNumber)
+                            const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
+                            this.setState({number: presentNumber, numbers: arrNumber})
+                            const checkAnswer = this.state.answers.find(a => a.code === presentNumber);
+                            const arrAnswers = this.state.answers.filter(b => b.code !== checkAnswer.code);
+                            for (let i = 0; i < this.state.ids.length; i++) {
+                                const e = document.getElementById(this.state.ids[i]);
+                                if (e) {
+                                    e.style.cursor = "pointer";
+                                }
+                            }
+                            if (checkAnswer) {
+                                this.setState({
+                                    answer: checkAnswer,
+                                    answers: arrAnswers
+                                });
+                            }
                         }
                     });
             }
@@ -389,14 +366,14 @@ class UnitNumber extends Component {
                     }
                 }
                 const presentNumber = this.random(this.state.numbers, 1)[0];
-                // const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
+                const arrNumber = this.state.numbers.filter(n => n !== presentNumber);
                 const presentAnswer = this.state.answers.find(a => a.code === presentNumber);
-                // const arrAnswers = this.state.answers.filter(b => b.code !== presentAnswer.code);
+                const arrAnswers = this.state.answers.filter(b => b.code !== presentAnswer.code);
                 const answers = {
                     number: presentNumber,
-                    // numbers: arrNumber,
+                    numbers: arrNumber,
                     answer: presentAnswer,
-                    // answers: arrAnswers
+                    answers: arrAnswers
                 }
                 this.toSpeak(presentNumber);
                 this.setState({...answers})
@@ -414,7 +391,7 @@ class UnitNumber extends Component {
     apiScore = () => {
         (async () => {
             try {
-                if (this.state.currentUser) {
+                if(this.state.currentUser) {
                     const {id, accessToken} = this.state.currentUser;
                     const res = await axios.put(
                         `https://backend-kide.herokuapp.com/api/user/score/${id}`,
@@ -434,7 +411,7 @@ class UnitNumber extends Component {
                             this.state.currentUser.exp = data.exp;
                             this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
                                 if (e.unit.name === "UNIT_NUMBER") {
-                                    if (e.score < data.score) {
+                                    if(e.score < data.score) {
                                         e.score = data.score;
                                     }
                                     return e;
@@ -470,8 +447,7 @@ class UnitNumber extends Component {
                             <h2>
                                 Bạn đạt <span id="score-game">{this.state.score}</span> điểm
                             </h2>
-                            {this.state.currentUser ? <p id="description">Bạn được nhận thêm điểm kinh nghiệm</p> :
-                                <p id="description">Hãy đăng ký để lưu điểm của bạn</p>}
+                            {this.state.currentUser ? <p id="description">Bạn được nhận thêm điểm kinh nghiệm</p> : <p id="description">Hãy đăng ký để lưu điểm của bạn</p>}
                         </div>
                         <div className="panel__flaps">
                             <div className="flap outer flap--left"/>
