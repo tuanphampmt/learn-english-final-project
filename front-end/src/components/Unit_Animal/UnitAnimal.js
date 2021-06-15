@@ -90,7 +90,8 @@ class UnitAnimal extends Component {
 
     onBackButtonEvent = (e) => {
         e.preventDefault();
-        this.gameOver();
+       // this.gameOver();
+        window.location.reload();
         this.props.history.push("/home-page");
     }
 
@@ -315,7 +316,7 @@ class UnitAnimal extends Component {
                         if (data.exp && data.score) {
                             this.state.currentUser.exp = data.exp;
                             this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
-                                if (e.unit.name === "UNIT_ANIMAL") {
+                                if (e.name === "UNIT_ANIMAL") {
                                     if (e.score < data.score) {
                                         e.score = data.score;
                                     }
@@ -343,7 +344,8 @@ class UnitAnimal extends Component {
     };
 
     backHome = () => {
-        this.gameOver();
+        this.props.history.push("/home-page");
+        window.location.reload();
     }
 
     render() {
@@ -458,14 +460,14 @@ class UnitAnimal extends Component {
                     style={{display: "flex", justifyContent: "space-between"}}
                 >
                     <div className="col-sm-1">
-                        <Link to="/home-page">
+                
                             <img
                                 src="/Images/LoginPage/Back_Button.png"
                                 alt=""
                                 style={{width: "200%", marginLeft: "-190px"}}
                                 onClick={() => this.backHome()}
                             />
-                        </Link>
+                        
                     </div>
                     <div className="col-md-3 img-cat">
                         <img

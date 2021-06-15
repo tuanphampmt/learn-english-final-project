@@ -169,6 +169,12 @@ class ContentChangeAvatar extends Component {
                                         }
                                     }
                                 } else {
+                                    for (let i = 0; i < this.state.ids.length; i++) {
+                                        const e = document.getElementById(this.state.ids[i]);
+                                        if (e) {
+                                            e.style.cursor = "pointer";
+                                        }
+                                    }
                                     if(document.getElementById("alert-change-avatar-failed")) {
                                         document.getElementById("alert-change-avatar-failed").style.display = "block";
                                     }

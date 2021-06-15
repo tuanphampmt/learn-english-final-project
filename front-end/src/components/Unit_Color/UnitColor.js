@@ -203,6 +203,15 @@ class UnitColor extends Component {
     componentDidMount() {
         sessionStorage.setItem("colors", JSON.stringify(this.state.colors))
         sessionStorage.setItem("urls", JSON.stringify(this.state.urls))
+        window.history.pushState(null, null, window.location.pathname);
+        window.addEventListener('popstate', this.onBackButtonEvent);
+    }
+
+    onBackButtonEvent = (e) => {
+        e.preventDefault();
+       // this.gameOver();
+       this.props.history.push("/home-page");
+        window.location.reload();
     }
 
     countdown = () => {
@@ -375,7 +384,7 @@ class UnitColor extends Component {
                         if (data.exp && data.score) {
                             this.state.currentUser.exp = data.exp;
                             this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
-                                if (e.unit.name === "UNIT_COLOR") {
+                                if (e.name === "UNIT_COLOR") {
                                     if(e.score < data.score) {
                                         e.score = data.score;
                                     }
@@ -401,6 +410,11 @@ class UnitColor extends Component {
             }
         })();
     };
+
+    backHome = () => {
+        this.props.history.push("/home-page");
+        window.location.reload();
+    }
 
     render() {
         return (
@@ -538,13 +552,14 @@ class UnitColor extends Component {
                     style={{display: "flex", justifyContent: "space-between"}}
                 >
                     <div className="col-sm-1">
-                        <Link to="/home-page">
+                        {/* <Link to="/home-page"> */}
                             <img
                                 src="/Images/LoginPage/Back_Button.png"
                                 alt=""
                                 style={{width: "200%", marginLeft: "-190px"}}
+                                onClick={() => this.backHome()}
                             />
-                        </Link>
+                        {/* </Link> */}
                     </div>
                     <div className="col-md-3 img-cat">
                         <img

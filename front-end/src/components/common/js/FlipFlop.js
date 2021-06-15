@@ -470,7 +470,7 @@ export const FlipFlopDidMount = (currentUser) => {
                         if (data.exp && data.score) {
                             currentUser.exp = data.exp;
                             currentUser.listScore = currentUser.listScore.map(e => {
-                                if (e.unit.name === "UNIT_APHABET") {
+                                if (e.name === "UNIT_APHABET") {
                                     if (e.score < data.score) {
                                         e.score = data.score;
                                     }
@@ -479,12 +479,10 @@ export const FlipFlopDidMount = (currentUser) => {
                                 return e;
                             })
 
-                            console.log(this.state.currentUser.listScore)
-
                             localStorage.setItem(
                                 "user",
                                 JSON.stringify({
-                                    ...this.state.currentUser,
+                                    ...currentUser
                                 })
                             );
                         }
