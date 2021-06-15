@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import Auth from "../../service/Auth";
-
+import swal from "sweetalert";
+import {withRouter} from 'react-router';
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -13,8 +14,19 @@ class Header extends Component {
         };
     }
 
-    logOut() {
-        Auth.logout();
+    logOut = () => {
+        swal({
+            title: "Đăng xuất?",
+            text: "Bạn có muốn đăng xuất khỏi trang web?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willLogout) => {
+            if (willLogout) {
+                Auth.logout();
+                this.props.history.push('/login');
+            }
+        });
     }
 
     componentDidMount() {
@@ -106,10 +118,9 @@ class Header extends Component {
                             <li>{this.getExperience()}/100 exp</li>
                         </ul>
                         <Link
-                            to="/login"
                             className="text-right"
                             style={{width: "13%"}}
-                            onClick={this.logOut}
+                            onClick={() => {this.logOut()}}
                         >
                             <img
                                 src="Images/HomePage/Logout_Icon.png"
@@ -128,4 +139,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);
