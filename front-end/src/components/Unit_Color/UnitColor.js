@@ -195,7 +195,7 @@ class UnitColor extends Component {
                 .then(() => {
                     this.setState({isWin: true});
                 });
-            this.apiScore();
+            this.apiScore(this.state.score + 10);
             clearInterval(this.state.countdown);
         }
     };
@@ -362,7 +362,7 @@ class UnitColor extends Component {
             });
     }
 
-    apiScore = () => {
+    apiScore = (score) => {
         (async () => {
             try {
                 if (this.state.currentUser) {
@@ -371,7 +371,7 @@ class UnitColor extends Component {
                         `https://backend-kide.herokuapp.com/api/user/score/${id}`,
                         {
                             name: "color",
-                            score: this.state.score,
+                            score: score,
                         },
                         {
                             headers: {
@@ -581,7 +581,8 @@ class UnitColor extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="row center background-color-white game-aphabet mt-4">
+                {!this.state.isWin && (
+                    <div className="row center background-color-white game-aphabet mt-4">
                     <div className="col-sm-8">
                         <a className="zoom">
                             <img
@@ -590,7 +591,8 @@ class UnitColor extends Component {
                                 style={{cursor: "pointer"}}
                                 id="Red"
                                 width="100px"
-                                height="150px"
+                                he
+                                ight="150px"
                                 onClick={() => this.playAudio("Red")}
                             />
                         </a>
@@ -723,6 +725,9 @@ class UnitColor extends Component {
                         <h2 style={{fontSize: "80px"}}>{this.state.color}</h2>
                     </div>
                 </div>
+                )}
+
+                
             </div>
         );
     }

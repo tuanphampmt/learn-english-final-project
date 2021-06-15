@@ -628,7 +628,9 @@ class UnitNumber extends Component {
                     </div>
                 </div>
                 <div className="row center background-color-white game-aphabet mt-4">
-                    <div
+                    {!this.state.isWin && (
+                        <>
+                         <div
                         className="game-number-row"
                         id="game-number-row-question"
                         style={{textAlign: "center"}}
@@ -652,6 +654,9 @@ class UnitNumber extends Component {
                         showAnswer={() => this.showAnswer()}
                         redirectNoAnswer={(a) => this.redirectNoAnswer(a)}
                     />
+                        </>
+                    )}
+                   
                 </div>
             </div>
         );

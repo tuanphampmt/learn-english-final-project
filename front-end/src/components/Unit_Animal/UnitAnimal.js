@@ -494,7 +494,9 @@ class UnitAnimal extends Component {
                     </div>
                 </div>
                 <div className="row center background-color-white game-aphabet mt-4">
-                    <div
+                    {!this.state.isWin && (
+                        <>
+                         <div
                         style={{textAlign: "center", marginTop: "-26%", position: "absolute"}}
                     >
                         <a onClick={() => this.toSpeak(this.state.animal)}>
@@ -521,6 +523,9 @@ class UnitAnimal extends Component {
                         }
 
                     </div>
+                        </>
+                    )}
+                   
                 </div>
             </div>
         );
