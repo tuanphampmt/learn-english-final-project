@@ -203,6 +203,15 @@ class UnitColor extends Component {
     componentDidMount() {
         sessionStorage.setItem("colors", JSON.stringify(this.state.colors))
         sessionStorage.setItem("urls", JSON.stringify(this.state.urls))
+        window.history.pushState(null, null, window.location.pathname);
+        window.addEventListener('popstate', this.onBackButtonEvent);
+    }
+
+    onBackButtonEvent = (e) => {
+        e.preventDefault();
+       // this.gameOver();
+       this.props.history.push("/home-page");
+        window.location.reload();
     }
 
     countdown = () => {
@@ -402,6 +411,11 @@ class UnitColor extends Component {
         })();
     };
 
+    backHome = () => {
+        this.props.history.push("/home-page");
+        window.location.reload();
+    }
+
     render() {
         return (
             <div className="container unit-aphabet">
@@ -538,13 +552,14 @@ class UnitColor extends Component {
                     style={{display: "flex", justifyContent: "space-between"}}
                 >
                     <div className="col-sm-1">
-                        <Link to="/home-page">
+                        {/* <Link to="/home-page"> */}
                             <img
                                 src="/Images/LoginPage/Back_Button.png"
                                 alt=""
                                 style={{width: "200%", marginLeft: "-190px"}}
+                                onClick={() => this.backHome()}
                             />
-                        </Link>
+                        {/* </Link> */}
                     </div>
                     <div className="col-md-3 img-cat">
                         <img

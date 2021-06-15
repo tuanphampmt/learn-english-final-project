@@ -124,6 +124,16 @@ class UnitNumber extends Component {
     componentDidMount() {
         sessionStorage.setItem("numbers", JSON.stringify(this.state.numbers))
         sessionStorage.setItem("answers", JSON.stringify(this.state.answers))
+        window.history.pushState(null, null, window.location.pathname);
+        window.addEventListener('popstate', this.onBackButtonEvent);
+    }
+
+    onBackButtonEvent = (e) => {
+        e.preventDefault();
+       // this.gameOver();
+       this.props.history.push("/home-page");
+        window.location.reload();
+        
     }
 
     countdown = () => {
@@ -459,6 +469,11 @@ class UnitNumber extends Component {
         })();
     };
 
+    backHome = () => {
+        this.props.history.push("/home-page");
+        window.location.reload();
+    }
+
     render() {
         return (
             <div className="container unit-aphabet">
@@ -583,13 +598,14 @@ class UnitNumber extends Component {
                     style={{display: "flex", justifyContent: "space-between"}}
                 >
                     <div className="col-sm-1">
-                        <Link to="/home-page">
+                        {/* <Link to="/home-page"> */}
                             <img
                                 src="/Images/LoginPage/Back_Button.png"
                                 alt=""
                                 style={{width: "200%", marginLeft: "-190px"}}
+                                onClick={() => this.backHome()}
                             />
-                        </Link>
+                        {/* </Link> */}
                     </div>
                     <div className="col-md-3 img-cat">
                         <img

@@ -344,8 +344,8 @@ class UnitAnimal extends Component {
     };
 
     backHome = () => {
+        this.props.history.push("/home-page");
         window.location.reload();
-       // this.gameOver();
     }
 
     render() {
@@ -460,14 +460,14 @@ class UnitAnimal extends Component {
                     style={{display: "flex", justifyContent: "space-between"}}
                 >
                     <div className="col-sm-1">
-                        <Link to="/home-page">
+                
                             <img
                                 src="/Images/LoginPage/Back_Button.png"
                                 alt=""
                                 style={{width: "200%", marginLeft: "-190px"}}
                                 onClick={() => this.backHome()}
                             />
-                        </Link>
+                        
                     </div>
                     <div className="col-md-3 img-cat">
                         <img
