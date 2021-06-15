@@ -90,7 +90,8 @@ class UnitAnimal extends Component {
 
     onBackButtonEvent = (e) => {
         e.preventDefault();
-        this.gameOver();
+       // this.gameOver();
+        window.location.reload();
         this.props.history.push("/home-page");
     }
 
@@ -315,7 +316,7 @@ class UnitAnimal extends Component {
                         if (data.exp && data.score) {
                             this.state.currentUser.exp = data.exp;
                             this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
-                                if (e.unit.name === "UNIT_ANIMAL") {
+                                if (e.name === "UNIT_ANIMAL") {
                                     if (e.score < data.score) {
                                         e.score = data.score;
                                     }
@@ -343,7 +344,8 @@ class UnitAnimal extends Component {
     };
 
     backHome = () => {
-        this.gameOver();
+        window.location.reload();
+       // this.gameOver();
     }
 
     render() {

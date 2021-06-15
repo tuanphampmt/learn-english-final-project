@@ -375,7 +375,7 @@ class UnitColor extends Component {
                         if (data.exp && data.score) {
                             this.state.currentUser.exp = data.exp;
                             this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
-                                if (e.unit.name === "UNIT_COLOR") {
+                                if (e.name === "UNIT_COLOR") {
                                     if(e.score < data.score) {
                                         e.score = data.score;
                                     }

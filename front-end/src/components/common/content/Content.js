@@ -11,7 +11,7 @@ class Content extends Component {
 
     handleScore = (unit) => {
         if(this.state.currentUser){
-            var scores = this.state.currentUser.listScore.find(item => item.unit.name === unit)
+            var scores = this.state.currentUser.listScore.find(item => item.name === unit)
             console.log(scores);
             if(scores){
                 return scores.score;

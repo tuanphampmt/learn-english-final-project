@@ -430,10 +430,11 @@ class UnitNumber extends Component {
                     );
                     const {data} = res;
                     if (data) {
+                        console.log(data);
                         if (data.exp && data.score) {
                             this.state.currentUser.exp = data.exp;
                             this.state.currentUser.listScore = this.state.currentUser.listScore.map(e => {
-                                if (e.unit.name === "UNIT_NUMBER") {
+                                if (e.name === "UNIT_NUMBER") {
                                     if (e.score < data.score) {
                                         e.score = data.score;
                                     }
@@ -441,8 +442,6 @@ class UnitNumber extends Component {
                                 }
                                 return e;
                             })
-
-                            console.log(this.state.currentUser.listScore)
 
                             localStorage.setItem(
                                 "user",
